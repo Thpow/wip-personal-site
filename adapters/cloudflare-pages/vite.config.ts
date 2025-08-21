@@ -14,6 +14,12 @@ export default extendConfig(baseConfig, () => {
       // Output to project root dist folder. Using a relative path ensures CI doesn't attempt to write to /opt/dist.
       emptyOutDir: true,
     },
-    plugins: [cloudflarePagesAdapter()],
+    plugins: [
+      cloudflarePagesAdapter({
+        ssg: {
+          include: ["/*"],
+        },
+      }),
+    ],
   };
 });
