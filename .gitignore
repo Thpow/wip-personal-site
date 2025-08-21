@@ -1,1 +1,4 @@
 conf.json
+
+# Cloudflare
+functions/**/*.js
