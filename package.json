@@ -1,5 +1,6 @@
 {
   "name": "my-qwik-empty-starter",
+  "homepage": "https://onebless.github.io/wip-personal-site",
   "description": "Blank project with routing included",
   "engines": {
     "node": "^18.17.0 || ^20.3.0 || >=21.0.0"
@@ -12,7 +13,8 @@
     "build.client": "vite build",
     "build.preview": "vite build --ssr src/entry.preview.tsx",
     "build.types": "tsc --incremental --noEmit",
-    "deploy": "echo 'Run \"npm run qwik add\" to install a server adapter'",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
     "dev": "vite --mode ssr",
     "dev.debug": "node --inspect-brk ./node_modules/vite/bin/vite.js --mode ssr --force",
     "fmt": "prettier --write .",
@@ -29,6 +31,7 @@
     "@types/node": "20.14.11",
     "eslint": "9.25.1",
     "eslint-plugin-qwik": "^1.15.0",
+    "gh-pages": "^6.3.0",
     "globals": "16.0.0",
     "prettier": "3.3.3",
     "typescript": "5.4.5",

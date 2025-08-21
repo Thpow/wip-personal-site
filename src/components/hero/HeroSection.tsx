@@ -215,59 +215,6 @@ export const HeroSection = component$(() => {
       100% { top: 30px; opacity: 0; }
     }
     
-    .background-shapes {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      overflow: hidden;
-      z-index: 0;
-    }
-    
-    .shape {
-      position: absolute;
-      background: var(--neu-base);
-      border-radius: 50%;
-      opacity: 0.5;
-    }
-    
-    .shape-1 {
-      width: 400px;
-      height: 400px;
-      top: -200px;
-      left: -200px;
-      box-shadow: var(--neu-shadow-inset-lg);
-      animation: morphing 8s ease-in-out infinite;
-    }
-    
-    .shape-2 {
-      width: 300px;
-      height: 300px;
-      bottom: -150px;
-      right: -150px;
-      box-shadow: var(--neu-shadow-inset-lg);
-      animation: morphing 8s ease-in-out infinite reverse;
-    }
-    
-    .shape-3 {
-      width: 200px;
-      height: 200px;
-      top: 50%;
-      left: 10%;
-      box-shadow: var(--neu-shadow-inset-md);
-      animation: float 6s ease-in-out infinite;
-    }
-    
-    @keyframes morphing {
-      0%, 100% {
-        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-      }
-      50% {
-        border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
-      }
-    }
-    
     /* Responsive */
     @media (max-width: 768px) {
       .hero-title {
@@ -318,12 +265,6 @@ export const HeroSection = component$(() => {
   
   return (
     <section id="home" class="hero-section">
-      <div class="background-shapes">
-        <div class="shape shape-1"></div>
-        <div class="shape shape-2"></div>
-        <div class="shape shape-3"></div>
-      </div>
-      
       <div class="hero-content">
         <div class="profile-container">
           <div class="profile-image-wrapper">

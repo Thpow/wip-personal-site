@@ -5,7 +5,7 @@ export const AboutSection = component$(() => {
   useStylesScoped$(`
     .about-section {
       padding: 100px 20px;
-      background: var(--neu-base);
+      background: transparent;
       position: relative;
     }
     

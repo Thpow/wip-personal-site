@@ -15,7 +15,7 @@ export const ContactSection = component$(() => {
   useStylesScoped$(`
     .contact-section {
       padding: 100px 20px;
-      background: var(--neu-base);
+      background: transparent;
       min-height: 100vh;
     }
     
