@@ -21,23 +21,23 @@ export default component$(() => {
 });
 
 export const head: DocumentHead = {
-  title: "John Doe - Full-Stack Developer Portfolio",
+  title: "Thomas Powell - Technical Intern & Computer Science Student",
   meta: [
     {
       name: "description",
-      content: "Full-Stack Developer specializing in scalable web applications, microservices architecture, and innovative digital solutions. View my projects and get in touch.",
+      content: "Technical Intern at SAS specializing in cloud engineering, DevOps, and full-stack development. UNC Charlotte Computer Science and Data Science student.",
     },
     {
       name: "keywords",
-      content: "full-stack developer, web development, React, Node.js, TypeScript, portfolio, software engineer",
+      content: "Thomas Powell, SAS intern, cloud engineering, DevOps, full-stack developer, Python, AWS, Docker, Kubernetes, UNC Charlotte",
     },
     {
       property: "og:title",
-      content: "John Doe - Full-Stack Developer Portfolio",
+      content: "Thomas Powell - Technical Intern & Computer Science Student",
     },
     {
       property: "og:description",
-      content: "Explore my portfolio of full-stack projects, from e-commerce platforms to data visualization dashboards.",
+      content: "Explore my portfolio of enterprise projects at SAS, including cloud infrastructure, automation tools, and web applications.",
     },
     {
       property: "og:type",
@@ -49,11 +49,11 @@ export const head: DocumentHead = {
     },
     {
       name: "twitter:title",
-      content: "John Doe - Full-Stack Developer Portfolio",
+      content: "Thomas Powell - Technical Intern & Computer Science Student",
     },
     {
       name: "twitter:description",
-      content: "Full-Stack Developer specializing in scalable web applications and innovative digital solutions.",
+      content: "Technical Intern at SAS specializing in cloud engineering, DevOps, and full-stack development.",
     },
   ],
 };

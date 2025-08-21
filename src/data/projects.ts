@@ -18,216 +18,189 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    id: "ecommerce-platform",
-    title: "E-Commerce Platform",
-    description: "Full-stack e-commerce solution with microservices architecture, real-time inventory management, and secure payment processing",
-    category: "fullstack",
-    technologies: ["React", "Node.js", "PostgreSQL", "Redis", "Docker", "AWS", "Stripe", "GraphQL"],
-    images: [
-      "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&h=600&fit=crop"
-    ],
-    liveUrl: "https://demo-ecommerce.example.com",
-    githubUrl: "https://github.com/username/ecommerce-platform",
-    architecture: {
-      diagram: "https://via.placeholder.com/800x600/e0e5ec/6c63ff?text=Architecture+Diagram",
-      description: "Microservices architecture with API Gateway, separate services for auth, products, orders, and payments. Uses event-driven communication with RabbitMQ for service coordination."
-    },
-    features: [
-      "Real-time inventory management with WebSocket updates",
-      "Secure payment processing with Stripe integration",
-      "Admin dashboard with analytics and reporting",
-      "Mobile-responsive design with PWA capabilities",
-      "Multi-language and multi-currency support",
-      "Advanced search with Elasticsearch"
-    ],
-    challenges: [
-      "Implementing efficient caching strategy with Redis",
-      "Handling concurrent transactions and race conditions",
-      "Optimizing database queries for scale",
-      "Managing distributed transactions across microservices"
-    ],
-    outcomes: [
-      "50ms average API response time",
-      "99.9% uptime over 12 months",
-      "Handles 10,000+ concurrent users",
-      "Reduced cart abandonment by 35%"
-    ]
-  },
-  {
-    id: "task-management-app",
-    title: "AI-Powered Task Management",
-    description: "Real-time collaborative task management system with AI-powered insights, smart prioritization, and team analytics",
-    category: "fullstack",
-    technologies: ["Vue.js", "Express", "MongoDB", "Socket.io", "TensorFlow.js", "Python", "FastAPI"],
-    images: [
-      "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=800&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=600&fit=crop"
-    ],
-    liveUrl: "https://tasks.example.com",
-    githubUrl: "https://github.com/username/task-management",
-    architecture: {
-      diagram: "https://via.placeholder.com/800x600/e0e5ec/6c63ff?text=Event-Driven+Architecture",
-      description: "Event-driven architecture with WebSocket connections for real-time updates, separate ML service for predictions"
-    },
-    features: [
-      "Real-time collaboration with conflict resolution",
-      "AI-powered task prioritization and time estimation",
-      "Kanban, Gantt, and Calendar views",
-      "Team analytics and productivity insights",
-      "Automated workflow templates",
-      "Integration with Slack, GitHub, and Jira"
-    ],
-    challenges: [
-      "Implementing conflict-free replicated data types (CRDTs)",
-      "Real-time synchronization across devices",
-      "Training ML model for accurate task predictions",
-      "Scaling WebSocket connections"
-    ],
-    outcomes: [
-      "30% improvement in team productivity",
-      "Used by 500+ teams globally",
-      "4.8/5 user satisfaction rating",
-      "95% accuracy in task time estimation"
-    ]
-  },
-  {
-    id: "data-visualization",
-    title: "Data Analytics Dashboard",
-    description: "Interactive data visualization platform for business intelligence with real-time streaming and custom dashboards",
-    category: "frontend",
-    technologies: ["D3.js", "React", "TypeScript", "WebGL", "Chart.js", "Apache Kafka", "ClickHouse"],
-    images: [
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop"
-    ],
-    liveUrl: "https://analytics.example.com",
-    githubUrl: "https://github.com/username/data-dashboard",
-    features: [
-      "30+ interactive chart types",
-      "Real-time data streaming with WebSockets",
-      "Custom dashboard builder with drag-and-drop",
-      "Export to PDF, Excel, and PowerPoint",
-      "Collaborative annotations and sharing",
-      "Advanced filtering and drill-down capabilities"
-    ],
-    challenges: [
-      "Rendering large datasets efficiently (1M+ points)",
-      "Creating responsive visualizations",
-      "Implementing drag-and-drop dashboard builder",
-      "Optimizing WebGL performance"
-    ],
-    outcomes: [
-      "Renders 1M+ data points at 60fps",
-      "Reduced report generation time by 80%",
-      "Used by Fortune 500 companies",
-      "50% faster decision making"
-    ]
-  },
-  {
-    id: "devops-platform",
-    title: "DevOps Automation Platform",
-    description: "Comprehensive CI/CD platform with infrastructure as code, monitoring, and automated deployment pipelines",
+    id: "ciqe-devcontainers",
+    title: "CIQE Development Containers",
+    description: "Containerization of repos and projects with the CI360 team allowing for normalization of testing and development environments across teams",
     category: "devops",
-    technologies: ["Go", "Kubernetes", "Terraform", "Prometheus", "Grafana", "GitLab CI", "Ansible"],
+    technologies: ["Docker", "DevContainers", "AWS", "Git", "Kubernetes", "Helm", "Docker Compose"],
     images: [
-      "https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?w=800&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?w=800&h=600&fit=crop"
+      "https://images.unsplash.com/photo-1605745341112-85968b19335b?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?w=800&h=600&fit=crop"
     ],
-    githubUrl: "https://github.com/username/devops-platform",
-    architecture: {
-      diagram: "https://via.placeholder.com/800x600/e0e5ec/6c63ff?text=K8s+Architecture",
-      description: "Kubernetes-based platform with GitOps workflow, automated scaling, and comprehensive monitoring stack"
-    },
     features: [
-      "Automated CI/CD pipelines with GitOps",
-      "Infrastructure as Code with Terraform",
-      "Auto-scaling based on metrics",
-      "Comprehensive monitoring and alerting",
-      "Blue-green and canary deployments",
-      "Secret management with HashiCorp Vault"
+      "Immediate productivity when working with repos and projects",
+      "Automated project-specific setup for all requirements",
+      "Internal features handle AWS and Git authentication",
+      "Automatic installation of packages including auth",
+      "Security automated and connectivity to private resources",
+      "Templates with complex setup baked in for teammates"
     ],
     challenges: [
-      "Managing multi-cloud deployments",
-      "Implementing zero-downtime deployments",
-      "Optimizing container resource allocation",
-      "Building custom Kubernetes operators"
+      "Creating universal devcontainer templates",
+      "Handling authentication across multiple services",
+      "Ensuring security compliance in containers",
+      "Managing versioning and updates across teams"
     ],
     outcomes: [
-      "90% reduction in deployment time",
-      "Zero-downtime deployments achieved",
-      "40% reduction in infrastructure costs",
-      "100+ microservices managed"
+      "90% reduction in environment setup time",
+      "Standardized development environments",
+      "Zero manual configuration required",
+      "Adopted across multiple teams"
     ]
   },
   {
-    id: "mobile-banking",
-    title: "Mobile Banking Application",
-    description: "Secure mobile banking app with biometric authentication, real-time transactions, and AI-powered fraud detection",
-    category: "mobile",
-    technologies: ["React Native", "Node.js", "PostgreSQL", "Redis", "AWS", "Machine Learning", "Blockchain"],
+    id: "qegrid-selenium",
+    title: "QEGRID: Selenium Grid",
+    description: "Enterprise-scale Selenium Grid deployment allowing browsers of selenium tests to run inside an internally deployed grid for better resource management",
+    category: "devops",
+    technologies: ["Selenium", "Docker", "Kubernetes", "Python", "Java", "AWS"],
     images: [
-      "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=800&h=600&fit=crop"
+      "https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800&h=600&fit=crop"
     ],
-    liveUrl: "https://apps.apple.com/app/example",
-    githubUrl: "https://github.com/username/mobile-banking",
     features: [
-      "Biometric authentication (Face ID/Touch ID)",
-      "Real-time transaction processing",
-      "AI-powered fraud detection",
-      "P2P payments with QR codes",
-      "Investment portfolio management",
-      "Blockchain-based transaction verification"
+      "Resource connectivity and efficient handling",
+      "Run tests quicker with parallel execution",
+      "Normalization of browser versions",
+      "Standardized test runners across teams",
+      "Centralized test execution management",
+      "Scalable infrastructure for concurrent tests"
     ],
     challenges: [
-      "Implementing bank-grade security",
-      "Real-time fraud detection with ML",
-      "Ensuring PCI DSS compliance",
-      "Optimizing app performance and battery usage"
+      "Managing browser compatibility across versions",
+      "Optimizing resource allocation for parallel tests",
+      "Ensuring network connectivity for internal resources",
+      "Scaling to handle peak test loads"
     ],
     outcomes: [
-      "1M+ downloads in first year",
-      "4.7/5 app store rating",
-      "99.99% transaction success rate",
-      "50% reduction in fraud cases"
+      "70% faster test execution",
+      "Support for 100+ concurrent tests",
+      "Unified browser testing platform",
+      "Reduced infrastructure costs"
     ]
   },
   {
-    id: "social-platform",
-    title: "Social Learning Platform",
-    description: "Educational social network with live streaming, collaborative learning spaces, and gamification elements",
+    id: "splitstation-webapp",
+    title: "SplitStation: Internal Webapp Tool",
+    description: "Full-stack web application for controlling production deployment segments with complete pipeline, authentication, and tracking capabilities",
     category: "fullstack",
-    technologies: ["Next.js", "GraphQL", "PostgreSQL", "Redis", "WebRTC", "AWS", "ElasticSearch"],
+    technologies: ["Flask", "Python", "HTML/CSS/JS", "Docker", "AWS", "Azure", "CloudFormation", "Split.io"],
     images: [
-      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800&h=600&fit=crop"
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop"
     ],
-    liveUrl: "https://learn.example.com",
-    githubUrl: "https://github.com/username/social-learning",
-    architecture: {
-      diagram: "https://via.placeholder.com/800x600/e0e5ec/6c63ff?text=Microservices+%26+WebRTC",
-      description: "Microservices with GraphQL federation, WebRTC for video streaming, and event-driven gamification system"
-    },
     features: [
-      "Live video streaming classes",
-      "Collaborative whiteboards",
-      "Gamification with badges and leaderboards",
-      "AI-powered content recommendations",
-      "Discussion forums with real-time updates",
-      "Progress tracking and analytics"
+      "Control production deployment segments",
+      "Advanced permission management system",
+      "Change tracking and audit logs",
+      "Custom interaction workflows",
+      "Full authentication and authorization",
+      "Real-time segment updates"
     ],
     challenges: [
-      "Scaling WebRTC for thousands of concurrent users",
-      "Implementing real-time collaborative features",
-      "Building recommendation engine",
-      "Managing video content delivery"
+      "Building secure authentication from scratch",
+      "Implementing complex permission hierarchies",
+      "Ensuring production safety with segment controls",
+      "Creating intuitive UI for complex operations"
     ],
     outcomes: [
-      "100K+ active learners",
-      "85% course completion rate",
-      "4.9/5 user satisfaction",
-      "30% improvement in learning outcomes"
+      "100% adoption by QA team",
+      "Zero production incidents",
+      "50% faster segment management",
+      "Complete audit trail compliance"
+    ]
+  },
+  {
+    id: "ci360-cli-tool",
+    title: "CI360: Command Line Tool",
+    description: "Enterprise CLI tool for interaction with internal APIs, featuring automatic proxying and simplified complex operations",
+    category: "backend",
+    technologies: ["Python", "Click", "REST APIs", "Docker", "AWS", "Internal APIs"],
+    images: [
+      "https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=800&h=600&fit=crop"
+    ],
+    features: [
+      "Simplified interaction with complex internal APIs",
+      "Automatic proxying and authentication",
+      "Single command for complex operations",
+      "Pipeline deployment and distribution",
+      "Create customer identity with one command",
+      "Comprehensive error handling and logging"
+    ],
+    challenges: [
+      "Abstracting complex API logic",
+      "Handling various authentication methods",
+      "Creating intuitive command structure",
+      "Ensuring cross-platform compatibility"
+    ],
+    outcomes: [
+      "80% reduction in API interaction time",
+      "Adopted by 50+ developers",
+      "Eliminated manual API configuration",
+      "Standardized API interactions"
+    ]
+  },
+  {
+    id: "spotify-playlist-builder",
+    title: "Spotify Playlist Builder",
+    description: "Award-winning web application for building Spotify playlists with swipe-based interface, developed at UNC Charlotte AxeHack",
+    category: "fullstack",
+    technologies: ["Python", "Flask", "HTML", "CSS", "JavaScript", "Spotify API"],
+    images: [
+      "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1614680376593-902f74cf0d41?w=800&h=600&fit=crop"
+    ],
+    features: [
+      "Swipe-based song selection interface",
+      "Real-time playlist building",
+      "Spotify API integration",
+      "Responsive web design",
+      "User authentication with Spotify",
+      "Playlist export functionality"
+    ],
+    challenges: [
+      "Implementing swipe gestures in web",
+      "Managing Spotify API rate limits",
+      "Creating engaging user interface",
+      "Handling real-time updates"
+    ],
+    outcomes: [
+      "Second Place at AxeHack",
+      "Golden Hack Award winner",
+      "Built in 24-hour hackathon",
+      "Innovative UI/UX design"
+    ]
+  },
+  {
+    id: "qa-automation-suite",
+    title: "QA Infrastructure & Automation",
+    description: "Comprehensive suite of automation tools, web apps, and cloud infrastructure to enable quality assurance across CI360 platform",
+    category: "devops",
+    technologies: ["Python", "AWS", "Terraform", "Docker", "Kubernetes", "GitHub Actions", "S3"],
+    images: [
+      "https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?w=800&h=600&fit=crop"
+    ],
+    features: [
+      "Automated test archiving to S3",
+      "GitHub Actions integration",
+      "Terraform and Helm deployments",
+      "Automatic tenant permissions management",
+      "Test results visualization webapp",
+      "Complete CI/CD pipeline automation"
+    ],
+    challenges: [
+      "Orchestrating complex deployment workflows",
+      "Managing multi-cloud resources",
+      "Ensuring test isolation and reproducibility",
+      "Scaling infrastructure based on demand"
+    ],
+    outcomes: [
+      "95% test automation coverage",
+      "60% reduction in QA cycle time",
+      "Zero manual deployment steps",
+      "Complete test history retention"
     ]
   }
 ];

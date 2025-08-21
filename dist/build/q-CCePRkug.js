@@ -1,12 +1,4 @@
-import { component$, useSignal, useVisibleTask$, useStylesScoped$ } from '@builder.io/qwik';
-import ImgPfp from '~/media/pfp.jpeg?jsx';
-
-export const HeroSection = component$(() => {
-  const displayText = useSignal('');
-  const showCursor = useSignal(true);
-  const fullText = "Technical Intern at SAS | Computer Science & Data Science Student";
-  
-  useStylesScoped$(`
+import{u as c,B as e,k as r,E as p,o as d,j as h,i as l,h as m,q as s,_hW as x}from"./q-Cn9eRv09.js";import{_ as i}from"./q-XYi0b4s7.js";const f=()=>{const[n,t]=c();let o=0;const a=setInterval(()=>{o<=65?(n.value="Technical Intern at SAS | Computer Science & Data Science Student".slice(0,o),o++):clearInterval(a)},50),u=setInterval(()=>{t.value=!t.value},500);return()=>{clearInterval(a),clearInterval(u)}},b=Object.freeze(Object.defineProperty({__proto__:null,_hW:x,s_qJmIgBWFER0:f},Symbol.toStringTag,{value:"Module"})),v=`
     .hero-section {
       min-height: 100vh;
       display: flex;
@@ -240,74 +232,4 @@ export const HeroSection = component$(() => {
         width: 250px;
       }
     }
-  `);
-  
-  // eslint-disable-next-line qwik/no-use-visible-task
-  useVisibleTask$(() => {
-    let index = 0;
-    const typeInterval = setInterval(() => {
-      if (index <= fullText.length) {
-        displayText.value = fullText.slice(0, index);
-        index++;
-      } else {
-        clearInterval(typeInterval);
-      }
-    }, 50);
-    
-    const cursorInterval = setInterval(() => {
-      showCursor.value = !showCursor.value;
-    }, 500);
-    
-    return () => {
-      clearInterval(typeInterval);
-      clearInterval(cursorInterval);
-    };
-  });
-  
-  return (
-    <section id="home" class="hero-section">
-      <div class="hero-content">
-        <div class="profile-container">
-          <div class="profile-image-wrapper">
-            <ImgPfp 
-              alt="Profile"
-              class="profile-image"
-            />
-            <div class="profile-status">
-              <div class="status-dot"></div>
-            </div>
-          </div>
-        </div>
-        
-        <h1 class="hero-title animate-fadeInUp">Thomas Powell</h1>
-        
-        <p class="hero-subtitle">
-          <span class="typewriter-text">{displayText.value}</span>
-          {showCursor.value && <span class="cursor"></span>}
-        </p>
-        
-        <div class="cta-buttons">
-          <a href="#projects" class="cta-button primary">
-            <span>View Projects</span>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M5 12h14M12 5l7 7-7 7"/>
-            </svg>
-          </a>
-          <a href="/powellthomas-resume.docx" download class="cta-button secondary">
-            <span>Download Resume</span>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
-            </svg>
-          </a>
-        </div>
-        
-        <div class="scroll-indicator">
-          <div class="scroll-mouse">
-            <div class="scroll-wheel"></div>
-          </div>
-          <span>Scroll to explore</span>
-        </div>
-      </div>
-    </section>
-  );
-});
+  `,g=Object.freeze(Object.defineProperty({__proto__:null,s_R0z7yMvPekY:v},Symbol.toStringTag,{value:"Module"})),w="/assets/CCkPUdZ7-pfp.webp 200w, /assets/BcNx890t-pfp.webp 400w, /assets/CvN5FndE-pfp.webp 600w, /assets/B0L4iJjN-pfp.webp 800w",y=800,_=800,k={srcSet:w,width:y,height:_};function S(n,t,o,a){return e("img",{decoding:"async",loading:"lazy",...n},k,void 0,3,t,a)}const P=()=>{const n=r(""),t=r(!0);return p(s(()=>i(()=>Promise.resolve().then(()=>g),void 0),"s_R0z7yMvPekY")),d(s(()=>i(()=>Promise.resolve().then(()=>b),void 0),"s_qJmIgBWFER0",[n,t])),e("section",null,{id:"home",class:"hero-section"},e("div",null,{class:"hero-content"},[e("div",null,{class:"profile-container"},e("div",null,{class:"profile-image-wrapper"},[h(S,{alt:"Profile",class:"profile-image",[l]:{alt:l,class:l}},3,"HJ_0"),e("div",null,{class:"profile-status"},e("div",null,{class:"status-dot"},null,3,null),3,null)],1,null),1,null),e("h1",null,{class:"hero-title animate-fadeInUp"},"Thomas Powell",3,null),e("p",null,{class:"hero-subtitle"},[e("span",null,{class:"typewriter-text"},m(o=>o.value,[n]),3,null),t.value&&e("span",null,{class:"cursor"},null,3,"HJ_1")],1,null),e("div",null,{class:"cta-buttons"},[e("a",null,{href:"#projects",class:"cta-button primary"},[e("span",null,null,"View Projects",3,null),e("svg",null,{width:"20",height:"20",viewBox:"0 0 24 24",fill:"none",stroke:"currentColor","stroke-width":"2"},e("path",null,{d:"M5 12h14M12 5l7 7-7 7"},null,3,null),3,null)],3,null),e("a",null,{href:"/powellthomas-resume.docx",download:!0,class:"cta-button secondary"},[e("span",null,null,"Download Resume",3,null),e("svg",null,{width:"20",height:"20",viewBox:"0 0 24 24",fill:"none",stroke:"currentColor","stroke-width":"2"},e("path",null,{d:"M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"},null,3,null),3,null)],3,null)],3,null),e("div",null,{class:"scroll-indicator"},[e("div",null,{class:"scroll-mouse"},e("div",null,{class:"scroll-wheel"},null,3,null),3,null),e("span",null,null,"Scroll to explore",3,null)],3,null)],1,null),1,"HJ_2")},z=Object.freeze(Object.defineProperty({__proto__:null,s_1V8LiPxWuaU:P},Symbol.toStringTag,{value:"Module"}));export{z as H,x as _hW,P as s_1V8LiPxWuaU,v as s_R0z7yMvPekY,f as s_qJmIgBWFER0};

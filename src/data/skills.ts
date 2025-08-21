@@ -14,118 +14,116 @@ export interface TechStack {
 
 export const skills: Skill[] = [
   // Frontend Skills
-  { name: 'React/Next.js', level: 95, category: 'frontend' },
-  { name: 'TypeScript', level: 90, category: 'frontend' },
-  { name: 'Vue.js', level: 85, category: 'frontend' },
-  { name: 'HTML/CSS', level: 95, category: 'frontend' },
-  { name: 'Tailwind CSS', level: 90, category: 'frontend' },
-  { name: 'D3.js', level: 80, category: 'frontend' },
-  { name: 'WebGL/Three.js', level: 75, category: 'frontend' },
+  { name: 'HTML/CSS/JS', level: 90, category: 'frontend' },
+  { name: 'Flask', level: 85, category: 'frontend' },
+  { name: 'Web Development', level: 85, category: 'frontend' },
+  { name: 'Full Stack Development', level: 80, category: 'frontend' },
   
   // Backend Skills
-  { name: 'Node.js', level: 90, category: 'backend' },
-  { name: 'Python', level: 85, category: 'backend' },
-  { name: 'Go', level: 75, category: 'backend' },
-  { name: 'GraphQL', level: 85, category: 'backend' },
-  { name: 'REST APIs', level: 95, category: 'backend' },
-  { name: 'Microservices', level: 80, category: 'backend' },
+  { name: 'Python', level: 95, category: 'backend' },
+  { name: 'Java', level: 75, category: 'backend' },
+  { name: 'C++', level: 70, category: 'backend' },
+  { name: 'Machine Learning', level: 80, category: 'backend' },
+  { name: 'Web Automation', level: 90, category: 'backend' },
+  { name: 'Test Driven Development', level: 85, category: 'backend' },
   
   // Database Skills
-  { name: 'PostgreSQL', level: 85, category: 'database' },
-  { name: 'MongoDB', level: 80, category: 'database' },
-  { name: 'Redis', level: 85, category: 'database' },
-  { name: 'Elasticsearch', level: 75, category: 'database' },
+  { name: 'AWS S3', level: 85, category: 'database' },
+  { name: 'Cloud Storage', level: 80, category: 'database' },
   
   // DevOps Skills
-  { name: 'Docker', level: 85, category: 'devops' },
-  { name: 'Kubernetes', level: 75, category: 'devops' },
-  { name: 'AWS', level: 80, category: 'devops' },
-  { name: 'CI/CD', level: 85, category: 'devops' },
-  { name: 'Terraform', level: 70, category: 'devops' },
+  { name: 'Docker', level: 90, category: 'devops' },
+  { name: 'Kubernetes', level: 85, category: 'devops' },
+  { name: 'AWS', level: 85, category: 'devops' },
+  { name: 'Terraform', level: 80, category: 'devops' },
+  { name: 'CI/CD', level: 90, category: 'devops' },
+  { name: 'Infrastructure/Architecture', level: 85, category: 'devops' },
+  { name: 'Helm', level: 80, category: 'devops' },
   
   // Tools
   { name: 'Git', level: 95, category: 'tools' },
-  { name: 'Linux', level: 85, category: 'tools' },
-  { name: 'Agile/Scrum', level: 90, category: 'tools' },
-  { name: 'Figma', level: 70, category: 'tools' },
+  { name: 'Operating Systems', level: 85, category: 'tools' },
+  { name: 'Networking', level: 75, category: 'tools' },
+  { name: 'Selenium Grid', level: 90, category: 'tools' },
+  { name: 'Prompt Engineering', level: 80, category: 'tools' },
   
   // Soft Skills
   { name: 'Problem Solving', level: 95, category: 'soft' },
-  { name: 'Team Leadership', level: 85, category: 'soft' },
   { name: 'Communication', level: 90, category: 'soft' },
-  { name: 'Project Management', level: 80, category: 'soft' },
+  { name: 'Team Collaboration', level: 90, category: 'soft' },
+  { name: 'Project Management', level: 85, category: 'soft' },
 ];
 
 export const techStack: TechStack[] = [
   {
-    name: 'React',
-    logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg',
+    name: 'Python',
+    logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg',
     proficiency: 'expert',
-    yearsOfExperience: 5
-  },
-  {
-    name: 'Node.js',
-    logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg',
-    proficiency: 'expert',
-    yearsOfExperience: 5
-  },
-  {
-    name: 'TypeScript',
-    logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg',
-    proficiency: 'advanced',
-    yearsOfExperience: 4
-  },
-  {
-    name: 'PostgreSQL',
-    logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg',
-    proficiency: 'advanced',
-    yearsOfExperience: 4
+    yearsOfExperience: 3
   },
   {
     name: 'Docker',
     logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg',
     proficiency: 'advanced',
-    yearsOfExperience: 3
+    yearsOfExperience: 2
+  },
+  {
+    name: 'Kubernetes',
+    logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg',
+    proficiency: 'advanced',
+    yearsOfExperience: 2
   },
   {
     name: 'AWS',
     logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg',
     proficiency: 'advanced',
-    yearsOfExperience: 3
+    yearsOfExperience: 2
   },
   {
-    name: 'GraphQL',
-    logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/graphql/graphql-plain.svg',
+    name: 'Terraform',
+    logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/terraform/terraform-original.svg',
     proficiency: 'advanced',
-    yearsOfExperience: 3
+    yearsOfExperience: 2
   },
   {
-    name: 'MongoDB',
-    logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg',
-    proficiency: 'advanced',
-    yearsOfExperience: 4
-  },
-  {
-    name: 'Redis',
-    logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg',
-    proficiency: 'advanced',
-    yearsOfExperience: 3
-  },
-  {
-    name: 'Python',
-    logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg',
-    proficiency: 'advanced',
-    yearsOfExperience: 4
-  },
-  {
-    name: 'Kubernetes',
-    logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg',
+    name: 'Java',
+    logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg',
     proficiency: 'intermediate',
     yearsOfExperience: 2
   },
   {
-    name: 'Vue.js',
-    logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg',
+    name: 'Git',
+    logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg',
+    proficiency: 'expert',
+    yearsOfExperience: 3
+  },
+  {
+    name: 'Flask',
+    logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg',
+    proficiency: 'advanced',
+    yearsOfExperience: 2
+  },
+  {
+    name: 'HTML5',
+    logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg',
+    proficiency: 'advanced',
+    yearsOfExperience: 3
+  },
+  {
+    name: 'JavaScript',
+    logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg',
+    proficiency: 'advanced',
+    yearsOfExperience: 2
+  },
+  {
+    name: 'C++',
+    logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg',
+    proficiency: 'intermediate',
+    yearsOfExperience: 1
+  },
+  {
+    name: 'Linux',
+    logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg',
     proficiency: 'advanced',
     yearsOfExperience: 3
   }
@@ -146,44 +144,42 @@ export const getExpertTech = (): TechStack[] => {
 
 // About Me content
 export const aboutMe = {
-  name: "John Doe",
-  title: "Full-Stack Developer & System Architect",
-  bio: `Passionate full-stack developer with 5+ years of experience building scalable web applications and distributed systems. 
-        I specialize in creating elegant solutions to complex problems, with a focus on performance, user experience, and clean code.
+  name: "Thomas Powell",
+  title: "Technical Intern at SAS | CS & Data Science Student",
+  bio: `I'm a Student at UNC Charlotte, deeply invested in computers and software as both a hobby and career. Graduate of the Academy of Information Technology and interning at SAS since June 2022.
         
-        My journey in tech started with a curiosity about how things work, which evolved into a career dedicated to building 
-        innovative digital solutions. I thrive in collaborative environments and enjoy mentoring junior developers while 
-        continuously learning from peers.`,
+        Currently earning both my BS in Computer Science with concentration in data science, and a MS in data science and business analytics dual track. My work at SAS focuses on quality assurance infrastructure, cloud engineering, and full-stack development.
+        
+        I specialize in creating automation tools, web applications, and cloud infrastructure to enable quality assurance and development teams. My projects range from selenium grid deployments to command line tools for internal APIs.`,
   
   highlights: [
-    "5+ years of professional development experience",
-    "Led teams of up to 10 developers",
-    "Architected solutions handling millions of users",
-    "Open source contributor with 1000+ GitHub stars",
-    "Speaker at tech conferences and meetups",
-    "Mentor and technical writer"
+    "3+ years as Technical Intern at SAS",
+    "BS Computer Science & MS Data Science student",
+    "Second Place & Golden Hack Award at UNC Charlotte AxeHack",
+    "3.95 GPA (Undergrad) / 4.0 GPA (Graduate)",
+    "AOIT Honors Program Graduate",
+    "Experience with enterprise-scale projects"
   ],
   
   interests: [
-    "Cloud Architecture",
+    "Cloud Infrastructure",
+    "DevOps Automation",
     "Machine Learning",
-    "Open Source",
-    "Technical Writing",
-    "UI/UX Design",
-    "DevOps Automation"
+    "Web Development",
+    "Test Automation",
+    "Containerization"
   ],
   
   education: {
-    degree: "Bachelor of Science in Computer Science",
-    university: "Tech University",
-    year: "2018",
-    achievements: ["Summa Cum Laude", "Dean's List", "Best Capstone Project"]
+    degree: "BS Computer Science (Data Science) & MS Data Science & Business Analytics",
+    university: "University of North Carolina at Charlotte",
+    year: "Expected May 2027",
+    achievements: ["3.95 GPA (Undergrad)", "4.0 GPA (Graduate)", "AOIT Honors Program"]
   },
   
   certifications: [
-    "AWS Certified Solutions Architect",
-    "Google Cloud Professional Developer",
-    "Certified Kubernetes Administrator",
-    "MongoDB Certified Developer"
+    "Adobe Dreamweaver CS5",
+    "Microsoft PowerPoint 2019",
+    "Microsoft Word 2019"
   ]
 };

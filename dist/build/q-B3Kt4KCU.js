@@ -1,10 +1,4 @@
-import { component$, useSignal, useStylesScoped$, $ } from '@builder.io/qwik';
-
-export const NavBar = component$(() => {
-  const activeSection = useSignal('home');
-  const isMenuOpen = useSignal(false);
-  
-  useStylesScoped$(`
+import{u as i,k as u,E as v,B as n,q as l,h as d,G as _,_hW as c}from"./q-Cn9eRv09.js";import{_ as r}from"./q-XYi0b4s7.js";const g=()=>{const[e,o]=i();return e(o.id)},m=Object.freeze(Object.defineProperty({__proto__:null,s_0hCi1q038Qo:g},Symbol.toStringTag,{value:"Module"})),b=`
     .navbar {
       position: fixed;
       top: 20px;
@@ -172,61 +166,4 @@ export const NavBar = component$(() => {
         display: block;
       }
     }
-  `);
-  
-  const sections = [
-    { id: 'home', label: 'Home' },
-    { id: 'about', label: 'About' },
-    { id: 'projects', label: 'Projects' },
-    { id: 'contact', label: 'Contact' }
-  ];
-  
-  const handleNavClick = $((sectionId: string) => {
-    activeSection.value = sectionId;
-    isMenuOpen.value = false;
-    
-    // Smooth scroll to section
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  });
-  
-  const toggleMenu = $(() => {
-    isMenuOpen.value = !isMenuOpen.value;
-  });
-  
-  return (
-    <nav class="navbar">
-      <a href="#home" class="logo" onClick$={() => handleNavClick('home')}>
-        <div class="logo-icon">TP</div>
-        <span>Portfolio</span>
-      </a>
-      
-      <div class={`nav-links ${isMenuOpen.value ? 'open' : ''}`}>
-        {sections.map((section) => (
-          <a
-            key={section.id}
-            href={`#${section.id}`}
-            class={`nav-link ${activeSection.value === section.id ? 'active' : ''}`}
-            onClick$={() => handleNavClick(section.id)}
-          >
-            {section.label}
-          </a>
-        ))}
-      </div>
-      
-      <button
-        class={`menu-toggle ${isMenuOpen.value ? 'open' : ''}`}
-        onClick$={toggleMenu}
-        aria-label="Toggle menu"
-      >
-        <div class="menu-icon">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-      </button>
-    </nav>
-  );
-});
+  `,h=Object.freeze(Object.defineProperty({__proto__:null,s_gZs8EX5SgiU:b},Symbol.toStringTag,{value:"Module"})),x=e=>{const[o,s]=i();o.value=e,s.value=!1;const t=document.getElementById(e);t&&t.scrollIntoView({behavior:"smooth"})},f=Object.freeze(Object.defineProperty({__proto__:null,_hW:c,s_uYqmvnpRTCw:x},Symbol.toStringTag,{value:"Module"})),w=()=>{const[e]=i();return e("home")},y=Object.freeze(Object.defineProperty({__proto__:null,s_0NkL50ppaIg:w},Symbol.toStringTag,{value:"Module"})),k=()=>{const e=u("home"),o=u(!1);v(l(()=>r(()=>Promise.resolve().then(()=>h),void 0),"s_gZs8EX5SgiU"));const s=[{id:"home",label:"Home"},{id:"about",label:"About"},{id:"projects",label:"Projects"},{id:"contact",label:"Contact"}],t=l(()=>r(()=>Promise.resolve().then(()=>f),void 0),"s_uYqmvnpRTCw",[e,o]),p=l(()=>r(()=>Promise.resolve().then(()=>N),void 0),"s_LlZXhqmUmt8",[o]);return n("nav",null,{class:"navbar"},[n("a",null,{href:"#home",class:"logo",onClick$:l(()=>r(()=>Promise.resolve().then(()=>y),void 0),"s_0NkL50ppaIg",[t])},[n("div",null,{class:"logo-icon"},"TP",3,null),n("span",null,null,"Portfolio",3,null)],3,null),n("div",null,{class:d(a=>`nav-links ${a.value?"open":""}`,[o])},s.map(a=>n("a",{href:`#${a.id}`,class:`nav-link ${e.value===a.id?"active":""}`,onClick$:l(()=>r(()=>Promise.resolve().then(()=>m),void 0),"s_0hCi1q038Qo",[t,a])},null,_(a,"label"),0,a.id)),1,null),n("button",null,{class:d(a=>`menu-toggle ${a.value?"open":""}`,[o]),"aria-label":"Toggle menu",onClick$:p},n("div",null,{class:"menu-icon"},[n("span",null,null,null,3,null),n("span",null,null,null,3,null),n("span",null,null,null,3,null)],3,null),3,null)],1,"R4_0")},B=Object.freeze(Object.defineProperty({__proto__:null,s_ropMBSBWqro:k},Symbol.toStringTag,{value:"Module"})),S=()=>{const[e]=i();e.value=!e.value},N=Object.freeze(Object.defineProperty({__proto__:null,_hW:c,s_LlZXhqmUmt8:S},Symbol.toStringTag,{value:"Module"}));export{B as N,c as _hW,w as s_0NkL50ppaIg,g as s_0hCi1q038Qo,S as s_LlZXhqmUmt8,b as s_gZs8EX5SgiU,k as s_ropMBSBWqro,x as s_uYqmvnpRTCw};
