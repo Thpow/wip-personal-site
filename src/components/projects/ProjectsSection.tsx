@@ -342,28 +342,334 @@ export const ProjectsSection = component$(() => {
     }
     
     /* Responsive */
-    @media (max-width: 768px) {
+    @media (max-width: 968px) {
+      .projects-section {
+        padding: 80px 16px;
+      }
+      
       .projects-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 32px;
+      }
+      
+      .project-image-container {
+        height: 200px;
+      }
+      
+      .project-content {
+        padding: 24px;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .projects-section {
+        padding: 70px 16px;
+      }
+      
+      .section-title {
+        font-size: 2.2rem;
+        margin-bottom: 16px;
+      }
+      
+      .section-subtitle {
+        font-size: 1rem;
+        margin-bottom: 50px;
+        padding: 0 10px;
       }
       
       .filter-tabs {
-        gap: 10px;
+        gap: 12px;
+        margin-bottom: 50px;
+        padding: 0 10px;
       }
       
       .filter-tab {
-        padding: 10px 20px;
+        padding: 12px 20px;
+        font-size: 0.9rem;
+        min-width: auto;
+        flex: 1;
+        max-width: 140px;
+      }
+      
+      .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 28px;
+        margin-bottom: 50px;
+      }
+      
+      .project-card {
+        max-width: 100%;
+      }
+      
+      .project-image-container {
+        height: 180px;
+      }
+      
+      .project-content {
+        padding: 20px;
+      }
+      
+      .project-title {
+        font-size: 1.3rem;
+        margin-bottom: 12px;
+      }
+      
+      .project-description {
+        font-size: 0.95rem;
+        line-height: 1.5;
+        margin-bottom: 16px;
+      }
+      
+      .project-tech {
+        gap: 8px;
+        margin-bottom: 20px;
+      }
+      
+      .tech-badge {
+        padding: 4px 10px;
+        font-size: 0.75rem;
+      }
+      
+      .project-links {
+        gap: 12px;
+      }
+      
+      .project-link {
+        padding: 12px 16px;
         font-size: 0.9rem;
       }
       
-      .modal-content {
-        max-height: 100vh;
-        border-radius: 0;
+      /* Modal improvements for mobile */
+      .modal-overlay {
+        padding: 10px;
+        align-items: flex-start;
+        padding-top: 20px;
       }
       
-      .modal-header,
+      .modal-content {
+        max-height: calc(100vh - 40px);
+        border-radius: var(--neu-radius-lg);
+        margin: 0;
+        width: 100%;
+        max-width: 100%;
+      }
+      
+      .modal-close {
+        top: 15px;
+        right: 15px;
+        width: 36px;
+        height: 36px;
+      }
+      
+      .modal-header {
+        padding: 50px 20px 20px;
+      }
+      
+      .modal-title {
+        font-size: 1.6rem;
+        margin-bottom: 8px;
+        line-height: 1.2;
+      }
+      
+      .modal-category {
+        font-size: 0.85rem;
+      }
+      
       .modal-body {
-        padding: 25px;
+        padding: 20px;
+      }
+      
+      .modal-section {
+        margin-bottom: 32px;
+      }
+      
+      .modal-section-title {
+        font-size: 1.2rem;
+        margin-bottom: 16px;
+      }
+      
+      .feature-item {
+        padding: 12px;
+        gap: 12px;
+        font-size: 0.9rem;
+      }
+      
+      .feature-icon {
+        width: 20px;
+        height: 20px;
+        font-size: 0.8rem;
+      }
+      
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+      }
+      
+      .stat-card {
+        padding: 16px;
+      }
+      
+      .stat-value {
+        font-size: 1.5rem;
+      }
+      
+      .stat-label {
+        font-size: 0.85rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .projects-section {
+        padding: 60px 12px;
+      }
+      
+      .section-title {
+        font-size: 1.9rem;
+      }
+      
+      .section-subtitle {
+        font-size: 0.95rem;
+        padding: 0 8px;
+      }
+      
+      .filter-tabs {
+        gap: 8px;
+        padding: 0 8px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+      .filter-tab {
+        padding: 10px 16px;
+        font-size: 0.85rem;
+        min-width: 80px;
+        max-width: 120px;
+      }
+      
+      .projects-grid {
+        gap: 24px;
+      }
+      
+      .project-image-container {
+        height: 160px;
+      }
+      
+      .project-content {
+        padding: 18px;
+      }
+      
+      .project-title {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+      }
+      
+      .project-description {
+        font-size: 0.9rem;
+        margin-bottom: 14px;
+      }
+      
+      .tech-badge {
+        padding: 3px 8px;
+        font-size: 0.7rem;
+      }
+      
+      .project-link {
+        padding: 10px 14px;
+        font-size: 0.85rem;
+      }
+      
+      /* Modal for small screens */
+      .modal-overlay {
+        padding: 5px;
+        padding-top: 10px;
+      }
+      
+      .modal-content {
+        max-height: calc(100vh - 20px);
+        border-radius: var(--neu-radius-md);
+      }
+      
+      .modal-close {
+        top: 12px;
+        right: 12px;
+        width: 32px;
+        height: 32px;
+      }
+      
+      .modal-header {
+        padding: 45px 16px 16px;
+      }
+      
+      .modal-title {
+        font-size: 1.4rem;
+      }
+      
+      .modal-body {
+        padding: 16px;
+      }
+      
+      .modal-section {
+        margin-bottom: 28px;
+      }
+      
+      .modal-section-title {
+        font-size: 1.1rem;
+        margin-bottom: 14px;
+      }
+      
+      .feature-item {
+        padding: 10px;
+        gap: 10px;
+        font-size: 0.85rem;
+      }
+      
+      .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+      
+      .stat-card {
+        padding: 14px;
+      }
+      
+      .stat-value {
+        font-size: 1.3rem;
+      }
+      
+      .stat-label {
+        font-size: 0.8rem;
+      }
+    }
+    
+    /* Landscape mobile orientation */
+    @media (max-width: 768px) and (orientation: landscape) {
+      .projects-section {
+        padding: 50px 16px;
+      }
+      
+      .filter-tabs {
+        margin-bottom: 40px;
+      }
+      
+      .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+      
+      .project-image-container {
+        height: 140px;
+      }
+      
+      .project-content {
+        padding: 16px;
+      }
+      
+      .modal-overlay {
+        padding-top: 10px;
+      }
+      
+      .modal-content {
+        max-height: calc(100vh - 20px);
       }
     }
   `);

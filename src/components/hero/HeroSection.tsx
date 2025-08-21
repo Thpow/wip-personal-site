@@ -218,26 +218,185 @@ export const HeroSection = component$(() => {
     
     /* Responsive */
     @media (max-width: 768px) {
-      .hero-title {
-        font-size: 2.5rem;
+      .hero-section {
+        padding: 60px 16px;
+        min-height: 100vh;
       }
       
-      .hero-subtitle {
-        font-size: 1rem;
+      .hero-content {
+        max-width: 100%;
+      }
+      
+      .profile-container {
+        margin-bottom: 30px;
       }
       
       .profile-image-wrapper {
-        width: 150px;
-        height: 150px;
+        width: 140px;
+        height: 140px;
+        padding: 8px;
+      }
+      
+      .profile-status {
+        width: 32px;
+        height: 32px;
+        bottom: 8px;
+        right: 8px;
+      }
+      
+      .status-dot {
+        width: 16px;
+        height: 16px;
+      }
+      
+      .hero-title {
+        font-size: 2.2rem;
+        margin-bottom: 16px;
+        line-height: 1.1;
+      }
+      
+      .hero-subtitle {
+        font-size: 0.95rem;
+        margin-bottom: 32px;
+        padding: 0 10px;
+        line-height: 1.5;
+      }
+      
+      .cursor {
+        height: 0.95rem;
       }
       
       .cta-buttons {
         flex-direction: column;
         align-items: center;
+        gap: 16px;
+        margin-bottom: 32px;
       }
       
       .cta-button {
-        width: 250px;
+        width: 100%;
+        max-width: 280px;
+        padding: 16px 32px;
+        font-size: 0.95rem;
+        justify-content: center;
+      }
+      
+      .cta-button:hover {
+        transform: translateY(-1px);
+      }
+      
+      .scroll-indicator {
+        bottom: 30px;
+        gap: 8px;
+      }
+      
+      .scroll-mouse {
+        width: 24px;
+        height: 40px;
+      }
+      
+      .scroll-wheel {
+        width: 3px;
+        height: 8px;
+        top: 8px;
+      }
+      
+      .scroll-indicator span {
+        font-size: 0.8rem;
+      }
+    }
+    
+    /* Extra small mobile devices */
+    @media (max-width: 480px) {
+      .hero-section {
+        padding: 50px 12px;
+      }
+      
+      .profile-image-wrapper {
+        width: 120px;
+        height: 120px;
+        padding: 6px;
+      }
+      
+      .profile-status {
+        width: 28px;
+        height: 28px;
+        bottom: 6px;
+        right: 6px;
+      }
+      
+      .status-dot {
+        width: 14px;
+        height: 14px;
+      }
+      
+      .hero-title {
+        font-size: 1.9rem;
+        margin-bottom: 14px;
+      }
+      
+      .hero-subtitle {
+        font-size: 0.9rem;
+        margin-bottom: 28px;
+        padding: 0 8px;
+      }
+      
+      .cursor {
+        height: 0.9rem;
+      }
+      
+      .cta-button {
+        max-width: 260px;
+        padding: 14px 28px;
+        font-size: 0.9rem;
+      }
+      
+      .scroll-indicator {
+        bottom: 25px;
+      }
+      
+      .scroll-indicator span {
+        font-size: 0.75rem;
+      }
+    }
+    
+    /* Landscape mobile orientation */
+    @media (max-width: 768px) and (orientation: landscape) {
+      .hero-section {
+        padding: 40px 16px;
+        min-height: 100vh;
+      }
+      
+      .profile-image-wrapper {
+        width: 100px;
+        height: 100px;
+      }
+      
+      .hero-title {
+        font-size: 1.8rem;
+        margin-bottom: 12px;
+      }
+      
+      .hero-subtitle {
+        font-size: 0.85rem;
+        margin-bottom: 24px;
+      }
+      
+      .cta-buttons {
+        flex-direction: row;
+        gap: 12px;
+        margin-bottom: 20px;
+      }
+      
+      .cta-button {
+        width: auto;
+        max-width: 200px;
+        padding: 12px 24px;
+        font-size: 0.85rem;
+      }
+      
+      .scroll-indicator {
+        bottom: 20px;
       }
     }
   `);

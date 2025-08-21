@@ -134,9 +134,19 @@ export const NavBar = component$(() => {
     /* Mobile Styles */
     @media (max-width: 768px) {
       .navbar {
-        width: calc(100% - 40px);
-        padding: 12px 20px;
+        width: calc(100% - 20px);
+        padding: 10px 16px;
         top: 10px;
+        max-width: none;
+      }
+      
+      .logo {
+        font-size: 1.1rem;
+      }
+      
+      .logo-icon {
+        width: 28px;
+        height: 28px;
       }
       
       .nav-links {
@@ -146,14 +156,16 @@ export const NavBar = component$(() => {
         right: 0;
         background: var(--neu-base);
         border-radius: var(--neu-radius-lg);
-        box-shadow: var(--neu-shadow-lg);
+        box-shadow: var(--neu-shadow-xl);
         flex-direction: column;
-        padding: 20px;
-        margin-top: 10px;
+        padding: 25px 20px;
+        margin-top: 15px;
         opacity: 0;
         visibility: hidden;
-        transform: translateY(-10px);
-        transition: all var(--neu-transition-base);
+        transform: translateY(-20px);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
       }
       
       .nav-links.open {
@@ -165,11 +177,59 @@ export const NavBar = component$(() => {
       .nav-link {
         width: 100%;
         text-align: center;
-        padding: 12px;
+        padding: 16px 20px;
+        margin: 4px 0;
+        font-size: 1rem;
+        border-radius: var(--neu-radius-md);
+        transition: all 0.2s ease;
+      }
+      
+      .nav-link:hover {
+        transform: translateX(5px);
+        background: var(--neu-base);
+        box-shadow: var(--neu-shadow-md);
+      }
+      
+      .nav-link.active {
+        background: linear-gradient(145deg, var(--neu-accent), var(--neu-accent-dark));
+        color: white;
+        box-shadow: var(--neu-shadow-md);
       }
       
       .menu-toggle {
         display: block;
+        padding: 10px;
+      }
+      
+      .menu-icon {
+        width: 20px;
+        height: 20px;
+      }
+    }
+    
+    /* Extra small mobile devices */
+    @media (max-width: 480px) {
+      .navbar {
+        width: calc(100% - 16px);
+        padding: 8px 12px;
+      }
+      
+      .logo {
+        font-size: 1rem;
+      }
+      
+      .logo-icon {
+        width: 24px;
+        height: 24px;
+      }
+      
+      .nav-links {
+        padding: 20px 16px;
+      }
+      
+      .nav-link {
+        padding: 14px 16px;
+        font-size: 0.95rem;
       }
     }
   `);

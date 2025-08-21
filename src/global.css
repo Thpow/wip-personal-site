@@ -40,6 +40,112 @@ body {
   .section {
     padding: 60px 0;
   }
+  
+  /* Improve touch targets for mobile */
+  button,
+  a,
+  input,
+  textarea,
+  select {
+    min-height: 44px;
+  }
+  
+  /* Better tap highlighting */
+  * {
+    -webkit-tap-highlight-color: rgba(108, 99, 255, 0.2);
+    -webkit-touch-callout: none;
+  }
+  
+  /* Smooth scrolling improvements for mobile */
+  html {
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+  }
+  
+  /* Prevent zoom on input focus */
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="password"],
+  textarea,
+  select {
+    font-size: 16px;
+  }
+}
+
+/* Mobile-specific animations */
+@media (max-width: 768px) {
+  .animate-fadeInUp {
+    animation: mobileSlideUp 0.6s ease-out forwards;
+  }
+  
+  .animate-fadeInLeft {
+    animation: mobileSlideInLeft 0.6s ease-out forwards;
+  }
+  
+  .animate-fadeInRight {
+    animation: mobileSlideInRight 0.6s ease-out forwards;
+  }
+  
+  .animate-scaleIn {
+    animation: mobileScaleIn 0.4s ease-out forwards;
+  }
+}
+
+@keyframes mobileSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes mobileSlideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes mobileSlideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes mobileScaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Mobile-specific stagger delays */
+@media (max-width: 768px) {
+  .stagger-1 { animation-delay: 0.1s; }
+  .stagger-2 { animation-delay: 0.2s; }
+  .stagger-3 { animation-delay: 0.3s; }
+  .stagger-4 { animation-delay: 0.4s; }
+  .stagger-5 { animation-delay: 0.5s; }
+  .stagger-6 { animation-delay: 0.6s; }
+  .stagger-7 { animation-delay: 0.7s; }
+  .stagger-8 { animation-delay: 0.8s; }
 }
 
 /* Typography */

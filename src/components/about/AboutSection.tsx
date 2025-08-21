@@ -241,37 +241,245 @@ export const AboutSection = component$(() => {
     
     /* Responsive */
     @media (max-width: 968px) {
+      .about-section {
+        padding: 80px 16px;
+      }
+      
       .about-content {
         grid-template-columns: 1fr;
-      }
-      
-      .tech-grid {
-        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-        gap: 20px;
-      }
-      
-      .tech-card {
-        padding: 20px;
-      }
-      
-      .tech-logo {
-        width: 50px;
-        height: 50px;
-      }
-    }
-    
-    @media (max-width: 640px) {
-      .section-title {
-        font-size: 2rem;
+        gap: 40px;
+        margin-bottom: 60px;
       }
       
       .bio-section,
       .skills-section {
-        padding: 25px;
+        padding: 32px;
+      }
+      
+      .tech-stack {
+        margin-top: 60px;
+      }
+      
+      .tech-grid {
+        grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+        gap: 20px;
+        margin-top: 32px;
+      }
+      
+      .tech-card {
+        padding: 20px 16px;
+      }
+      
+      .tech-logo {
+        width: 48px;
+        height: 48px;
+        margin-bottom: 12px;
+      }
+      
+      .tech-name {
+        font-size: 0.85rem;
+      }
+      
+      .tech-experience {
+        font-size: 0.75rem;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .about-section {
+        padding: 70px 16px;
+      }
+      
+      .section-title {
+        font-size: 2.2rem;
+        margin-bottom: 16px;
+      }
+      
+      .section-subtitle {
+        font-size: 1rem;
+        margin-bottom: 50px;
+        padding: 0 10px;
+      }
+      
+      .about-content {
+        gap: 32px;
+        margin-bottom: 50px;
+      }
+      
+      .bio-section,
+      .skills-section {
+        padding: 28px 24px;
+      }
+      
+      .bio-title {
+        font-size: 1.6rem;
+        margin-bottom: 8px;
+      }
+      
+      .bio-subtitle {
+        font-size: 1rem;
+        margin-bottom: 24px;
+      }
+      
+      .bio-text {
+        font-size: 0.95rem;
+        line-height: 1.7;
+        margin-bottom: 24px;
+      }
+      
+      .highlight-item {
+        padding: 12px;
+        gap: 12px;
+      }
+      
+      .highlight-icon {
+        width: 20px;
+        height: 20px;
+        font-size: 0.8rem;
+      }
+      
+      .skills-title {
+        font-size: 1.4rem;
+        margin-bottom: 24px;
+      }
+      
+      .skill-category {
+        margin-bottom: 24px;
+      }
+      
+      .category-title {
+        font-size: 0.85rem;
+        margin-bottom: 12px;
+      }
+      
+      .skill-item {
+        margin-bottom: 16px;
+      }
+      
+      .skill-name,
+      .skill-level {
+        font-size: 0.9rem;
+      }
+      
+      .skill-bar {
+        height: 8px;
+      }
+      
+      .tech-stack {
+        margin-top: 50px;
       }
       
       .tech-grid {
         grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+        margin-top: 28px;
+      }
+      
+      .tech-card {
+        padding: 16px 12px;
+      }
+      
+      .tech-logo {
+        width: 40px;
+        height: 40px;
+        margin-bottom: 10px;
+      }
+      
+      .interests-section {
+        margin-top: 50px;
+        padding: 32px 24px;
+      }
+      
+      .interests-title {
+        font-size: 1.2rem;
+        margin-bottom: 16px;
+      }
+      
+      .interests-list {
+        gap: 12px;
+      }
+      
+      .interest-tag {
+        padding: 8px 16px;
+        font-size: 0.85rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .about-section {
+        padding: 60px 12px;
+      }
+      
+      .section-title {
+        font-size: 1.9rem;
+      }
+      
+      .section-subtitle {
+        font-size: 0.95rem;
+        padding: 0 8px;
+      }
+      
+      .bio-section,
+      .skills-section {
+        padding: 24px 20px;
+      }
+      
+      .bio-title {
+        font-size: 1.4rem;
+      }
+      
+      .bio-subtitle {
+        font-size: 0.95rem;
+      }
+      
+      .bio-text {
+        font-size: 0.9rem;
+      }
+      
+      .highlight-item {
+        padding: 10px;
+        gap: 10px;
+        font-size: 0.9rem;
+      }
+      
+      .skills-title {
+        font-size: 1.3rem;
+      }
+      
+      .tech-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+      }
+      
+      .tech-card {
+        padding: 14px 10px;
+      }
+      
+      .tech-logo {
+        width: 36px;
+        height: 36px;
+        margin-bottom: 8px;
+      }
+      
+      .tech-name {
+        font-size: 0.8rem;
+      }
+      
+      .tech-experience {
+        font-size: 0.7rem;
+      }
+      
+      .interests-section {
+        padding: 28px 20px;
+      }
+      
+      .interests-list {
+        gap: 10px;
+      }
+      
+      .interest-tag {
+        padding: 6px 14px;
+        font-size: 0.8rem;
       }
     }
   `);

@@ -293,27 +293,269 @@ export const ContactSection = component$(() => {
     
     /* Responsive */
     @media (max-width: 968px) {
+      .contact-section {
+        padding: 80px 16px;
+      }
+      
       .contact-content {
         grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      
+      .contact-info,
+      .contact-form {
+        padding: 32px;
       }
       
       .form-row {
         grid-template-columns: 1fr;
+        gap: 16px;
+      }
+      
+      .social-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
       }
     }
     
-    @media (max-width: 640px) {
+    @media (max-width: 768px) {
+      .contact-section {
+        padding: 70px 16px;
+      }
+      
+      .section-title {
+        font-size: 2.2rem;
+        margin-bottom: 16px;
+      }
+      
+      .section-subtitle {
+        font-size: 1rem;
+        margin-bottom: 50px;
+        padding: 0 10px;
+      }
+      
+      .contact-content {
+        gap: 32px;
+      }
+      
       .contact-info,
       .contact-form {
-        padding: 25px;
+        padding: 28px 24px;
+      }
+      
+      .info-title,
+      .form-title {
+        font-size: 1.4rem;
+        margin-bottom: 24px;
+      }
+      
+      .info-item {
+        margin-bottom: 20px;
+        padding: 16px;
+        gap: 16px;
+      }
+      
+      .info-icon {
+        width: 44px;
+        height: 44px;
+      }
+      
+      .info-label {
+        font-size: 0.85rem;
+      }
+      
+      .info-value {
+        font-size: 0.95rem;
+      }
+      
+      .social-links {
+        margin-top: 32px;
+      }
+      
+      .social-title {
+        font-size: 1.1rem;
+        margin-bottom: 16px;
+      }
+      
+      .social-grid {
+        gap: 10px;
+      }
+      
+      .social-link {
+        padding: 12px;
+      }
+      
+      .social-link svg {
+        width: 20px;
+        height: 20px;
+      }
+      
+      .form-group {
+        margin-bottom: 20px;
+      }
+      
+      .form-label {
+        font-size: 0.9rem;
+        margin-bottom: 8px;
+      }
+      
+      .form-input,
+      .form-textarea {
+        padding: 14px 18px;
+        font-size: 0.95rem;
+      }
+      
+      .form-textarea {
+        min-height: 130px;
+      }
+      
+      .form-submit {
+        padding: 16px 36px;
+        font-size: 1rem;
+      }
+      
+      .availability-badge {
+        margin-top: 16px;
+        padding: 6px 14px;
+        font-size: 0.85rem;
+      }
+      
+      .availability-dot {
+        width: 6px;
+        height: 6px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .contact-section {
+        padding: 60px 12px;
+      }
+      
+      .section-title {
+        font-size: 1.9rem;
+      }
+      
+      .section-subtitle {
+        font-size: 0.95rem;
+        padding: 0 8px;
+      }
+      
+      .contact-info,
+      .contact-form {
+        padding: 24px 20px;
+      }
+      
+      .info-title,
+      .form-title {
+        font-size: 1.3rem;
+        margin-bottom: 20px;
+      }
+      
+      .info-item {
+        padding: 14px;
+        gap: 14px;
+        margin-bottom: 16px;
+      }
+      
+      .info-icon {
+        width: 40px;
+        height: 40px;
+      }
+      
+      .info-label {
+        font-size: 0.8rem;
+      }
+      
+      .info-value {
+        font-size: 0.9rem;
+      }
+      
+      .social-links {
+        margin-top: 28px;
+      }
+      
+      .social-title {
+        font-size: 1rem;
+        margin-bottom: 14px;
       }
       
       .social-grid {
         grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
       }
       
-      .section-title {
-        font-size: 2rem;
+      .social-link {
+        padding: 10px;
+      }
+      
+      .social-link svg {
+        width: 18px;
+        height: 18px;
+      }
+      
+      .form-group {
+        margin-bottom: 18px;
+      }
+      
+      .form-label {
+        font-size: 0.85rem;
+        margin-bottom: 6px;
+      }
+      
+      .form-input,
+      .form-textarea {
+        padding: 12px 16px;
+        font-size: 0.9rem;
+      }
+      
+      .form-textarea {
+        min-height: 120px;
+      }
+      
+      .form-submit {
+        padding: 14px 32px;
+        font-size: 0.95rem;
+      }
+      
+      .submit-status {
+        margin-top: 16px;
+        padding: 12px;
+        font-size: 0.9rem;
+      }
+      
+      .availability-badge {
+        margin-top: 14px;
+        padding: 5px 12px;
+        font-size: 0.8rem;
+      }
+    }
+    
+    /* Landscape mobile orientation */
+    @media (max-width: 768px) and (orientation: landscape) {
+      .contact-section {
+        padding: 50px 16px;
+      }
+      
+      .contact-content {
+        gap: 28px;
+      }
+      
+      .contact-info,
+      .contact-form {
+        padding: 24px 20px;
+      }
+      
+      .form-row {
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+      
+      .form-textarea {
+        min-height: 100px;
+      }
+      
+      .social-grid {
+        grid-template-columns: repeat(3, 1fr);
       }
     }
   `);
