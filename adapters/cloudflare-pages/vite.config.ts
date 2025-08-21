@@ -9,7 +9,7 @@ export default extendConfig(baseConfig, () => {
     build: {
       ssr: true,
       rollupOptions: {
-        input: ["src/entry.cloudflare-pages.tsx", "@qwik-city-plan"],
+        input: ["./src/entry.cloudflare-pages.tsx", "@qwik-city-plan"],
       },
       // Output to project root dist folder. Using a relative path ensures CI doesn't attempt to write to /opt/dist.
       outDir: "dist",
