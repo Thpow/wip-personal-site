@@ -1,4 +1,4 @@
-import{c as g,i,b as c,S as z,F as w,u as m,d as f,e,f as d,g as u,h as r,j as h,k as I,l as k}from"./q-DzeDeIr8.js";const A=()=>c(w,{children:c(z,null,3,"yB_0")},1,"yB_1"),P=g(i(A,"s_VKFlAWJuVm8")),M=Object.freeze(Object.defineProperty({__proto__:null,default:P},Symbol.toStringTag,{value:"Module"})),T=`
+import{c as g,i as l,b as c,S as _,F as w,u as m,d as v,e,f as p,g as d,h as s,j as x,k as I,l as k}from"./q-DzeDeIr8.js";const A=()=>c(w,{children:c(_,null,3,"yB_0")},1,"yB_1"),P=g(l(A,"s_VKFlAWJuVm8")),M=Object.freeze(Object.defineProperty({__proto__:null,default:P},Symbol.toStringTag,{value:"Module"})),T=`
     .navbar {
       position: fixed;
       top: 20px;
@@ -128,9 +128,19 @@ import{c as g,i,b as c,S as z,F as w,u as m,d as f,e,f as d,g as u,h as r,j as h
     /* Mobile Styles */
     @media (max-width: 768px) {
       .navbar {
-        width: calc(100% - 40px);
-        padding: 12px 20px;
+        width: calc(100% - 20px);
+        padding: 10px 16px;
         top: 10px;
+        max-width: none;
+      }
+      
+      .logo {
+        font-size: 1.1rem;
+      }
+      
+      .logo-icon {
+        width: 28px;
+        height: 28px;
       }
       
       .nav-links {
@@ -140,14 +150,16 @@ import{c as g,i,b as c,S as z,F as w,u as m,d as f,e,f as d,g as u,h as r,j as h
         right: 0;
         background: var(--neu-base);
         border-radius: var(--neu-radius-lg);
-        box-shadow: var(--neu-shadow-lg);
+        box-shadow: var(--neu-shadow-xl);
         flex-direction: column;
-        padding: 20px;
-        margin-top: 10px;
+        padding: 25px 20px;
+        margin-top: 15px;
         opacity: 0;
         visibility: hidden;
-        transform: translateY(-10px);
-        transition: all var(--neu-transition-base);
+        transform: translateY(-20px);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
       }
       
       .nav-links.open {
@@ -159,14 +171,62 @@ import{c as g,i,b as c,S as z,F as w,u as m,d as f,e,f as d,g as u,h as r,j as h
       .nav-link {
         width: 100%;
         text-align: center;
-        padding: 12px;
+        padding: 16px 20px;
+        margin: 4px 0;
+        font-size: 1rem;
+        border-radius: var(--neu-radius-md);
+        transition: all 0.2s ease;
+      }
+      
+      .nav-link:hover {
+        transform: translateX(5px);
+        background: var(--neu-base);
+        box-shadow: var(--neu-shadow-md);
+      }
+      
+      .nav-link.active {
+        background: linear-gradient(145deg, var(--neu-accent), var(--neu-accent-dark));
+        color: white;
+        box-shadow: var(--neu-shadow-md);
       }
       
       .menu-toggle {
         display: block;
+        padding: 10px;
+      }
+      
+      .menu-icon {
+        width: 20px;
+        height: 20px;
       }
     }
-  `,D=t=>{const[a,n]=h();a.value=t,n.value=!1;const s=document.getElementById(t);s&&s.scrollIntoView({behavior:"smooth"})},E=()=>{const[t]=h();t.value=!t.value},U=()=>{const t=m("home"),a=m(!1);f(i(T,"s_gZs8EX5SgiU"));const n=[{id:"home",label:"Home"},{id:"about",label:"About"},{id:"projects",label:"Projects"},{id:"contact",label:"Contact"}],s=i(D,"s_uYqmvnpRTCw",[t,a]),p=i(E,"s_LlZXhqmUmt8",[a]);return e("nav",null,{class:"navbar"},[e("a",null,{href:"#home",class:"logo",onClick$:d("s_0NkL50ppaIg",[s])},[e("div",null,{class:"logo-icon"},"TP",3,null),e("span",null,null,"Portfolio",3,null)],3,null),e("div",null,{class:u(o=>`nav-links ${o.value?"open":""}`,[a],'`nav-links ${p0.value?"open":""}`')},n.map(o=>e("a",{href:`#${o.id}`,class:`nav-link ${t.value===o.id?"active":""}`,onClick$:d("s_0hCi1q038Qo",[s,o])},null,r(o,"label"),0,o.id)),1,null),e("button",null,{class:u(o=>`menu-toggle ${o.value?"open":""}`,[a],'`menu-toggle ${p0.value?"open":""}`'),"aria-label":"Toggle menu",onClick$:p},e("div",null,{class:"menu-icon"},[e("span",null,null,null,3,null),e("span",null,null,null,3,null),e("span",null,null,null,3,null)],3,null),3,null)],1,"R4_0")},O=g(i(U,"s_ropMBSBWqro")),B="/assets/CCkPUdZ7-pfp.webp 200w, /assets/BcNx890t-pfp.webp 400w, /assets/CvN5FndE-pfp.webp 600w, /assets/B0L4iJjN-pfp.webp 800w",L=800,H=800,q={srcSet:B,width:L,height:H};function J(t,a,n,s){return e("img",{decoding:"async",loading:"lazy",...t},q,void 0,3,a,s)}const Y=`
+    
+    /* Extra small mobile devices */
+    @media (max-width: 480px) {
+      .navbar {
+        width: calc(100% - 16px);
+        padding: 8px 12px;
+      }
+      
+      .logo {
+        font-size: 1rem;
+      }
+      
+      .logo-icon {
+        width: 24px;
+        height: 24px;
+      }
+      
+      .nav-links {
+        padding: 20px 16px;
+      }
+      
+      .nav-link {
+        padding: 14px 16px;
+        font-size: 0.95rem;
+      }
+    }
+  `,E=n=>{const[a,t]=x();a.value=n,t.value=!1;const r=document.getElementById(n);r&&r.scrollIntoView({behavior:"smooth"})},D=()=>{const[n]=x();n.value=!n.value},U=()=>{const n=m("home"),a=m(!1);v(l(T,"s_gZs8EX5SgiU"));const t=[{id:"home",label:"Home"},{id:"about",label:"About"},{id:"projects",label:"Projects"},{id:"contact",label:"Contact"}],r=l(E,"s_uYqmvnpRTCw",[n,a]),u=l(D,"s_LlZXhqmUmt8",[a]);return e("nav",null,{class:"navbar"},[e("a",null,{href:"#home",class:"logo",onClick$:p("s_0NkL50ppaIg",[r])},[e("div",null,{class:"logo-icon"},"TP",3,null),e("span",null,null,"Portfolio",3,null)],3,null),e("div",null,{class:d(o=>`nav-links ${o.value?"open":""}`,[a],'`nav-links ${p0.value?"open":""}`')},t.map(o=>e("a",{href:`#${o.id}`,class:`nav-link ${n.value===o.id?"active":""}`,onClick$:p("s_0hCi1q038Qo",[r,o])},null,s(o,"label"),0,o.id)),1,null),e("button",null,{class:d(o=>`menu-toggle ${o.value?"open":""}`,[a],'`menu-toggle ${p0.value?"open":""}`'),"aria-label":"Toggle menu",onClick$:u},e("div",null,{class:"menu-icon"},[e("span",null,null,null,3,null),e("span",null,null,null,3,null),e("span",null,null,null,3,null)],3,null),3,null)],1,"R4_0")},L=g(l(U,"s_ropMBSBWqro")),O="/assets/CCkPUdZ7-pfp.webp 200w, /assets/BcNx890t-pfp.webp 400w, /assets/CvN5FndE-pfp.webp 600w, /assets/B0L4iJjN-pfp.webp 800w",B=800,H=800,q={srcSet:O,width:B,height:H};function Y(n,a,t,r){return e("img",{decoding:"async",loading:"lazy",...n},q,void 0,3,a,r)}const Q=`
     .hero-section {
       min-height: 100vh;
       display: flex;
@@ -378,29 +438,188 @@ import{c as g,i,b as c,S as z,F as w,u as m,d as f,e,f as d,g as u,h as r,j as h
     
     /* Responsive */
     @media (max-width: 768px) {
-      .hero-title {
-        font-size: 2.5rem;
+      .hero-section {
+        padding: 60px 16px;
+        min-height: 100vh;
       }
       
-      .hero-subtitle {
-        font-size: 1rem;
+      .hero-content {
+        max-width: 100%;
+      }
+      
+      .profile-container {
+        margin-bottom: 30px;
       }
       
       .profile-image-wrapper {
-        width: 150px;
-        height: 150px;
+        width: 140px;
+        height: 140px;
+        padding: 8px;
+      }
+      
+      .profile-status {
+        width: 32px;
+        height: 32px;
+        bottom: 8px;
+        right: 8px;
+      }
+      
+      .status-dot {
+        width: 16px;
+        height: 16px;
+      }
+      
+      .hero-title {
+        font-size: 2.2rem;
+        margin-bottom: 16px;
+        line-height: 1.1;
+      }
+      
+      .hero-subtitle {
+        font-size: 0.95rem;
+        margin-bottom: 32px;
+        padding: 0 10px;
+        line-height: 1.5;
+      }
+      
+      .cursor {
+        height: 0.95rem;
       }
       
       .cta-buttons {
         flex-direction: column;
         align-items: center;
+        gap: 16px;
+        margin-bottom: 32px;
       }
       
       .cta-button {
-        width: 250px;
+        width: 100%;
+        max-width: 280px;
+        padding: 16px 32px;
+        font-size: 0.95rem;
+        justify-content: center;
+      }
+      
+      .cta-button:hover {
+        transform: translateY(-1px);
+      }
+      
+      .scroll-indicator {
+        bottom: 30px;
+        gap: 8px;
+      }
+      
+      .scroll-mouse {
+        width: 24px;
+        height: 40px;
+      }
+      
+      .scroll-wheel {
+        width: 3px;
+        height: 8px;
+        top: 8px;
+      }
+      
+      .scroll-indicator span {
+        font-size: 0.8rem;
       }
     }
-  `,$=()=>{const t=m(""),a=m(!0);return f(i(Y,"s_R0z7yMvPekY")),I(d("s_qJmIgBWFER0",[t,a])),e("section",null,{id:"home",class:"hero-section"},e("div",null,{class:"hero-content"},[e("div",null,{class:"profile-container"},e("div",null,{class:"profile-image-wrapper"},[c(J,{alt:"Profile",class:"profile-image",[k]:{alt:k,class:k}},3,"HJ_0"),e("div",null,{class:"profile-status"},e("div",null,{class:"status-dot"},null,3,null),3,null)],1,null),1,null),e("h1",null,{class:"hero-title animate-fadeInUp"},"Thomas Powell",3,null),e("p",null,{class:"hero-subtitle"},[e("span",null,{class:"typewriter-text"},u(n=>n.value,[t],"p0.value"),3,null),a.value&&e("span",null,{class:"cursor"},null,3,"HJ_1")],1,null),e("div",null,{class:"cta-buttons"},[e("a",null,{href:"#projects",class:"cta-button primary"},[e("span",null,null,"View Projects",3,null),e("svg",null,{width:"20",height:"20",viewBox:"0 0 24 24",fill:"none",stroke:"currentColor","stroke-width":"2"},e("path",null,{d:"M5 12h14M12 5l7 7-7 7"},null,3,null),3,null)],3,null),e("a",null,{href:"/powellthomas-resume.docx",download:!0,class:"cta-button secondary"},[e("span",null,null,"Download Resume",3,null),e("svg",null,{width:"20",height:"20",viewBox:"0 0 24 24",fill:"none",stroke:"currentColor","stroke-width":"2"},e("path",null,{d:"M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"},null,3,null),3,null)],3,null)],3,null),e("div",null,{class:"scroll-indicator"},[e("div",null,{class:"scroll-mouse"},e("div",null,{class:"scroll-wheel"},null,3,null),3,null),e("span",null,null,"Scroll to explore",3,null)],3,null)],1,null),1,"HJ_2")},G=g(i($,"s_1V8LiPxWuaU")),Q=[{name:"HTML/CSS/JS",level:90,category:"frontend"},{name:"Flask",level:85,category:"frontend"},{name:"Web Development",level:85,category:"frontend"},{name:"Full Stack Development",level:80,category:"frontend"},{name:"Python",level:95,category:"backend"},{name:"Java",level:75,category:"backend"},{name:"C++",level:70,category:"backend"},{name:"Machine Learning",level:80,category:"backend"},{name:"Web Automation",level:90,category:"backend"},{name:"Test Driven Development",level:85,category:"backend"},{name:"AWS S3",level:85,category:"database"},{name:"Cloud Storage",level:80,category:"database"},{name:"Docker",level:90,category:"devops"},{name:"Kubernetes",level:85,category:"devops"},{name:"AWS",level:85,category:"devops"},{name:"Terraform",level:80,category:"devops"},{name:"CI/CD",level:90,category:"devops"},{name:"Infrastructure/Architecture",level:85,category:"devops"},{name:"Helm",level:80,category:"devops"},{name:"Git",level:95,category:"tools"},{name:"Operating Systems",level:85,category:"tools"},{name:"Networking",level:75,category:"tools"},{name:"Selenium Grid",level:90,category:"tools"},{name:"Prompt Engineering",level:80,category:"tools"},{name:"Problem Solving",level:95,category:"soft"},{name:"Communication",level:90,category:"soft"},{name:"Team Collaboration",level:90,category:"soft"},{name:"Project Management",level:85,category:"soft"}],F=[{name:"Python",logo:"https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",proficiency:"expert",yearsOfExperience:3},{name:"Docker",logo:"https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg",proficiency:"advanced",yearsOfExperience:2},{name:"Kubernetes",logo:"https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg",proficiency:"advanced",yearsOfExperience:2},{name:"AWS",logo:"https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg",proficiency:"advanced",yearsOfExperience:2},{name:"Terraform",logo:"https://cdn.jsdelivr.net/gh/devicons/devicon/icons/terraform/terraform-original.svg",proficiency:"advanced",yearsOfExperience:2},{name:"Java",logo:"https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg",proficiency:"intermediate",yearsOfExperience:2},{name:"Git",logo:"https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",proficiency:"expert",yearsOfExperience:3},{name:"Flask",logo:"https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg",proficiency:"advanced",yearsOfExperience:2},{name:"HTML5",logo:"https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",proficiency:"advanced",yearsOfExperience:3},{name:"JavaScript",logo:"https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",proficiency:"advanced",yearsOfExperience:2},{name:"C++",logo:"https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg",proficiency:"intermediate",yearsOfExperience:1},{name:"Linux",logo:"https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg",proficiency:"advanced",yearsOfExperience:3}],C=t=>Q.filter(a=>a.category===t),v={name:"Thomas Powell",title:"Technical Intern at SAS | CS & Data Science Student",bio:`I'm a Student at UNC Charlotte, deeply invested in computers and software as both a hobby and career. Graduate of the Academy of Information Technology and interning at SAS since June 2022.
+    
+    /* Extra small mobile devices */
+    @media (max-width: 480px) {
+      .hero-section {
+        padding: 50px 12px;
+      }
+      
+      .profile-image-wrapper {
+        width: 120px;
+        height: 120px;
+        padding: 6px;
+      }
+      
+      .profile-status {
+        width: 28px;
+        height: 28px;
+        bottom: 6px;
+        right: 6px;
+      }
+      
+      .status-dot {
+        width: 14px;
+        height: 14px;
+      }
+      
+      .hero-title {
+        font-size: 1.9rem;
+        margin-bottom: 14px;
+      }
+      
+      .hero-subtitle {
+        font-size: 0.9rem;
+        margin-bottom: 28px;
+        padding: 0 8px;
+      }
+      
+      .cursor {
+        height: 0.9rem;
+      }
+      
+      .cta-button {
+        max-width: 260px;
+        padding: 14px 28px;
+        font-size: 0.9rem;
+      }
+      
+      .scroll-indicator {
+        bottom: 25px;
+      }
+      
+      .scroll-indicator span {
+        font-size: 0.75rem;
+      }
+    }
+    
+    /* Landscape mobile orientation */
+    @media (max-width: 768px) and (orientation: landscape) {
+      .hero-section {
+        padding: 40px 16px;
+        min-height: 100vh;
+      }
+      
+      .profile-image-wrapper {
+        width: 100px;
+        height: 100px;
+      }
+      
+      .hero-title {
+        font-size: 1.8rem;
+        margin-bottom: 12px;
+      }
+      
+      .hero-subtitle {
+        font-size: 0.85rem;
+        margin-bottom: 24px;
+      }
+      
+      .cta-buttons {
+        flex-direction: row;
+        gap: 12px;
+        margin-bottom: 20px;
+      }
+      
+      .cta-button {
+        width: auto;
+        max-width: 200px;
+        padding: 12px 24px;
+        font-size: 0.85rem;
+      }
+      
+      .scroll-indicator {
+        bottom: 20px;
+      }
+    }
+  `,$=()=>{const n=m(""),a=m(!0);return v(l(Q,"s_R0z7yMvPekY")),I(p("s_qJmIgBWFER0",[n,a])),e("section",null,{id:"home",class:"hero-section"},e("div",null,{class:"hero-content"},[e("div",null,{class:"profile-container"},e("div",null,{class:"profile-image-wrapper"},[c(Y,{alt:"Profile",class:"profile-image",[k]:{alt:k,class:k}},3,"HJ_0"),e("div",null,{class:"profile-status"},e("div",null,{class:"status-dot"},null,3,null),3,null)],1,null),1,null),e("h1",null,{class:"hero-title animate-fadeInUp"},"Thomas Powell",3,null),e("p",null,{class:"hero-subtitle"},[e("span",null,{class:"typewriter-text"},d(t=>t.value,[n],"p0.value"),3,null),a.value&&e("span",null,{class:"cursor"},null,3,"HJ_1")],1,null),e("div",null,{class:"cta-buttons"},[e("a",null,{href:"#projects",class:"cta-button primary"},[e("span",null,null,"View Projects",3,null),e("svg",null,{width:"20",height:"20",viewBox:"0 0 24 24",fill:"none",stroke:"currentColor","stroke-width":"2"},e("path",null,{d:"M5 12h14M12 5l7 7-7 7"},null,3,null),3,null)],3,null),e("a",null,{href:"/powellthomas-resume.docx",download:!0,class:"cta-button secondary"},[e("span",null,null,"Download Resume",3,null),e("svg",null,{width:"20",height:"20",viewBox:"0 0 24 24",fill:"none",stroke:"currentColor","stroke-width":"2"},e("path",null,{d:"M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"},null,3,null),3,null)],3,null)],3,null),e("div",null,{class:"scroll-indicator"},[e("div",null,{class:"scroll-mouse"},e("div",null,{class:"scroll-wheel"},null,3,null),3,null),e("span",null,null,"Scroll to explore",3,null)],3,null)],1,null),1,"HJ_2")},G=g(l($,"s_1V8LiPxWuaU")),J=[{name:"HTML/CSS/JS",level:90,category:"frontend"},{name:"Flask",level:85,category:"frontend"},{name:"Web Development",level:85,category:"frontend"},{name:"Full Stack Development",level:80,category:"frontend"},{name:"Python",level:95,category:"backend"},{name:"Java",level:75,category:"backend"},{name:"C++",level:70,category:"backend"},{name:"Machine Learning",level:80,category:"backend"},{name:"Web Automation",level:90,category:"backend"},{name:"Test Driven Development",level:85,category:"backend"},{name:"AWS S3",level:85,category:"database"},{name:"Cloud Storage",level:80,category:"database"},{name:"Docker",level:90,category:"devops"},{name:"Kubernetes",level:85,category:"devops"},{name:"AWS",level:85,category:"devops"},{name:"Terraform",level:80,category:"devops"},{name:"CI/CD",level:90,category:"devops"},{name:"Infrastructure/Architecture",level:85,category:"devops"},{name:"Helm",level:80,category:"devops"},{name:"Git",level:95,category:"tools"},{name:"Operating Systems",level:85,category:"tools"},{name:"Networking",level:75,category:"tools"},{name:"Selenium Grid",level:90,category:"tools"},{name:"Prompt Engineering",level:80,category:"tools"},{name:"Problem Solving",level:95,category:"soft"},{name:"Communication",level:90,category:"soft"},{name:"Team Collaboration",level:90,category:"soft"},{name:"Project Management",level:85,category:"soft"}],F=[{name:"Python",logo:"https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",proficiency:"expert",yearsOfExperience:3},{name:"Docker",logo:"https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg",proficiency:"advanced",yearsOfExperience:2},{name:"Kubernetes",logo:"https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg",proficiency:"advanced",yearsOfExperience:2},{name:"AWS",logo:"https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg",proficiency:"advanced",yearsOfExperience:2},{name:"Terraform",logo:"https://cdn.jsdelivr.net/gh/devicons/devicon/icons/terraform/terraform-original.svg",proficiency:"advanced",yearsOfExperience:2},{name:"Java",logo:"https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg",proficiency:"intermediate",yearsOfExperience:2},{name:"Git",logo:"https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",proficiency:"expert",yearsOfExperience:3},{name:"Flask",logo:"https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg",proficiency:"advanced",yearsOfExperience:2},{name:"HTML5",logo:"https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",proficiency:"advanced",yearsOfExperience:3},{name:"JavaScript",logo:"https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",proficiency:"advanced",yearsOfExperience:2},{name:"C++",logo:"https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg",proficiency:"intermediate",yearsOfExperience:1},{name:"Linux",logo:"https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg",proficiency:"advanced",yearsOfExperience:3}],S=n=>J.filter(a=>a.category===n),h={name:"Thomas Powell",title:"Technical Intern at SAS | CS & Data Science Student",bio:`I'm a Student at UNC Charlotte, deeply invested in computers and software as both a hobby and career. Graduate of the Academy of Information Technology and interning at SAS since June 2022.
         
         Currently earning both my BS in Computer Science with concentration in data science, and a MS in data science and business analytics dual track. My work at SAS focuses on quality assurance infrastructure, cloud engineering, and full-stack development.
         
@@ -643,40 +862,248 @@ import{c as g,i,b as c,S as z,F as w,u as m,d as f,e,f as d,g as u,h as r,j as h
     
     /* Responsive */
     @media (max-width: 968px) {
+      .about-section {
+        padding: 80px 16px;
+      }
+      
       .about-content {
         grid-template-columns: 1fr;
-      }
-      
-      .tech-grid {
-        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-        gap: 20px;
-      }
-      
-      .tech-card {
-        padding: 20px;
-      }
-      
-      .tech-logo {
-        width: 50px;
-        height: 50px;
-      }
-    }
-    
-    @media (max-width: 640px) {
-      .section-title {
-        font-size: 2rem;
+        gap: 40px;
+        margin-bottom: 60px;
       }
       
       .bio-section,
       .skills-section {
-        padding: 25px;
+        padding: 32px;
+      }
+      
+      .tech-stack {
+        margin-top: 60px;
+      }
+      
+      .tech-grid {
+        grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+        gap: 20px;
+        margin-top: 32px;
+      }
+      
+      .tech-card {
+        padding: 20px 16px;
+      }
+      
+      .tech-logo {
+        width: 48px;
+        height: 48px;
+        margin-bottom: 12px;
+      }
+      
+      .tech-name {
+        font-size: 0.85rem;
+      }
+      
+      .tech-experience {
+        font-size: 0.75rem;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .about-section {
+        padding: 70px 16px;
+      }
+      
+      .section-title {
+        font-size: 2.2rem;
+        margin-bottom: 16px;
+      }
+      
+      .section-subtitle {
+        font-size: 1rem;
+        margin-bottom: 50px;
+        padding: 0 10px;
+      }
+      
+      .about-content {
+        gap: 32px;
+        margin-bottom: 50px;
+      }
+      
+      .bio-section,
+      .skills-section {
+        padding: 28px 24px;
+      }
+      
+      .bio-title {
+        font-size: 1.6rem;
+        margin-bottom: 8px;
+      }
+      
+      .bio-subtitle {
+        font-size: 1rem;
+        margin-bottom: 24px;
+      }
+      
+      .bio-text {
+        font-size: 0.95rem;
+        line-height: 1.7;
+        margin-bottom: 24px;
+      }
+      
+      .highlight-item {
+        padding: 12px;
+        gap: 12px;
+      }
+      
+      .highlight-icon {
+        width: 20px;
+        height: 20px;
+        font-size: 0.8rem;
+      }
+      
+      .skills-title {
+        font-size: 1.4rem;
+        margin-bottom: 24px;
+      }
+      
+      .skill-category {
+        margin-bottom: 24px;
+      }
+      
+      .category-title {
+        font-size: 0.85rem;
+        margin-bottom: 12px;
+      }
+      
+      .skill-item {
+        margin-bottom: 16px;
+      }
+      
+      .skill-name,
+      .skill-level {
+        font-size: 0.9rem;
+      }
+      
+      .skill-bar {
+        height: 8px;
+      }
+      
+      .tech-stack {
+        margin-top: 50px;
       }
       
       .tech-grid {
         grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+        margin-top: 28px;
+      }
+      
+      .tech-card {
+        padding: 16px 12px;
+      }
+      
+      .tech-logo {
+        width: 40px;
+        height: 40px;
+        margin-bottom: 10px;
+      }
+      
+      .interests-section {
+        margin-top: 50px;
+        padding: 32px 24px;
+      }
+      
+      .interests-title {
+        font-size: 1.2rem;
+        margin-bottom: 16px;
+      }
+      
+      .interests-list {
+        gap: 12px;
+      }
+      
+      .interest-tag {
+        padding: 8px 16px;
+        font-size: 0.85rem;
       }
     }
-  `,W=()=>{f(i(R,"s_3Vkkdid5Eow"));const t=C("frontend").slice(0,4),a=C("backend").slice(0,4);return e("section",null,{id:"about",class:"about-section"},e("div",null,{class:"about-container"},[e("h2",null,{class:"section-title animate-fadeInUp"},"About Me",3,null),e("p",null,{class:"section-subtitle animate-fadeInUp stagger-1"},"Passionate about building scalable solutions and creating exceptional user experiences",3,null),e("div",null,{class:"about-content"},[e("div",null,{class:"bio-section animate-fadeInLeft"},[e("h3",null,{class:"bio-title"},v.name,3,null),e("p",null,{class:"bio-subtitle"},v.title,3,null),e("p",null,{class:"bio-text"},v.bio,3,null),e("div",null,{class:"highlights"},v.highlights.slice(0,4).map((n,s)=>e("div",null,{class:"highlight-item"},[e("div",null,{class:"highlight-icon"},"✓",3,null),e("span",null,null,n,1,null)],1,s)),1,null)],1,null),e("div",null,{class:"skills-section animate-fadeInRight"},[e("h3",null,{class:"skills-title"},"Core Skills",3,null),e("div",null,{class:"skill-category"},[e("p",null,{class:"category-title"},"Frontend Development",3,null),t.map(n=>e("div",null,{class:"skill-item"},[e("div",null,{class:"skill-header"},[e("span",null,{class:"skill-name"},r(n,"name"),1,null),e("span",null,{class:"skill-level"},[r(n,"level"),"%"],1,null)],1,null),e("div",null,{class:"skill-bar"},e("div",{style:`width: ${n.level}%`},{class:"skill-progress"},null,3,null),1,null)],1,n.name))],1,null),e("div",null,{class:"skill-category"},[e("p",null,{class:"category-title"},"Backend Development",3,null),a.map(n=>e("div",null,{class:"skill-item"},[e("div",null,{class:"skill-header"},[e("span",null,{class:"skill-name"},r(n,"name"),1,null),e("span",null,{class:"skill-level"},[r(n,"level"),"%"],1,null)],1,null),e("div",null,{class:"skill-bar"},e("div",{style:`width: ${n.level}%`},{class:"skill-progress"},null,3,null),1,null)],1,n.name))],1,null)],1,null)],1,null),e("div",null,{class:"tech-stack"},[e("h3",null,{class:"section-title"},"Tech Stack",3,null),e("p",null,{class:"section-subtitle"},"Technologies I work with daily",3,null),e("div",null,{class:"tech-grid"},F.map(n=>e("div",null,{class:"tech-card animate-scaleIn"},[e("img",{src:r(n,"logo"),alt:r(n,"name")},{class:"tech-logo",loading:"lazy",width:"60",height:"60"},null,3,null),e("p",null,{class:"tech-name"},r(n,"name"),1,null),e("p",null,{class:"tech-experience"},[r(n,"yearsOfExperience")," years"],1,null)],1,n.name)),1,null)],1,null),e("div",null,{class:"interests-section"},[e("h3",null,{class:"interests-title"},"Interests & Passions",3,null),e("div",null,{class:"interests-list"},v.interests.map(n=>e("span",null,{class:"interest-tag"},n,1,n)),1,null)],1,null)],1,null),1,"uH_0")},V=g(i(W,"s_kQDJUnc38Vs")),j=[{id:"ciqe-devcontainers",title:"CIQE Development Containers",description:"Containerization of repos and projects with the CI360 team allowing for normalization of testing and development environments across teams",category:"devops",technologies:["Docker","DevContainers","AWS","Git","Kubernetes","Helm","Docker Compose"],images:["https://images.unsplash.com/photo-1605745341112-85968b19335b?w=800&h=600&fit=crop","https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?w=800&h=600&fit=crop"],features:["Immediate productivity when working with repos and projects","Automated project-specific setup for all requirements","Internal features handle AWS and Git authentication","Automatic installation of packages including auth","Security automated and connectivity to private resources","Templates with complex setup baked in for teammates"],challenges:["Creating universal devcontainer templates","Handling authentication across multiple services","Ensuring security compliance in containers","Managing versioning and updates across teams"],outcomes:["90% reduction in environment setup time","Standardized development environments","Zero manual configuration required","Adopted across multiple teams"]},{id:"qegrid-selenium",title:"QEGRID: Selenium Grid",description:"Enterprise-scale Selenium Grid deployment allowing browsers of selenium tests to run inside an internally deployed grid for better resource management",category:"devops",technologies:["Selenium","Docker","Kubernetes","Python","Java","AWS"],images:["https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?w=800&h=600&fit=crop","https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800&h=600&fit=crop"],features:["Resource connectivity and efficient handling","Run tests quicker with parallel execution","Normalization of browser versions","Standardized test runners across teams","Centralized test execution management","Scalable infrastructure for concurrent tests"],challenges:["Managing browser compatibility across versions","Optimizing resource allocation for parallel tests","Ensuring network connectivity for internal resources","Scaling to handle peak test loads"],outcomes:["70% faster test execution","Support for 100+ concurrent tests","Unified browser testing platform","Reduced infrastructure costs"]},{id:"splitstation-webapp",title:"SplitStation: Internal Webapp Tool",description:"Full-stack web application for controlling production deployment segments with complete pipeline, authentication, and tracking capabilities",category:"fullstack",technologies:["Flask","Python","HTML/CSS/JS","Docker","AWS","Azure","CloudFormation","Split.io"],images:["https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop","https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop"],features:["Control production deployment segments","Advanced permission management system","Change tracking and audit logs","Custom interaction workflows","Full authentication and authorization","Real-time segment updates"],challenges:["Building secure authentication from scratch","Implementing complex permission hierarchies","Ensuring production safety with segment controls","Creating intuitive UI for complex operations"],outcomes:["100% adoption by QA team","Zero production incidents","50% faster segment management","Complete audit trail compliance"]},{id:"ci360-cli-tool",title:"CI360: Command Line Tool",description:"Enterprise CLI tool for interaction with internal APIs, featuring automatic proxying and simplified complex operations",category:"backend",technologies:["Python","Click","REST APIs","Docker","AWS","Internal APIs"],images:["https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=800&h=600&fit=crop","https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=800&h=600&fit=crop"],features:["Simplified interaction with complex internal APIs","Automatic proxying and authentication","Single command for complex operations","Pipeline deployment and distribution","Create customer identity with one command","Comprehensive error handling and logging"],challenges:["Abstracting complex API logic","Handling various authentication methods","Creating intuitive command structure","Ensuring cross-platform compatibility"],outcomes:["80% reduction in API interaction time","Adopted by 50+ developers","Eliminated manual API configuration","Standardized API interactions"]},{id:"spotify-playlist-builder",title:"Spotify Playlist Builder",description:"Award-winning web application for building Spotify playlists with swipe-based interface, developed at UNC Charlotte AxeHack",category:"fullstack",technologies:["Python","Flask","HTML","CSS","JavaScript","Spotify API"],images:["https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800&h=600&fit=crop","https://images.unsplash.com/photo-1614680376593-902f74cf0d41?w=800&h=600&fit=crop"],features:["Swipe-based song selection interface","Real-time playlist building","Spotify API integration","Responsive web design","User authentication with Spotify","Playlist export functionality"],challenges:["Implementing swipe gestures in web","Managing Spotify API rate limits","Creating engaging user interface","Handling real-time updates"],outcomes:["Second Place at AxeHack","Golden Hack Award winner","Built in 24-hour hackathon","Innovative UI/UX design"]},{id:"qa-automation-suite",title:"QA Infrastructure & Automation",description:"Comprehensive suite of automation tools, web apps, and cloud infrastructure to enable quality assurance across CI360 platform",category:"devops",technologies:["Python","AWS","Terraform","Docker","Kubernetes","GitHub Actions","S3"],images:["https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?w=800&h=600&fit=crop","https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?w=800&h=600&fit=crop"],features:["Automated test archiving to S3","GitHub Actions integration","Terraform and Helm deployments","Automatic tenant permissions management","Test results visualization webapp","Complete CI/CD pipeline automation"],challenges:["Orchestrating complex deployment workflows","Managing multi-cloud resources","Ensuring test isolation and reproducibility","Scaling infrastructure based on demand"],outcomes:["95% test automation coverage","60% reduction in QA cycle time","Zero manual deployment steps","Complete test history retention"]}],N=()=>[{value:"fullstack",label:"Full Stack"},{value:"frontend",label:"Frontend"},{value:"backend",label:"Backend"},{value:"mobile",label:"Mobile"},{value:"devops",label:"DevOps"}],K=`
+    
+    @media (max-width: 480px) {
+      .about-section {
+        padding: 60px 12px;
+      }
+      
+      .section-title {
+        font-size: 1.9rem;
+      }
+      
+      .section-subtitle {
+        font-size: 0.95rem;
+        padding: 0 8px;
+      }
+      
+      .bio-section,
+      .skills-section {
+        padding: 24px 20px;
+      }
+      
+      .bio-title {
+        font-size: 1.4rem;
+      }
+      
+      .bio-subtitle {
+        font-size: 0.95rem;
+      }
+      
+      .bio-text {
+        font-size: 0.9rem;
+      }
+      
+      .highlight-item {
+        padding: 10px;
+        gap: 10px;
+        font-size: 0.9rem;
+      }
+      
+      .skills-title {
+        font-size: 1.3rem;
+      }
+      
+      .tech-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+      }
+      
+      .tech-card {
+        padding: 14px 10px;
+      }
+      
+      .tech-logo {
+        width: 36px;
+        height: 36px;
+        margin-bottom: 8px;
+      }
+      
+      .tech-name {
+        font-size: 0.8rem;
+      }
+      
+      .tech-experience {
+        font-size: 0.7rem;
+      }
+      
+      .interests-section {
+        padding: 28px 20px;
+      }
+      
+      .interests-list {
+        gap: 10px;
+      }
+      
+      .interest-tag {
+        padding: 6px 14px;
+        font-size: 0.8rem;
+      }
+    }
+  `,W=()=>{v(l(R,"s_3Vkkdid5Eow"));const n=S("frontend").slice(0,4),a=S("backend").slice(0,4);return e("section",null,{id:"about",class:"about-section"},e("div",null,{class:"about-container"},[e("h2",null,{class:"section-title animate-fadeInUp"},"About Me",3,null),e("p",null,{class:"section-subtitle animate-fadeInUp stagger-1"},"Passionate about building scalable solutions and creating exceptional user experiences",3,null),e("div",null,{class:"about-content"},[e("div",null,{class:"bio-section animate-fadeInLeft"},[e("h3",null,{class:"bio-title"},h.name,3,null),e("p",null,{class:"bio-subtitle"},h.title,3,null),e("p",null,{class:"bio-text"},h.bio,3,null),e("div",null,{class:"highlights"},h.highlights.slice(0,4).map((t,r)=>e("div",null,{class:"highlight-item"},[e("div",null,{class:"highlight-icon"},"✓",3,null),e("span",null,null,t,1,null)],1,r)),1,null)],1,null),e("div",null,{class:"skills-section animate-fadeInRight"},[e("h3",null,{class:"skills-title"},"Core Skills",3,null),e("div",null,{class:"skill-category"},[e("p",null,{class:"category-title"},"Frontend Development",3,null),n.map(t=>e("div",null,{class:"skill-item"},[e("div",null,{class:"skill-header"},[e("span",null,{class:"skill-name"},s(t,"name"),1,null),e("span",null,{class:"skill-level"},[s(t,"level"),"%"],1,null)],1,null),e("div",null,{class:"skill-bar"},e("div",{style:`width: ${t.level}%`},{class:"skill-progress"},null,3,null),1,null)],1,t.name))],1,null),e("div",null,{class:"skill-category"},[e("p",null,{class:"category-title"},"Backend Development",3,null),a.map(t=>e("div",null,{class:"skill-item"},[e("div",null,{class:"skill-header"},[e("span",null,{class:"skill-name"},s(t,"name"),1,null),e("span",null,{class:"skill-level"},[s(t,"level"),"%"],1,null)],1,null),e("div",null,{class:"skill-bar"},e("div",{style:`width: ${t.level}%`},{class:"skill-progress"},null,3,null),1,null)],1,t.name))],1,null)],1,null)],1,null),e("div",null,{class:"tech-stack"},[e("h3",null,{class:"section-title"},"Tech Stack",3,null),e("p",null,{class:"section-subtitle"},"Technologies I work with daily",3,null),e("div",null,{class:"tech-grid"},F.map(t=>e("div",null,{class:"tech-card animate-scaleIn"},[e("img",{src:s(t,"logo"),alt:s(t,"name")},{class:"tech-logo",loading:"lazy",width:"60",height:"60"},null,3,null),e("p",null,{class:"tech-name"},s(t,"name"),1,null),e("p",null,{class:"tech-experience"},[s(t,"yearsOfExperience")," years"],1,null)],1,t.name)),1,null)],1,null),e("div",null,{class:"interests-section"},[e("h3",null,{class:"interests-title"},"Interests & Passions",3,null),e("div",null,{class:"interests-list"},h.interests.map(t=>e("span",null,{class:"interest-tag"},t,1,t)),1,null)],1,null)],1,null),1,"uH_0")},V=g(l(W,"s_kQDJUnc38Vs")),j=[{id:"ciqe-devcontainers",title:"CIQE Development Containers",description:"Containerization of repos and projects with the CI360 team allowing for normalization of testing and development environments across teams",category:"devops",technologies:["Docker","DevContainers","AWS","Git","Kubernetes","Helm","Docker Compose"],images:["https://images.unsplash.com/photo-1605745341112-85968b19335b?w=800&h=600&fit=crop","https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?w=800&h=600&fit=crop"],features:["Immediate productivity when working with repos and projects","Automated project-specific setup for all requirements","Internal features handle AWS and Git authentication","Automatic installation of packages including auth","Security automated and connectivity to private resources","Templates with complex setup baked in for teammates"],challenges:["Creating universal devcontainer templates","Handling authentication across multiple services","Ensuring security compliance in containers","Managing versioning and updates across teams"],outcomes:["90% reduction in environment setup time","Standardized development environments","Zero manual configuration required","Adopted across multiple teams"]},{id:"qegrid-selenium",title:"QEGRID: Selenium Grid",description:"Enterprise-scale Selenium Grid deployment allowing browsers of selenium tests to run inside an internally deployed grid for better resource management",category:"devops",technologies:["Selenium","Docker","Kubernetes","Python","Java","AWS"],images:["https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?w=800&h=600&fit=crop","https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800&h=600&fit=crop"],features:["Resource connectivity and efficient handling","Run tests quicker with parallel execution","Normalization of browser versions","Standardized test runners across teams","Centralized test execution management","Scalable infrastructure for concurrent tests"],challenges:["Managing browser compatibility across versions","Optimizing resource allocation for parallel tests","Ensuring network connectivity for internal resources","Scaling to handle peak test loads"],outcomes:["70% faster test execution","Support for 100+ concurrent tests","Unified browser testing platform","Reduced infrastructure costs"]},{id:"splitstation-webapp",title:"SplitStation: Internal Webapp Tool",description:"Full-stack web application for controlling production deployment segments with complete pipeline, authentication, and tracking capabilities",category:"fullstack",technologies:["Flask","Python","HTML/CSS/JS","Docker","AWS","Azure","CloudFormation","Split.io"],images:["https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop","https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop"],features:["Control production deployment segments","Advanced permission management system","Change tracking and audit logs","Custom interaction workflows","Full authentication and authorization","Real-time segment updates"],challenges:["Building secure authentication from scratch","Implementing complex permission hierarchies","Ensuring production safety with segment controls","Creating intuitive UI for complex operations"],outcomes:["100% adoption by QA team","Zero production incidents","50% faster segment management","Complete audit trail compliance"]},{id:"ci360-cli-tool",title:"CI360: Command Line Tool",description:"Enterprise CLI tool for interaction with internal APIs, featuring automatic proxying and simplified complex operations",category:"backend",technologies:["Python","Click","REST APIs","Docker","AWS","Internal APIs"],images:["https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=800&h=600&fit=crop","https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=800&h=600&fit=crop"],features:["Simplified interaction with complex internal APIs","Automatic proxying and authentication","Single command for complex operations","Pipeline deployment and distribution","Create customer identity with one command","Comprehensive error handling and logging"],challenges:["Abstracting complex API logic","Handling various authentication methods","Creating intuitive command structure","Ensuring cross-platform compatibility"],outcomes:["80% reduction in API interaction time","Adopted by 50+ developers","Eliminated manual API configuration","Standardized API interactions"]},{id:"spotify-playlist-builder",title:"Spotify Playlist Builder",description:"Award-winning web application for building Spotify playlists with swipe-based interface, developed at UNC Charlotte AxeHack",category:"fullstack",technologies:["Python","Flask","HTML","CSS","JavaScript","Spotify API"],images:["https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800&h=600&fit=crop","https://images.unsplash.com/photo-1614680376593-902f74cf0d41?w=800&h=600&fit=crop"],features:["Swipe-based song selection interface","Real-time playlist building","Spotify API integration","Responsive web design","User authentication with Spotify","Playlist export functionality"],challenges:["Implementing swipe gestures in web","Managing Spotify API rate limits","Creating engaging user interface","Handling real-time updates"],outcomes:["Second Place at AxeHack","Golden Hack Award winner","Built in 24-hour hackathon","Innovative UI/UX design"]},{id:"qa-automation-suite",title:"QA Infrastructure & Automation",description:"Comprehensive suite of automation tools, web apps, and cloud infrastructure to enable quality assurance across CI360 platform",category:"devops",technologies:["Python","AWS","Terraform","Docker","Kubernetes","GitHub Actions","S3"],images:["https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?w=800&h=600&fit=crop","https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?w=800&h=600&fit=crop"],features:["Automated test archiving to S3","GitHub Actions integration","Terraform and Helm deployments","Automatic tenant permissions management","Test results visualization webapp","Complete CI/CD pipeline automation"],challenges:["Orchestrating complex deployment workflows","Managing multi-cloud resources","Ensuring test isolation and reproducibility","Scaling infrastructure based on demand"],outcomes:["95% test automation coverage","60% reduction in QA cycle time","Zero manual deployment steps","Complete test history retention"]}],N=()=>[{value:"fullstack",label:"Full Stack"},{value:"frontend",label:"Frontend"},{value:"backend",label:"Backend"},{value:"mobile",label:"Mobile"},{value:"devops",label:"DevOps"}],K=`
     .projects-section {
       padding: 100px 20px;
       background: linear-gradient(135deg, rgba(224, 229, 236, 0.5), var(--neu-base));
@@ -1012,37 +1439,343 @@ import{c as g,i,b as c,S as z,F as w,u as m,d as f,e,f as d,g as u,h as r,j as h
     }
     
     /* Responsive */
-    @media (max-width: 768px) {
+    @media (max-width: 968px) {
+      .projects-section {
+        padding: 80px 16px;
+      }
+      
       .projects-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 32px;
+      }
+      
+      .project-image-container {
+        height: 200px;
+      }
+      
+      .project-content {
+        padding: 24px;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .projects-section {
+        padding: 70px 16px;
+      }
+      
+      .section-title {
+        font-size: 2.2rem;
+        margin-bottom: 16px;
+      }
+      
+      .section-subtitle {
+        font-size: 1rem;
+        margin-bottom: 50px;
+        padding: 0 10px;
       }
       
       .filter-tabs {
-        gap: 10px;
+        gap: 12px;
+        margin-bottom: 50px;
+        padding: 0 10px;
       }
       
       .filter-tab {
-        padding: 10px 20px;
+        padding: 12px 20px;
+        font-size: 0.9rem;
+        min-width: auto;
+        flex: 1;
+        max-width: 140px;
+      }
+      
+      .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 28px;
+        margin-bottom: 50px;
+      }
+      
+      .project-card {
+        max-width: 100%;
+      }
+      
+      .project-image-container {
+        height: 180px;
+      }
+      
+      .project-content {
+        padding: 20px;
+      }
+      
+      .project-title {
+        font-size: 1.3rem;
+        margin-bottom: 12px;
+      }
+      
+      .project-description {
+        font-size: 0.95rem;
+        line-height: 1.5;
+        margin-bottom: 16px;
+      }
+      
+      .project-tech {
+        gap: 8px;
+        margin-bottom: 20px;
+      }
+      
+      .tech-badge {
+        padding: 4px 10px;
+        font-size: 0.75rem;
+      }
+      
+      .project-links {
+        gap: 12px;
+      }
+      
+      .project-link {
+        padding: 12px 16px;
         font-size: 0.9rem;
       }
       
-      .modal-content {
-        max-height: 100vh;
-        border-radius: 0;
+      /* Modal improvements for mobile */
+      .modal-overlay {
+        padding: 10px;
+        align-items: flex-start;
+        padding-top: 20px;
       }
       
-      .modal-header,
+      .modal-content {
+        max-height: calc(100vh - 40px);
+        border-radius: var(--neu-radius-lg);
+        margin: 0;
+        width: 100%;
+        max-width: 100%;
+      }
+      
+      .modal-close {
+        top: 15px;
+        right: 15px;
+        width: 36px;
+        height: 36px;
+      }
+      
+      .modal-header {
+        padding: 50px 20px 20px;
+      }
+      
+      .modal-title {
+        font-size: 1.6rem;
+        margin-bottom: 8px;
+        line-height: 1.2;
+      }
+      
+      .modal-category {
+        font-size: 0.85rem;
+      }
+      
       .modal-body {
-        padding: 25px;
+        padding: 20px;
+      }
+      
+      .modal-section {
+        margin-bottom: 32px;
+      }
+      
+      .modal-section-title {
+        font-size: 1.2rem;
+        margin-bottom: 16px;
+      }
+      
+      .feature-item {
+        padding: 12px;
+        gap: 12px;
+        font-size: 0.9rem;
+      }
+      
+      .feature-icon {
+        width: 20px;
+        height: 20px;
+        font-size: 0.8rem;
+      }
+      
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+      }
+      
+      .stat-card {
+        padding: 16px;
+      }
+      
+      .stat-value {
+        font-size: 1.5rem;
+      }
+      
+      .stat-label {
+        font-size: 0.85rem;
       }
     }
-  `,X=t=>{const[a]=h();a.value=t},Z=t=>{const[a,n]=h();n.value=t,a.value=!0},ee=()=>{const[t,a]=h();t.value=!1,setTimeout(()=>{a.value=null},300)},ne=()=>{const t=m("all"),a=m(null),n=m(!1);f(i(K,"s_x09mof0NAUM"));const s=[{value:"all",label:"All Projects"},...N()],p=t.value==="all"?j:j.filter(l=>l.category===t.value),o=i(X,"s_04T8x2lEfJQ",[t]),_=i(Z,"s_kH0dZ6cEGg4",[n,a]),S=i(ee,"s_AlkI4Q6oVwQ",[n,a]);return e("section",null,{id:"projects",class:"projects-section"},e("div",null,{class:"projects-container"},[e("h2",null,{class:"section-title animate-fadeInUp"},"Featured Projects",3,null),e("p",null,{class:"section-subtitle animate-fadeInUp stagger-1"},"Explore my portfolio of full-stack applications and technical solutions",3,null),e("div",null,{class:"filter-tabs animate-fadeInUp stagger-2"},s.map(l=>e("button",{class:`filter-tab ${t.value===l.value?"active":""}`,onClick$:d("s_1xEgQnu0yC4",[l,o])},null,r(l,"label"),0,l.value)),1,null),e("div",null,{class:"projects-grid"},p.map((l,y)=>e("div",{class:`project-card animate-fadeInUp stagger-${Math.min(y+3,8)}`,onClick$:d("s_7w8zQT0J9wQ",[_,l])},null,[e("div",null,{class:"project-image-container"},[e("img",{src:l.images[0],alt:r(l,"title")},{class:"project-image",loading:"lazy",width:"800",height:"600"},null,3,null),e("span",null,{class:"project-category"},r(l,"category"),1,null)],1,null),e("div",null,{class:"project-content"},[e("h3",null,{class:"project-title"},r(l,"title"),1,null),e("p",null,{class:"project-description"},r(l,"description"),1,null),e("div",null,{class:"project-tech"},[l.technologies.slice(0,4).map(b=>e("span",null,{class:"tech-badge"},b,1,b)),l.technologies.length>4&&e("span",null,{class:"tech-badge"},["+",l.technologies.length-4],1,"m6_0")],1,null),e("div",null,{class:"project-links"},e("button",null,{class:"project-link primary",onClick$:d("s_x0Kaq5Nib7o")},[e("svg",null,{width:"16",height:"16",viewBox:"0 0 24 24",fill:"none",stroke:"currentColor","stroke-width":"2"},e("path",null,{d:"M9 12h6M12 9v6M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"},null,3,null),3,null),"View Details"],3,null),3,null)],1,null)],0,l.id)),1,null),e("div",null,{class:u(l=>`modal-overlay ${l.value?"open":""}`,[n],'`modal-overlay ${p0.value?"open":""}`'),onClick$:S},a.value&&e("div",null,{class:"modal-content",onClick$:d("s_42RUnvGm7aU")},[e("button",null,{class:"modal-close",onClick$:S},e("svg",null,{width:"24",height:"24",viewBox:"0 0 24 24",fill:"none",stroke:"currentColor","stroke-width":"2"},[e("line",null,{x1:"18",y1:"6",x2:"6",y2:"18"},null,3,null),e("line",null,{x1:"6",y1:"6",x2:"18",y2:"18"},null,3,null)],3,null),3,null),e("div",null,{class:"modal-header"},[e("h3",null,{class:"modal-title"},u(l=>l.value.title,[a],"p0.value.title"),3,null),e("span",null,{class:"modal-category"},u(l=>l.value.category,[a],"p0.value.category"),3,null)],3,null),e("div",null,{class:"modal-body"},[e("div",null,{class:"modal-section"},[e("h4",null,{class:"modal-section-title"},"Key Features",3,null),e("div",null,{class:"feature-list"},a.value.features.map(l=>e("div",null,{class:"feature-item"},[e("div",null,{class:"feature-icon"},"✓",3,null),e("span",null,null,l,1,null)],1,l)),1,null)],1,null),e("div",null,{class:"modal-section"},[e("h4",null,{class:"modal-section-title"},"Project Outcomes",3,null),e("div",null,{class:"stats-grid"},a.value.outcomes.map(l=>{const[y,...b]=l.split(" ");return e("div",null,{class:"stat-card"},[e("div",null,{class:"stat-value"},y,1,null),e("div",null,{class:"stat-label"},b.join(" "),1,null)],1,l)}),1,null)],1,null),e("div",null,{class:"modal-section"},[e("h4",null,{class:"modal-section-title"},"Technical Challenges",3,null),e("div",null,{class:"feature-list"},a.value.challenges.map(l=>e("div",null,{class:"feature-item"},[e("div",null,{class:"feature-icon"},"💡",3,null),e("span",null,null,l,1,null)],1,l)),1,null)],1,null)],1,null)],1,"m6_1"),1,null)],1,null),1,"m6_2")},te=g(i(ne,"s_JdVX0L8bEOA")),ae=[{name:"LinkedIn",url:"https://www.linkedin.com/in/twpow/",icon:`<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+    
+    @media (max-width: 480px) {
+      .projects-section {
+        padding: 60px 12px;
+      }
+      
+      .section-title {
+        font-size: 1.9rem;
+      }
+      
+      .section-subtitle {
+        font-size: 0.95rem;
+        padding: 0 8px;
+      }
+      
+      .filter-tabs {
+        gap: 8px;
+        padding: 0 8px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+      .filter-tab {
+        padding: 10px 16px;
+        font-size: 0.85rem;
+        min-width: 80px;
+        max-width: 120px;
+      }
+      
+      .projects-grid {
+        gap: 24px;
+      }
+      
+      .project-image-container {
+        height: 160px;
+      }
+      
+      .project-content {
+        padding: 18px;
+      }
+      
+      .project-title {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+      }
+      
+      .project-description {
+        font-size: 0.9rem;
+        margin-bottom: 14px;
+      }
+      
+      .tech-badge {
+        padding: 3px 8px;
+        font-size: 0.7rem;
+      }
+      
+      .project-link {
+        padding: 10px 14px;
+        font-size: 0.85rem;
+      }
+      
+      /* Modal for small screens */
+      .modal-overlay {
+        padding: 5px;
+        padding-top: 10px;
+      }
+      
+      .modal-content {
+        max-height: calc(100vh - 20px);
+        border-radius: var(--neu-radius-md);
+      }
+      
+      .modal-close {
+        top: 12px;
+        right: 12px;
+        width: 32px;
+        height: 32px;
+      }
+      
+      .modal-header {
+        padding: 45px 16px 16px;
+      }
+      
+      .modal-title {
+        font-size: 1.4rem;
+      }
+      
+      .modal-body {
+        padding: 16px;
+      }
+      
+      .modal-section {
+        margin-bottom: 28px;
+      }
+      
+      .modal-section-title {
+        font-size: 1.1rem;
+        margin-bottom: 14px;
+      }
+      
+      .feature-item {
+        padding: 10px;
+        gap: 10px;
+        font-size: 0.85rem;
+      }
+      
+      .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+      
+      .stat-card {
+        padding: 14px;
+      }
+      
+      .stat-value {
+        font-size: 1.3rem;
+      }
+      
+      .stat-label {
+        font-size: 0.8rem;
+      }
+    }
+    
+    /* Landscape mobile orientation */
+    @media (max-width: 768px) and (orientation: landscape) {
+      .projects-section {
+        padding: 50px 16px;
+      }
+      
+      .filter-tabs {
+        margin-bottom: 40px;
+      }
+      
+      .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+      
+      .project-image-container {
+        height: 140px;
+      }
+      
+      .project-content {
+        padding: 16px;
+      }
+      
+      .modal-overlay {
+        padding-top: 10px;
+      }
+      
+      .modal-content {
+        max-height: calc(100vh - 20px);
+      }
+    }
+  `,X=n=>{const[a]=x();a.value=n},Z=n=>{const[a,t]=x();t.value=n,a.value=!0},ee=()=>{const[n,a]=x();n.value=!1,setTimeout(()=>{a.value=null},300)},te=()=>{const n=m("all"),a=m(null),t=m(!1);v(l(K,"s_x09mof0NAUM"));const r=[{value:"all",label:"All Projects"},...N()],u=n.value==="all"?j:j.filter(i=>i.category===n.value),o=l(X,"s_04T8x2lEfJQ",[n]),C=l(Z,"s_kH0dZ6cEGg4",[t,a]),z=l(ee,"s_AlkI4Q6oVwQ",[t,a]);return e("section",null,{id:"projects",class:"projects-section"},e("div",null,{class:"projects-container"},[e("h2",null,{class:"section-title animate-fadeInUp"},"Featured Projects",3,null),e("p",null,{class:"section-subtitle animate-fadeInUp stagger-1"},"Explore my portfolio of full-stack applications and technical solutions",3,null),e("div",null,{class:"filter-tabs animate-fadeInUp stagger-2"},r.map(i=>e("button",{class:`filter-tab ${n.value===i.value?"active":""}`,onClick$:p("s_1xEgQnu0yC4",[i,o])},null,s(i,"label"),0,i.value)),1,null),e("div",null,{class:"projects-grid"},u.map((i,y)=>e("div",{class:`project-card animate-fadeInUp stagger-${Math.min(y+3,8)}`,onClick$:p("s_7w8zQT0J9wQ",[C,i])},null,[e("div",null,{class:"project-image-container"},[e("img",{src:i.images[0],alt:s(i,"title")},{class:"project-image",loading:"lazy",width:"800",height:"600"},null,3,null),e("span",null,{class:"project-category"},s(i,"category"),1,null)],1,null),e("div",null,{class:"project-content"},[e("h3",null,{class:"project-title"},s(i,"title"),1,null),e("p",null,{class:"project-description"},s(i,"description"),1,null),e("div",null,{class:"project-tech"},[i.technologies.slice(0,4).map(f=>e("span",null,{class:"tech-badge"},f,1,f)),i.technologies.length>4&&e("span",null,{class:"tech-badge"},["+",i.technologies.length-4],1,"m6_0")],1,null),e("div",null,{class:"project-links"},e("button",null,{class:"project-link primary",onClick$:p("s_x0Kaq5Nib7o")},[e("svg",null,{width:"16",height:"16",viewBox:"0 0 24 24",fill:"none",stroke:"currentColor","stroke-width":"2"},e("path",null,{d:"M9 12h6M12 9v6M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"},null,3,null),3,null),"View Details"],3,null),3,null)],1,null)],0,i.id)),1,null),e("div",null,{class:d(i=>`modal-overlay ${i.value?"open":""}`,[t],'`modal-overlay ${p0.value?"open":""}`'),onClick$:z},a.value&&e("div",null,{class:"modal-content",onClick$:p("s_42RUnvGm7aU")},[e("button",null,{class:"modal-close",onClick$:z},e("svg",null,{width:"24",height:"24",viewBox:"0 0 24 24",fill:"none",stroke:"currentColor","stroke-width":"2"},[e("line",null,{x1:"18",y1:"6",x2:"6",y2:"18"},null,3,null),e("line",null,{x1:"6",y1:"6",x2:"18",y2:"18"},null,3,null)],3,null),3,null),e("div",null,{class:"modal-header"},[e("h3",null,{class:"modal-title"},d(i=>i.value.title,[a],"p0.value.title"),3,null),e("span",null,{class:"modal-category"},d(i=>i.value.category,[a],"p0.value.category"),3,null)],3,null),e("div",null,{class:"modal-body"},[e("div",null,{class:"modal-section"},[e("h4",null,{class:"modal-section-title"},"Key Features",3,null),e("div",null,{class:"feature-list"},a.value.features.map(i=>e("div",null,{class:"feature-item"},[e("div",null,{class:"feature-icon"},"✓",3,null),e("span",null,null,i,1,null)],1,i)),1,null)],1,null),e("div",null,{class:"modal-section"},[e("h4",null,{class:"modal-section-title"},"Project Outcomes",3,null),e("div",null,{class:"stats-grid"},a.value.outcomes.map(i=>{const[y,...f]=i.split(" ");return e("div",null,{class:"stat-card"},[e("div",null,{class:"stat-value"},y,1,null),e("div",null,{class:"stat-label"},f.join(" "),1,null)],1,i)}),1,null)],1,null),e("div",null,{class:"modal-section"},[e("h4",null,{class:"modal-section-title"},"Technical Challenges",3,null),e("div",null,{class:"feature-list"},a.value.challenges.map(i=>e("div",null,{class:"feature-item"},[e("div",null,{class:"feature-icon"},"💡",3,null),e("span",null,null,i,1,null)],1,i)),1,null)],1,null)],1,null)],1,"m6_1"),1,null)],1,null),1,"m6_2")},ne=g(l(te,"s_JdVX0L8bEOA")),ae=[{name:"LinkedIn",url:"https://www.linkedin.com/in/twpow/",icon:`<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
       <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
     </svg>`,color:"#0077B5"},{name:"Email",url:"mailto:thomas.walker.powell@gmail.com",icon:`<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
       <path d="M0 3v18h24v-18h-24zm6.623 7.929l-4.623 5.712v-9.458l4.623 3.746zm-4.141-5.929h19.035l-9.517 7.713-9.518-7.713zm5.694 7.188l3.824 3.099 3.83-3.104 5.612 6.817h-18.779l5.513-6.812zm9.208-1.264l4.616-3.741v9.348l-4.616-5.607z"/>
     </svg>`,color:"#EA4335"},{name:"GitHub",url:"https://github.com/twpow",icon:`<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
       <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-    </svg>`,color:"#333"}],x={email:"thomas.walker.powell@gmail.com",phone:"(919) 593-8731",location:"Charlotte, NC",availability:"Currently interning at SAS"},le=`
+    </svg>`,color:"#333"}],b={email:"thomas.walker.powell@gmail.com",phone:"(919) 593-8731",location:"Charlotte, NC",availability:"Currently interning at SAS"},ie=`
     .contact-section {
       padding: 100px 20px;
       background: transparent;
@@ -1323,27 +2056,269 @@ import{c as g,i,b as c,S as z,F as w,u as m,d as f,e,f as d,g as u,h as r,j as h
     
     /* Responsive */
     @media (max-width: 968px) {
+      .contact-section {
+        padding: 80px 16px;
+      }
+      
       .contact-content {
         grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      
+      .contact-info,
+      .contact-form {
+        padding: 32px;
       }
       
       .form-row {
         grid-template-columns: 1fr;
+        gap: 16px;
+      }
+      
+      .social-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
       }
     }
     
-    @media (max-width: 640px) {
+    @media (max-width: 768px) {
+      .contact-section {
+        padding: 70px 16px;
+      }
+      
+      .section-title {
+        font-size: 2.2rem;
+        margin-bottom: 16px;
+      }
+      
+      .section-subtitle {
+        font-size: 1rem;
+        margin-bottom: 50px;
+        padding: 0 10px;
+      }
+      
+      .contact-content {
+        gap: 32px;
+      }
+      
       .contact-info,
       .contact-form {
-        padding: 25px;
+        padding: 28px 24px;
+      }
+      
+      .info-title,
+      .form-title {
+        font-size: 1.4rem;
+        margin-bottom: 24px;
+      }
+      
+      .info-item {
+        margin-bottom: 20px;
+        padding: 16px;
+        gap: 16px;
+      }
+      
+      .info-icon {
+        width: 44px;
+        height: 44px;
+      }
+      
+      .info-label {
+        font-size: 0.85rem;
+      }
+      
+      .info-value {
+        font-size: 0.95rem;
+      }
+      
+      .social-links {
+        margin-top: 32px;
+      }
+      
+      .social-title {
+        font-size: 1.1rem;
+        margin-bottom: 16px;
+      }
+      
+      .social-grid {
+        gap: 10px;
+      }
+      
+      .social-link {
+        padding: 12px;
+      }
+      
+      .social-link svg {
+        width: 20px;
+        height: 20px;
+      }
+      
+      .form-group {
+        margin-bottom: 20px;
+      }
+      
+      .form-label {
+        font-size: 0.9rem;
+        margin-bottom: 8px;
+      }
+      
+      .form-input,
+      .form-textarea {
+        padding: 14px 18px;
+        font-size: 0.95rem;
+      }
+      
+      .form-textarea {
+        min-height: 130px;
+      }
+      
+      .form-submit {
+        padding: 16px 36px;
+        font-size: 1rem;
+      }
+      
+      .availability-badge {
+        margin-top: 16px;
+        padding: 6px 14px;
+        font-size: 0.85rem;
+      }
+      
+      .availability-dot {
+        width: 6px;
+        height: 6px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .contact-section {
+        padding: 60px 12px;
+      }
+      
+      .section-title {
+        font-size: 1.9rem;
+      }
+      
+      .section-subtitle {
+        font-size: 0.95rem;
+        padding: 0 8px;
+      }
+      
+      .contact-info,
+      .contact-form {
+        padding: 24px 20px;
+      }
+      
+      .info-title,
+      .form-title {
+        font-size: 1.3rem;
+        margin-bottom: 20px;
+      }
+      
+      .info-item {
+        padding: 14px;
+        gap: 14px;
+        margin-bottom: 16px;
+      }
+      
+      .info-icon {
+        width: 40px;
+        height: 40px;
+      }
+      
+      .info-label {
+        font-size: 0.8rem;
+      }
+      
+      .info-value {
+        font-size: 0.9rem;
+      }
+      
+      .social-links {
+        margin-top: 28px;
+      }
+      
+      .social-title {
+        font-size: 1rem;
+        margin-bottom: 14px;
       }
       
       .social-grid {
         grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
       }
       
-      .section-title {
-        font-size: 2rem;
+      .social-link {
+        padding: 10px;
+      }
+      
+      .social-link svg {
+        width: 18px;
+        height: 18px;
+      }
+      
+      .form-group {
+        margin-bottom: 18px;
+      }
+      
+      .form-label {
+        font-size: 0.85rem;
+        margin-bottom: 6px;
+      }
+      
+      .form-input,
+      .form-textarea {
+        padding: 12px 16px;
+        font-size: 0.9rem;
+      }
+      
+      .form-textarea {
+        min-height: 120px;
+      }
+      
+      .form-submit {
+        padding: 14px 32px;
+        font-size: 0.95rem;
+      }
+      
+      .submit-status {
+        margin-top: 16px;
+        padding: 12px;
+        font-size: 0.9rem;
+      }
+      
+      .availability-badge {
+        margin-top: 14px;
+        padding: 5px 12px;
+        font-size: 0.8rem;
       }
     }
-  `,oe=async t=>{const[a,n,s]=h();t.preventDefault(),n.value=!0,s.value="idle",await new Promise(p=>setTimeout(p,2e3)),console.log("Form submitted:",a.value),n.value=!1,s.value="success",setTimeout(()=>{a.value={name:"",email:"",subject:"",message:""},s.value="idle"},3e3)},ie=(t,a)=>{const[n]=h();n.value={...n.value,[t]:a}},se=()=>{const t=m({name:"",email:"",subject:"",message:""}),a=m(!1),n=m("idle");f(i(le,"s_tvPusS0UOeY"));const s=i(oe,"s_LMfn7cFC95k",[t,a,n]),p=i(ie,"s_G0PU4nT0vKs",[t]);return e("section",null,{id:"contact",class:"contact-section"},e("div",null,{class:"contact-container"},[e("h2",null,{class:"section-title animate-fadeInUp"},"Get In Touch",3,null),e("p",null,{class:"section-subtitle animate-fadeInUp stagger-1"},"Let's discuss your next project or collaboration opportunity",3,null),e("div",null,{class:"contact-content"},[e("div",null,{class:"contact-info animate-fadeInLeft"},[e("h3",null,{class:"info-title"},"Contact Information",3,null),e("div",null,{class:"info-item"},[e("div",null,{class:"info-icon"},e("svg",null,{width:"24",height:"24",viewBox:"0 0 24 24",fill:"none",stroke:"currentColor","stroke-width":"2"},e("path",null,{d:"M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"},null,3,null),3,null),3,null),e("div",null,{class:"info-details"},[e("p",null,{class:"info-label"},"Email",3,null),e("p",null,{class:"info-value"},x.email,3,null)],3,null)],3,null),e("div",null,{class:"info-item"},[e("div",null,{class:"info-icon"},e("svg",null,{width:"24",height:"24",viewBox:"0 0 24 24",fill:"none",stroke:"currentColor","stroke-width":"2"},e("path",null,{d:"M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"},null,3,null),3,null),3,null),e("div",null,{class:"info-details"},[e("p",null,{class:"info-label"},"Phone",3,null),e("p",null,{class:"info-value"},x.phone,3,null)],3,null)],3,null),e("div",null,{class:"info-item"},[e("div",null,{class:"info-icon"},e("svg",null,{width:"24",height:"24",viewBox:"0 0 24 24",fill:"none",stroke:"currentColor","stroke-width":"2"},[e("path",null,{d:"M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"},null,3,null),e("circle",null,{cx:"12",cy:"10",r:"3"},null,3,null)],3,null),3,null),e("div",null,{class:"info-details"},[e("p",null,{class:"info-label"},"Location",3,null),e("p",null,{class:"info-value"},x.location,3,null)],3,null)],3,null),e("div",null,{class:"availability-badge"},[e("span",null,{class:"availability-dot"},null,3,null),x.availability],3,null),e("div",null,{class:"social-links"},[e("h4",null,{class:"social-title"},"Connect With Me",3,null),e("div",null,{class:"social-grid"},ae.map(o=>e("a",{href:r(o,"url"),title:r(o,"name"),dangerouslySetInnerHTML:r(o,"icon")},{target:"_blank",rel:"noopener noreferrer",class:"social-link"},null,3,o.name)),1,null)],1,null)],1,null),e("div",null,{class:"contact-form animate-fadeInRight"},[e("h3",null,{class:"form-title"},"Send Me a Message",3,null),e("form",null,{onSubmit$:s},[e("div",null,{class:"form-row"},[e("div",null,{class:"form-group"},[e("label",null,{class:"form-label",for:"name"},"Your Name",3,null),e("input",null,{type:"text",id:"name",class:"form-input",placeholder:"John Smith",value:u(o=>o.value.name,[t],"p0.value.name"),required:!0,onInput$:d("s_vKy2S362iTQ",[p])},null,3,null)],3,null),e("div",null,{class:"form-group"},[e("label",null,{class:"form-label",for:"email"},"Email Address",3,null),e("input",null,{type:"email",id:"email",class:"form-input",placeholder:"john@example.com",value:u(o=>o.value.email,[t],"p0.value.email"),required:!0,onInput$:d("s_LuZO1QS7gEs",[p])},null,3,null)],3,null)],3,null),e("div",null,{class:"form-group"},[e("label",null,{class:"form-label",for:"subject"},"Subject",3,null),e("input",null,{type:"text",id:"subject",class:"form-input",placeholder:"Project Inquiry",value:u(o=>o.value.subject,[t],"p0.value.subject"),required:!0,onInput$:d("s_zAJbdncFBqs",[p])},null,3,null)],3,null),e("div",null,{class:"form-group"},[e("label",null,{class:"form-label",for:"message"},"Message",3,null),e("textarea",null,{id:"message",class:"form-textarea",placeholder:"Tell me about your project...",value:u(o=>o.value.message,[t],"p0.value.message"),required:!0,onInput$:d("s_1M8Ii0d2Bp4",[p])},null,3,null)],3,null),e("button",null,{type:"submit",class:"form-submit",disabled:u(o=>o.value,[a],"p0.value")},a.value?c(w,{children:[e("span",null,{class:"spinner"},null,3,null),"Sending..."]},3,"Db_0"):c(w,{children:["Send Message",e("svg",null,{width:"20",height:"20",viewBox:"0 0 24 24",fill:"none",stroke:"currentColor","stroke-width":"2"},[e("line",null,{x1:"22",y1:"2",x2:"11",y2:"13"},null,3,null),e("polygon",null,{points:"22 2 15 22 11 13 2 9 22 2"},null,3,null)],3,null)]},3,"Db_1"),1,null),n.value==="success"&&e("div",null,{class:"submit-status success"},"✓ Message sent successfully! I'll get back to you soon.",3,"Db_2"),n.value==="error"&&e("div",null,{class:"submit-status error"},"✗ Something went wrong. Please try again or email me directly.",3,"Db_3")],1,null)],1,null)],1,null)],1,null),1,"Db_4")},re=g(i(se,"s_Ubng8hDLd1Y")),ce=()=>c(w,{children:[c(O,null,3,"i8_0"),e("main",null,null,[c(G,null,3,"i8_1"),c(V,null,3,"i8_2"),c(te,null,3,"i8_3"),c(re,null,3,"i8_4")],1,null)]},1,"i8_5"),ue=g(i(ce,"s_B0lqk5IDDy4")),de={title:"Thomas Powell - Technical Intern & Computer Science Student",meta:[{name:"description",content:"Technical Intern at SAS specializing in cloud engineering, DevOps, and full-stack development. UNC Charlotte Computer Science and Data Science student."},{name:"keywords",content:"Thomas Powell, SAS intern, cloud engineering, DevOps, full-stack developer, Python, AWS, Docker, Kubernetes, UNC Charlotte"},{property:"og:title",content:"Thomas Powell - Technical Intern & Computer Science Student"},{property:"og:description",content:"Explore my portfolio of enterprise projects at SAS, including cloud infrastructure, automation tools, and web applications."},{property:"og:type",content:"website"},{name:"twitter:card",content:"summary_large_image"},{name:"twitter:title",content:"Thomas Powell - Technical Intern & Computer Science Student"},{name:"twitter:description",content:"Technical Intern at SAS specializing in cloud engineering, DevOps, and full-stack development."}]},pe=Object.freeze(Object.defineProperty({__proto__:null,default:ue,head:de},Symbol.toStringTag,{value:"Module"})),me=[],ge=()=>M,he=[["/",[ge,()=>pe],"/",["q-D4DmeJyC.js","q-DU2VGAJT.js"]]],ve=[],fe=!0,be="/",xe=!0,ye={routes:he,serverPlugins:me,menus:ve,trailingSlash:fe,basePathname:be,cacheModules:xe};export{be as basePathname,xe as cacheModules,ye as default,ve as menus,he as routes,me as serverPlugins,fe as trailingSlash};
+    
+    /* Landscape mobile orientation */
+    @media (max-width: 768px) and (orientation: landscape) {
+      .contact-section {
+        padding: 50px 16px;
+      }
+      
+      .contact-content {
+        gap: 28px;
+      }
+      
+      .contact-info,
+      .contact-form {
+        padding: 24px 20px;
+      }
+      
+      .form-row {
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+      
+      .form-textarea {
+        min-height: 100px;
+      }
+      
+      .social-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+  `,oe=async n=>{const[a,t,r]=x();n.preventDefault(),t.value=!0,r.value="idle",await new Promise(u=>setTimeout(u,2e3)),console.log("Form submitted:",a.value),t.value=!1,r.value="success",setTimeout(()=>{a.value={name:"",email:"",subject:"",message:""},r.value="idle"},3e3)},le=(n,a)=>{const[t]=x();t.value={...t.value,[n]:a}},re=()=>{const n=m({name:"",email:"",subject:"",message:""}),a=m(!1),t=m("idle");v(l(ie,"s_tvPusS0UOeY"));const r=l(oe,"s_LMfn7cFC95k",[n,a,t]),u=l(le,"s_G0PU4nT0vKs",[n]);return e("section",null,{id:"contact",class:"contact-section"},e("div",null,{class:"contact-container"},[e("h2",null,{class:"section-title animate-fadeInUp"},"Get In Touch",3,null),e("p",null,{class:"section-subtitle animate-fadeInUp stagger-1"},"Let's discuss your next project or collaboration opportunity",3,null),e("div",null,{class:"contact-content"},[e("div",null,{class:"contact-info animate-fadeInLeft"},[e("h3",null,{class:"info-title"},"Contact Information",3,null),e("div",null,{class:"info-item"},[e("div",null,{class:"info-icon"},e("svg",null,{width:"24",height:"24",viewBox:"0 0 24 24",fill:"none",stroke:"currentColor","stroke-width":"2"},e("path",null,{d:"M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"},null,3,null),3,null),3,null),e("div",null,{class:"info-details"},[e("p",null,{class:"info-label"},"Email",3,null),e("p",null,{class:"info-value"},b.email,3,null)],3,null)],3,null),e("div",null,{class:"info-item"},[e("div",null,{class:"info-icon"},e("svg",null,{width:"24",height:"24",viewBox:"0 0 24 24",fill:"none",stroke:"currentColor","stroke-width":"2"},e("path",null,{d:"M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"},null,3,null),3,null),3,null),e("div",null,{class:"info-details"},[e("p",null,{class:"info-label"},"Phone",3,null),e("p",null,{class:"info-value"},b.phone,3,null)],3,null)],3,null),e("div",null,{class:"info-item"},[e("div",null,{class:"info-icon"},e("svg",null,{width:"24",height:"24",viewBox:"0 0 24 24",fill:"none",stroke:"currentColor","stroke-width":"2"},[e("path",null,{d:"M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"},null,3,null),e("circle",null,{cx:"12",cy:"10",r:"3"},null,3,null)],3,null),3,null),e("div",null,{class:"info-details"},[e("p",null,{class:"info-label"},"Location",3,null),e("p",null,{class:"info-value"},b.location,3,null)],3,null)],3,null),e("div",null,{class:"availability-badge"},[e("span",null,{class:"availability-dot"},null,3,null),b.availability],3,null),e("div",null,{class:"social-links"},[e("h4",null,{class:"social-title"},"Connect With Me",3,null),e("div",null,{class:"social-grid"},ae.map(o=>e("a",{href:s(o,"url"),title:s(o,"name"),dangerouslySetInnerHTML:s(o,"icon")},{target:"_blank",rel:"noopener noreferrer",class:"social-link"},null,3,o.name)),1,null)],1,null)],1,null),e("div",null,{class:"contact-form animate-fadeInRight"},[e("h3",null,{class:"form-title"},"Send Me a Message",3,null),e("form",null,{onSubmit$:r},[e("div",null,{class:"form-row"},[e("div",null,{class:"form-group"},[e("label",null,{class:"form-label",for:"name"},"Your Name",3,null),e("input",null,{type:"text",id:"name",class:"form-input",placeholder:"John Smith",value:d(o=>o.value.name,[n],"p0.value.name"),required:!0,onInput$:p("s_vKy2S362iTQ",[u])},null,3,null)],3,null),e("div",null,{class:"form-group"},[e("label",null,{class:"form-label",for:"email"},"Email Address",3,null),e("input",null,{type:"email",id:"email",class:"form-input",placeholder:"john@example.com",value:d(o=>o.value.email,[n],"p0.value.email"),required:!0,onInput$:p("s_LuZO1QS7gEs",[u])},null,3,null)],3,null)],3,null),e("div",null,{class:"form-group"},[e("label",null,{class:"form-label",for:"subject"},"Subject",3,null),e("input",null,{type:"text",id:"subject",class:"form-input",placeholder:"Project Inquiry",value:d(o=>o.value.subject,[n],"p0.value.subject"),required:!0,onInput$:p("s_zAJbdncFBqs",[u])},null,3,null)],3,null),e("div",null,{class:"form-group"},[e("label",null,{class:"form-label",for:"message"},"Message",3,null),e("textarea",null,{id:"message",class:"form-textarea",placeholder:"Tell me about your project...",value:d(o=>o.value.message,[n],"p0.value.message"),required:!0,onInput$:p("s_1M8Ii0d2Bp4",[u])},null,3,null)],3,null),e("button",null,{type:"submit",class:"form-submit",disabled:d(o=>o.value,[a],"p0.value")},a.value?c(w,{children:[e("span",null,{class:"spinner"},null,3,null),"Sending..."]},3,"Db_0"):c(w,{children:["Send Message",e("svg",null,{width:"20",height:"20",viewBox:"0 0 24 24",fill:"none",stroke:"currentColor","stroke-width":"2"},[e("line",null,{x1:"22",y1:"2",x2:"11",y2:"13"},null,3,null),e("polygon",null,{points:"22 2 15 22 11 13 2 9 22 2"},null,3,null)],3,null)]},3,"Db_1"),1,null),t.value==="success"&&e("div",null,{class:"submit-status success"},"✓ Message sent successfully! I'll get back to you soon.",3,"Db_2"),t.value==="error"&&e("div",null,{class:"submit-status error"},"✗ Something went wrong. Please try again or email me directly.",3,"Db_3")],1,null)],1,null)],1,null)],1,null),1,"Db_4")},se=g(l(re,"s_Ubng8hDLd1Y")),ce=()=>c(w,{children:[c(L,null,3,"i8_0"),e("main",null,null,[c(G,null,3,"i8_1"),c(V,null,3,"i8_2"),c(ne,null,3,"i8_3"),c(se,null,3,"i8_4")],1,null)]},1,"i8_5"),de=g(l(ce,"s_B0lqk5IDDy4")),pe={title:"Thomas Powell - Technical Intern & Computer Science Student",meta:[{name:"description",content:"Technical Intern at SAS specializing in cloud engineering, DevOps, and full-stack development. UNC Charlotte Computer Science and Data Science student."},{name:"keywords",content:"Thomas Powell, SAS intern, cloud engineering, DevOps, full-stack developer, Python, AWS, Docker, Kubernetes, UNC Charlotte"},{property:"og:title",content:"Thomas Powell - Technical Intern & Computer Science Student"},{property:"og:description",content:"Explore my portfolio of enterprise projects at SAS, including cloud infrastructure, automation tools, and web applications."},{property:"og:type",content:"website"},{name:"twitter:card",content:"summary_large_image"},{name:"twitter:title",content:"Thomas Powell - Technical Intern & Computer Science Student"},{name:"twitter:description",content:"Technical Intern at SAS specializing in cloud engineering, DevOps, and full-stack development."}]},ue=Object.freeze(Object.defineProperty({__proto__:null,default:de,head:pe},Symbol.toStringTag,{value:"Module"})),me=[],ge=()=>M,xe=[["/",[ge,()=>ue],"/",["q-BQwkKZy9.js","q-3J1xeeGP.js"]]],he=[],ve=!0,fe="/",be=!0,ye={routes:xe,serverPlugins:me,menus:he,trailingSlash:ve,basePathname:fe,cacheModules:be};export{fe as basePathname,be as cacheModules,ye as default,he as menus,xe as routes,me as serverPlugins,ve as trailingSlash};
