@@ -173,6 +173,43 @@ export const LiquidBackground = component$(() => {
       opacity: 0.5;
     }
     
+    /* Additional desktop-only shapes */
+    .shape-7 {
+      width: 220px;
+      height: 220px;
+      top: 35%;
+      right: 5%;
+      animation: float 19s ease-in-out infinite, rotate 26s linear infinite;
+      opacity: 0.4;
+    }
+    
+    .shape-8 {
+      width: 160px;
+      height: 160px;
+      bottom: 45%;
+      right: 25%;
+      animation: float 21s ease-in-out infinite reverse, rotate 29s linear infinite reverse;
+      opacity: 0.6;
+    }
+    
+    .shape-9 {
+      width: 190px;
+      height: 190px;
+      top: 60%;
+      right: 35%;
+      animation: float 16s ease-in-out infinite, rotate 22s linear infinite;
+      opacity: 0.5;
+    }
+    
+    .shape-10 {
+      width: 140px;
+      height: 140px;
+      top: 25%;
+      right: 45%;
+      animation: float 24s ease-in-out infinite reverse, rotate 31s linear infinite reverse;
+      opacity: 0.7;
+    }
+    
     @keyframes float {
       0%, 100% { 
         transform: translateY(0) translateX(0) scale(1);
@@ -205,6 +242,11 @@ export const LiquidBackground = component$(() => {
       .shape-4 { width: 180px; height: 180px; }
       .shape-5 { width: 130px; height: 130px; }
       .shape-6 { width: 220px; height: 220px; }
+      
+      /* Hide additional shapes on mobile */
+      .shape-7, .shape-8, .shape-9, .shape-10 {
+        display: none;
+      }
     }
     
     @media (max-width: 480px) {
@@ -225,6 +267,11 @@ export const LiquidBackground = component$(() => {
       <div class="shape shape-4 kiwi-fruit"></div>
       <div class="shape shape-5 kiwi-skin"></div>
       <div class="shape shape-6 kiwi-fruit"></div>
+      {/* Desktop-only additional shapes */}
+      <div class="shape shape-7 kiwi-skin"></div>
+      <div class="shape shape-8 kiwi-fruit"></div>
+      <div class="shape shape-9 kiwi-skin"></div>
+      <div class="shape shape-10 kiwi-fruit"></div>
     </div>
   );
 });

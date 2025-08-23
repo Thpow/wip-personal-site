@@ -1,8 +1,9 @@
 export interface Skill {
   name: string;
   level: number; // 0-100
-  category: 'frontend' | 'backend' | 'database' | 'devops' | 'tools' | 'soft';
+  category: 'frontend' | 'backend' | 'database' | 'devops' | 'tools' | 'soft' | 'analytics';
   icon?: string;
+  isWIP?: boolean; // Work in Progress indicator
 }
 
 export interface TechStack {
@@ -23,9 +24,16 @@ export const skills: Skill[] = [
   { name: 'Python', level: 95, category: 'backend' },
   { name: 'Java', level: 75, category: 'backend' },
   { name: 'C++', level: 70, category: 'backend' },
+  { name: 'R', level: 70, category: 'backend' },
   { name: 'Machine Learning', level: 80, category: 'backend' },
   { name: 'Web Automation', level: 90, category: 'backend' },
   { name: 'Test Driven Development', level: 85, category: 'backend' },
+  
+  // Business Analytics Skills
+  { name: 'Statistical Analysis', level: 0, category: 'analytics', isWIP: true },
+  { name: 'Data Visualization', level: 0, category: 'analytics', isWIP: true },
+  { name: 'Business Intelligence', level: 0, category: 'analytics', isWIP: true },
+  { name: 'Predictive Modeling', level: 0, category: 'analytics', isWIP: true },
   
   // Database Skills
   { name: 'AWS S3', level: 85, category: 'database' },
@@ -60,6 +68,18 @@ export const techStack: TechStack[] = [
     logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg',
     proficiency: 'expert',
     yearsOfExperience: 3
+  },
+  {
+    name: 'R',
+    logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/r/r-original.svg',
+    proficiency: 'intermediate',
+    yearsOfExperience: 1
+  },
+  {
+    name: 'SAS',
+    logo: 'https://www.sas.com/content/dam/SAS/en_us/image/other/logos/sas-logo-primary-rgb.svg',
+    proficiency: 'intermediate',
+    yearsOfExperience: 2
   },
   {
     name: 'Docker',

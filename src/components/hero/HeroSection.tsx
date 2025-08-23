@@ -1,10 +1,9 @@
 import { component$, useSignal, useVisibleTask$, useStylesScoped$ } from '@builder.io/qwik';
-import ImgPfp from '~/media/pfp.jpeg?jsx';
 
 export const HeroSection = component$(() => {
   const displayText = useSignal('');
   const showCursor = useSignal(true);
-  const fullText = "Technical Intern at SAS | Computer Science & Data Science Student";
+  const fullText = "Intern @ SAS | MSBA Data Science & Business Analytics | BS CompSci";
   
   useStylesScoped$(`
     .hero-section {
@@ -174,7 +173,7 @@ export const HeroSection = component$(() => {
     
     .scroll-indicator {
       position: absolute;
-      bottom: 40px;
+      bottom: 10px;
       left: 50%;
       transform: translateX(-50%);
       display: flex;
@@ -286,7 +285,7 @@ export const HeroSection = component$(() => {
       }
       
       .scroll-indicator {
-        bottom: 30px;
+        bottom: 15px;
         gap: 8px;
       }
       
@@ -352,7 +351,7 @@ export const HeroSection = component$(() => {
       }
       
       .scroll-indicator {
-        bottom: 25px;
+        bottom: 10px;
       }
       
       .scroll-indicator span {
@@ -396,7 +395,7 @@ export const HeroSection = component$(() => {
       }
       
       .scroll-indicator {
-        bottom: 20px;
+        bottom: 10px;
       }
     }
   `);
@@ -428,9 +427,12 @@ export const HeroSection = component$(() => {
       <div class="hero-content">
         <div class="profile-container">
           <div class="profile-image-wrapper">
-            <ImgPfp 
+            <img
+              src="/pfp.jpeg"
               alt="Profile"
               class="profile-image"
+              width="200"
+              height="200"
             />
             <div class="profile-status">
               <div class="status-dot"></div>
@@ -458,13 +460,6 @@ export const HeroSection = component$(() => {
               <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
             </svg>
           </a>
-        </div>
-        
-        <div class="scroll-indicator">
-          <div class="scroll-mouse">
-            <div class="scroll-wheel"></div>
-          </div>
-          <span>Scroll to explore</span>
         </div>
       </div>
     </section>

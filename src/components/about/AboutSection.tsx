@@ -151,6 +151,17 @@ export const AboutSection = component$(() => {
       box-shadow: 2px 2px 4px rgba(108, 99, 255, 0.3);
     }
     
+    .skill-level.wip {
+      color: #9ca3af;
+      font-weight: 500;
+    }
+    
+    .skill-progress.wip-progress {
+      background: linear-gradient(90deg, #9ca3af, #6b7280);
+      box-shadow: 2px 2px 4px rgba(156, 163, 175, 0.2);
+      opacity: 0.5;
+    }
+    
     .tech-stack {
       margin-top: 80px;
     }
@@ -486,13 +497,14 @@ export const AboutSection = component$(() => {
   
   const frontendSkills = getSkillsByCategory('frontend').slice(0, 4);
   const backendSkills = getSkillsByCategory('backend').slice(0, 4);
+  const analyticsSkills = getSkillsByCategory('analytics');
   
   return (
     <section id="about" class="about-section">
       <div class="about-container">
         <h2 class="section-title animate-fadeInUp">About Me</h2>
         <p class="section-subtitle animate-fadeInUp stagger-1">
-          Passionate about building scalable solutions and creating exceptional user experiences
+          
         </p>
         
         <div class="about-content">
@@ -546,6 +558,24 @@ export const AboutSection = component$(() => {
                     <div 
                       class="skill-progress" 
                       style={`width: ${skill.level}%`}
+                    ></div>
+                  </div>
+                </div>
+              ))}
+            </div>
+            
+            <div class="skill-category">
+              <p class="category-title">Business Analytics</p>
+              {analyticsSkills.map((skill) => (
+                <div key={skill.name} class="skill-item">
+                  <div class="skill-header">
+                    <span class="skill-name">{skill.name}</span>
+                    <span class="skill-level wip">WIP</span>
+                  </div>
+                  <div class="skill-bar">
+                    <div
+                      class="skill-progress wip-progress"
+                      style="width: 0%"
                     ></div>
                   </div>
                 </div>
