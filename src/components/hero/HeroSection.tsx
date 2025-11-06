@@ -3,7 +3,8 @@ import { component$, useSignal, useVisibleTask$, useStylesScoped$ } from '@build
 export const HeroSection = component$(() => {
   const displayText = useSignal('');
   const showCursor = useSignal(true);
-  const fullText = "Intern @ SAS | MSBA Data Science & Business Analytics | BS CompSci";
+  const fullText = "Intern @ SAS | Student at UNC Charlotte";
+  const imageError = useSignal(false);
   
   useStylesScoped$(`
     .hero-section {
@@ -427,13 +428,28 @@ export const HeroSection = component$(() => {
       <div class="hero-content">
         <div class="profile-container">
           <div class="profile-image-wrapper">
-            <img
-              src="/pfp.jpeg"
-              alt="Profile"
-              class="profile-image"
-              width="200"
-              height="200"
-            />
+            {!imageError.value ? (
+              <img
+                src="/pfp.jpeg"
+                alt="Thomas Powell"
+                class="profile-image"
+                width="200"
+                height="200"
+                loading="eager"
+                onError$={() => { imageError.value = true; }}
+              />
+            ) : (
+              <svg viewBox="0 0 200 200" class="profile-image" width="200" height="200">
+                <defs>
+                  <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#00CED1;stop-opacity:0.2" />
+                    <stop offset="100%" style="stop-color:#48D1CC;stop-opacity:0.3" />
+                  </linearGradient>
+                </defs>
+                <circle cx="100" cy="100" r="95" fill="url(#bgGradient)" stroke="#00CED1" stroke-width="2"/>
+                <text x="100" y="115" text-anchor="middle" font-size="70" font-weight="bold" fill="#00CED1" font-family="Arial, sans-serif">TP</text>
+              </svg>
+            )}
             <div class="profile-status">
               <div class="status-dot"></div>
             </div>

@@ -182,12 +182,12 @@ export const aboutMe = {
   ],
   
   interests: [
+    "Data Science",
+    "Artificial Intelligence",
+    "Longevity Research", 
+    "Finance & Fintech",
     "Cloud Infrastructure",
-    "DevOps Automation",
-    "Machine Learning",
-    "Web Development",
-    "Test Automation",
-    "Containerization"
+    "DevOps Automation"
   ],
   
   education: {

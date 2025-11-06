@@ -1,15 +1,15 @@
 /* Neumorphism Design System */
 
 :root {
-  /* Light Theme Colors */
-  --neu-base: #e0e5ec;
+  /* SAS White Theme with GHK-Cu Blue Accents */
+  --neu-base: #ffffff;
   --neu-light-shadow: #ffffff;
-  --neu-dark-shadow: #a3b1c6;
-  --neu-accent: #8EE53F;
-  --neu-accent-dark: #7c3f00;
-  --neu-text-primary: #2d3748;
-  --neu-text-secondary: #718096;
-  --neu-text-muted: #a0aec0;
+  --neu-dark-shadow: #d1d5db;
+  --neu-accent: #00CED1; /* GHK-Cu turquoise */
+  --neu-accent-dark: #008B8B; /* Darker turquoise */
+  --neu-text-primary: #1a1a1a;
+  --neu-text-secondary: #4a5568;
+  --neu-text-muted: #718096;
   --neu-success: #48bb78;
   --neu-warning: #ed8936;
   --neu-error: #f56565;

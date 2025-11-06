@@ -2,7 +2,7 @@ export interface Project {
   id: string;
   title: string;
   description: string;
-  category: 'frontend' | 'backend' | 'fullstack' | 'mobile' | 'devops';
+  category: 'sas' | 'machine-learning' | 'longevity' | 'other';
   technologies: string[];
   images: string[];
   liveUrl?: string;
@@ -21,7 +21,7 @@ export const projects: Project[] = [
     id: "ciqe-devcontainers",
     title: "CIQE Development Containers",
     description: "Containerization of repos and projects with the CI360 team allowing for normalization of testing and development environments across teams",
-    category: "devops",
+    category: "sas",
     technologies: ["Docker", "DevContainers", "AWS", "Git", "Kubernetes", "Helm", "Docker Compose"],
     images: [
       "https://images.unsplash.com/photo-1605745341112-85968b19335b?w=800&h=600&fit=crop",
@@ -52,7 +52,7 @@ export const projects: Project[] = [
     id: "qegrid-selenium",
     title: "QEGRID: Selenium Grid",
     description: "Enterprise-scale Selenium Grid deployment allowing browsers of selenium tests to run inside an internally deployed grid for better resource management",
-    category: "devops",
+    category: "sas",
     technologies: ["Selenium", "Docker", "Kubernetes", "Python", "Java", "AWS"],
     images: [
       "https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?w=800&h=600&fit=crop",
@@ -83,7 +83,7 @@ export const projects: Project[] = [
     id: "splitstation-webapp",
     title: "SplitStation: Internal Webapp Tool",
     description: "Full-stack web application for controlling production deployment segments with complete pipeline, authentication, and tracking capabilities",
-    category: "fullstack",
+    category: "sas",
     technologies: ["Flask", "Python", "HTML/CSS/JS", "Docker", "AWS", "Azure", "CloudFormation", "Split.io"],
     images: [
       "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop",
@@ -114,7 +114,7 @@ export const projects: Project[] = [
     id: "ci360-cli-tool",
     title: "CI360: Command Line Tool",
     description: "Enterprise CLI tool for interaction with internal APIs, featuring automatic proxying and simplified complex operations",
-    category: "backend",
+    category: "sas",
     technologies: ["Python", "Click", "REST APIs", "Docker", "AWS", "Internal APIs"],
     images: [
       "https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=800&h=600&fit=crop",
@@ -145,7 +145,7 @@ export const projects: Project[] = [
     id: "spotify-playlist-builder",
     title: "Spotify Playlist Builder",
     description: "Award-winning web application for building Spotify playlists with swipe-based interface, developed at UNC Charlotte AxeHack",
-    category: "fullstack",
+    category: "other",
     technologies: ["Python", "Flask", "HTML", "CSS", "JavaScript", "Spotify API"],
     images: [
       "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800&h=600&fit=crop",
@@ -176,7 +176,7 @@ export const projects: Project[] = [
     id: "qa-automation-suite",
     title: "QA Infrastructure & Automation",
     description: "Comprehensive suite of automation tools, web apps, and cloud infrastructure to enable quality assurance across CI360 platform",
-    category: "devops",
+    category: "sas",
     technologies: ["Python", "AWS", "Terraform", "Docker", "Kubernetes", "GitHub Actions", "S3"],
     images: [
       "https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?w=800&h=600&fit=crop",
@@ -202,6 +202,62 @@ export const projects: Project[] = [
       "Zero manual deployment steps",
       "Complete test history retention"
     ]
+  },
+  // Machine Learning Projects (Placeholder)
+  {
+    id: "ml-project-1",
+    title: "Neural Network Model",
+    description: "Coming Soon - Advanced deep learning model for pattern recognition and prediction",
+    category: "machine-learning",
+    technologies: ["Python", "TensorFlow", "PyTorch", "Scikit-learn", "Pandas", "NumPy"],
+    images: [
+      "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?w=800&h=600&fit=crop"
+    ],
+    features: [
+      "Advanced pattern recognition",
+      "Real-time prediction capabilities",
+      "Model optimization techniques",
+      "Data preprocessing pipeline"
+    ],
+    challenges: [
+      "Training data optimization",
+      "Model accuracy improvements",
+      "Computational efficiency"
+    ],
+    outcomes: [
+      "In Development",
+      "Target: 95% accuracy",
+      "Real-time processing"
+    ]
+  },
+  // Longevity Projects (Placeholder)
+  {
+    id: "longevity-project-1",
+    title: "Longevity Research Platform",
+    description: "Coming Soon - Bioinformatics platform for longevity and health optimization research",
+    category: "longevity",
+    technologies: ["Python", "R", "BioPython", "Data Analysis", "Machine Learning"],
+    images: [
+      "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1576086213369-97a306d36557?w=800&h=600&fit=crop"
+    ],
+    features: [
+      "Biomarker analysis",
+      "Health data tracking",
+      "Research collaboration tools",
+      "Data visualization dashboards"
+    ],
+    challenges: [
+      "Complex biological data processing",
+      "Integration of multiple data sources",
+      "Privacy and security compliance"
+    ],
+    outcomes: [
+      "In Development",
+      "Collaboration with researchers",
+      "Open-source initiative"
+    ]
   }
 ];
 
@@ -222,10 +278,9 @@ export const getAllTechnologies = (): string[] => {
 // Helper function to get project categories
 export const getCategories = (): Array<{ value: Project['category']; label: string }> => {
   return [
-    { value: 'fullstack', label: 'Full Stack' },
-    { value: 'frontend', label: 'Frontend' },
-    { value: 'backend', label: 'Backend' },
-    { value: 'mobile', label: 'Mobile' },
-    { value: 'devops', label: 'DevOps' }
+    { value: 'sas', label: 'SAS' },
+    { value: 'machine-learning', label: 'Machine Learning' },
+    { value: 'longevity', label: 'Longevity' },
+    { value: 'other', label: 'Other' }
   ];
 };
