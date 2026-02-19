@@ -165,8 +165,34 @@ export const ContactSection = component$(() => {
       font-size: 11px; font-weight: 700;
     }
     
-    .submit-msg.success { background: #c0ffc0; color: var(--win-success); }
     .submit-msg.error { background: #ffc0c0; color: var(--win-error); }
+    
+    .success-overlay {
+      position: absolute;
+      inset: 0;
+      background: var(--win-surface);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      z-index: 10;
+      padding: 24px;
+    }
+    
+    .success-icon { font-size: 32px; }
+    
+    .success-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--win-success);
+    }
+    
+    .success-body {
+      font-size: 11px;
+      color: var(--win-text-secondary);
+      text-align: center;
+    }
     
     .win-statusbar {
       background: var(--win-surface);
@@ -184,6 +210,8 @@ export const ContactSection = component$(() => {
     .statusbar-cell:first-child { flex: 2; }
     .statusbar-cell:last-child { flex: 1; text-align: right; }
     
+    .form-window-inner { position: relative; }
+    
     @media (max-width: 768px) {
       .contact-section { padding: 12px 8px; }
       .contact-layout { grid-template-columns: 1fr; }
@@ -197,25 +225,20 @@ export const ContactSection = component$(() => {
     submitStatus.value = 'idle';
 
     try {
-      const res = await fetch('https://api.web3forms.com/submit', {
+      const res = await fetch('/api/contact', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          access_key: 'e8ea635f-421a-447f-aca4-f2b4e2549001',
           name: formData.value.name,
           email: formData.value.email,
-          subject: `website: ${formData.value.subject}`,
-          message: `From: ${formData.value.name} <${formData.value.email}>\n\n${formData.value.message}`,
-          replyto: formData.value.email,
+          subject: formData.value.subject,
+          message: formData.value.message,
         }),
       });
-      const json = await res.json();
+      const json = await res.json() as { success: boolean };
       if (json.success) {
         submitStatus.value = 'success';
-        setTimeout(() => {
-          formData.value = { name: '', email: '', subject: '', message: '' };
-          submitStatus.value = 'idle';
-        }, 3000);
+        formData.value = { name: '', email: '', subject: '', message: '' };
       } else {
         submitStatus.value = 'error';
       }
@@ -294,7 +317,7 @@ export const ContactSection = component$(() => {
         </div>
         
         {/* Message Form Window */}
-        <div class="form-window">
+        <div class="form-window form-window-inner">
           <div class="win-titlebar">
             <div class="titlebar-left">
               <span>✉️</span>
@@ -306,6 +329,14 @@ export const ContactSection = component$(() => {
               <button class="titlebar-btn" aria-hidden="true">×</button>
             </div>
           </div>
+          {submitStatus.value === 'success' && (
+            <div class="success-overlay">
+              <div class="success-icon">✉️</div>
+              <div class="success-title">Message Sent!</div>
+              <div class="success-body">Thanks for reaching out. I'll get back to you soon.</div>
+              <button class="win-btn primary" onClick$={() => { submitStatus.value = 'idle'; }}>✓ OK</button>
+            </div>
+          )}
           <div class="form-body">
             <form onSubmit$={handleSubmit}>
               <div class="form-row">
@@ -347,9 +378,6 @@ export const ContactSection = component$(() => {
                 </button>
               </div>
               
-              {submitStatus.value === 'success' && (
-                <div class="submit-msg success">✓ Message sent successfully!</div>
-              )}
               {submitStatus.value === 'error' && (
                 <div class="submit-msg error">✗ Error sending. Try emailing directly.</div>
               )}
