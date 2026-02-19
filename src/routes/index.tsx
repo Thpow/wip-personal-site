@@ -6,6 +6,7 @@ import { AboutSection } from "~/components/about/AboutSection";
 import { ExperienceSection } from "~/components/experience/ExperienceSection";
 import { EducationSection } from "~/components/education/EducationSection";
 import { ProjectsSection } from "~/components/projects/ProjectsSection";
+import { ContactSection } from "~/components/contact/ContactSection";
 
 export default component$(() => {
   return (
@@ -17,6 +18,7 @@ export default component$(() => {
         <ExperienceSection />
         <EducationSection />
         <ProjectsSection />
+        <ContactSection />
       </main>
     </>
   );

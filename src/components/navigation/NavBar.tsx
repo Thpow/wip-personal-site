@@ -255,6 +255,7 @@ export const NavBar = component$(() => {
     { id: 'experience', label: 'Experience', icon: '💼' },
     { id: 'education', label: 'Education', icon: '🎓' },
     { id: 'projects', label: 'Projects', icon: '📁' },
+    { id: 'contact', label: 'Contact', icon: '📇' },
   ];
   
   const handleNavClick = $((sectionId: string) => {

@@ -1,9 +1,7 @@
-import { component$, useSignal, useStylesScoped$, $ } from '@builder.io/qwik';
+import { component$, useStylesScoped$ } from '@builder.io/qwik';
 import { aboutMe, techStack, getSkillsByCategory } from '~/data/skills';
 
 export const AboutSection = component$(() => {
-  const activeTab = useSignal('bio');
-  
   useStylesScoped$(`
     .about-section {
       padding: 20px;
@@ -67,6 +65,9 @@ export const AboutSection = component$(() => {
     }
     
     /* Tabs */
+    /* CSS-only tabs via hidden radio inputs */
+    .tab-radios { display: none; }
+
     .tab-bar {
       display: flex;
       gap: 0;
@@ -75,8 +76,8 @@ export const AboutSection = component$(() => {
       z-index: 2;
       padding-left: 4px;
     }
-    
-    .tab-btn {
+
+    .tab-label {
       padding: 5px 16px;
       background: var(--win-bg-dark);
       border: none;
@@ -90,18 +91,18 @@ export const AboutSection = component$(() => {
       cursor: pointer;
       position: relative;
       user-select: none;
+      display: block;
     }
-    
-    .tab-btn.active {
+
+    #tab-bio:checked ~ .about-body .tab-label[for="tab-bio"],
+    #tab-skills:checked ~ .about-body .tab-label[for="tab-skills"],
+    #tab-tech:checked ~ .about-body .tab-label[for="tab-tech"],
+    #tab-interests:checked ~ .about-body .tab-label[for="tab-interests"] {
       background: var(--win-surface);
       padding-bottom: 6px;
       z-index: 3;
-      box-shadow:
-        inset -1px 0 0 0 var(--win-shadow-dark),
-        inset 1px 1px 0 0 var(--win-highlight),
-        inset 0 1px 0 0 var(--win-white);
     }
-    
+
     .tab-content {
       background: var(--win-surface);
       box-shadow: var(--win-border-raised);
@@ -110,12 +111,13 @@ export const AboutSection = component$(() => {
       z-index: 1;
       min-height: 300px;
     }
-    
-    .tab-panel {
-      display: none;
-    }
-    
-    .tab-panel.active {
+
+    .tab-panel { display: none; }
+
+    #tab-bio:checked ~ .about-body .tab-content .panel-bio,
+    #tab-skills:checked ~ .about-body .tab-content .panel-skills,
+    #tab-tech:checked ~ .about-body .tab-content .panel-tech,
+    #tab-interests:checked ~ .about-body .tab-content .panel-interests {
       display: block;
     }
     
@@ -291,7 +293,7 @@ export const AboutSection = component$(() => {
         padding: 12px 8px;
       }
       
-      .tab-btn {
+      .tab-label {
         font-size: 10px;
         padding: 3px 8px;
       }
@@ -315,22 +317,16 @@ export const AboutSection = component$(() => {
   const frontendSkills = getSkillsByCategory('frontend').slice(0, 4);
   const backendSkills = getSkillsByCategory('backend').slice(0, 4);
   const analyticsSkills = getSkillsByCategory('analytics');
-  
-  const setTab = $((tab: string) => {
-    activeTab.value = tab;
-  });
-  
-  const tabs = [
-    { id: 'bio', label: 'General' },
-    { id: 'skills', label: 'Skills' },
-    { id: 'tech', label: 'Tech Stack' },
-    { id: 'interests', label: 'Interests' },
-  ];
-  
+
   return (
     <section id="about" class="about-section">
+      {/* Hidden radio inputs must be siblings of .about-body for CSS sibling selectors */}
+      <input class="tab-radios" type="radio" name="about-tab" id="tab-bio" defaultChecked />
+      <input class="tab-radios" type="radio" name="about-tab" id="tab-skills" />
+      <input class="tab-radios" type="radio" name="about-tab" id="tab-tech" />
+      <input class="tab-radios" type="radio" name="about-tab" id="tab-interests" />
+
       <div class="about-window">
-        {/* Title Bar */}
         <div class="about-titlebar">
           <div class="titlebar-left">
             <span>📋</span>
@@ -342,129 +338,91 @@ export const AboutSection = component$(() => {
             <button class="titlebar-btn" aria-hidden="true">×</button>
           </div>
         </div>
-        
+
         <div class="about-body">
-          {/* Tab Bar */}
           <div class="tab-bar">
-            {tabs.map((tab) => (
-              <button
-                key={tab.id}
-                class={`tab-btn ${activeTab.value === tab.id ? 'active' : ''}`}
-                onClick$={() => setTab(tab.id)}
-              >
-                {tab.label}
-              </button>
-            ))}
+            <label class="tab-label" for="tab-bio">General</label>
+            <label class="tab-label" for="tab-skills">Skills</label>
+            <label class="tab-label" for="tab-tech">Tech Stack</label>
+            <label class="tab-label" for="tab-interests">Interests</label>
           </div>
-          
-          {/* Tab Content */}
+
           <div class="tab-content">
-            {/* General/Bio */}
-            <div class={`tab-panel ${activeTab.value === 'bio' ? 'active' : ''}`}>
+            <div class="tab-panel panel-bio">
               <div class="bio-header">👤 {aboutMe.name}</div>
               <p style="font-size: 14px; color: var(--win-accent); margin-bottom: 8px; font-weight: 700;">
                 {aboutMe.title}
               </p>
               <p class="bio-text">{aboutMe.bio}</p>
-              
               <div class="groupbox">
                 <span class="groupbox-label">Highlights</span>
                 <ul class="highlight-list">
-                  {aboutMe.highlights.map((h, i) => (
-                    <li key={i}>{h}</li>
-                  ))}
+                  {aboutMe.highlights.map((h, i) => <li key={i}>{h}</li>)}
                 </ul>
               </div>
             </div>
-            
-            {/* Skills */}
-            <div class={`tab-panel ${activeTab.value === 'skills' ? 'active' : ''}`}>
+
+            <div class="tab-panel panel-skills">
               <div class="groupbox">
                 <span class="groupbox-label">Frontend Development</span>
                 <div class="skill-tags">
-                  {frontendSkills.map((s) => (
-                    <span key={s.name} class="skill-tag">{s.name}</span>
-                  ))}
+                  {frontendSkills.map((s) => <span key={s.name} class="skill-tag">{s.name}</span>)}
                 </div>
               </div>
-              
               <div class="groupbox">
                 <span class="groupbox-label">Backend Development</span>
                 <div class="skill-tags">
-                  {backendSkills.map((s) => (
-                    <span key={s.name} class="skill-tag">{s.name}</span>
-                  ))}
+                  {backendSkills.map((s) => <span key={s.name} class="skill-tag">{s.name}</span>)}
                 </div>
               </div>
-              
               <div class="groupbox">
                 <span class="groupbox-label">Business Analytics & Data Science</span>
                 <div class="skill-tags">
-                  {analyticsSkills.map((s) => (
-                    <span key={s.name} class="skill-tag">{s.name}</span>
-                  ))}
+                  {analyticsSkills.map((s) => <span key={s.name} class="skill-tag">{s.name}</span>)}
                 </div>
               </div>
             </div>
-            
-            {/* Tech Stack */}
-            <div class={`tab-panel ${activeTab.value === 'tech' ? 'active' : ''}`}>
+
+            <div class="tab-panel panel-tech">
               <div class="tech-grid">
                 {techStack.map((tech) => (
                   <div key={tech.name} class="tech-item">
-                    <img
-                      src={tech.logo}
-                      alt={tech.name}
-                      class="tech-logo"
-                      loading="lazy"
-                      width="32"
-                      height="32"
-                    />
+                    <img src={tech.logo} alt={tech.name} class="tech-logo" loading="lazy" width="32" height="32" />
                     <p class="tech-name">{tech.name}</p>
                     <p class="tech-exp">{tech.yearsOfExperience}yr</p>
                   </div>
                 ))}
               </div>
             </div>
-            
-            {/* Interests */}
-            <div class={`tab-panel ${activeTab.value === 'interests' ? 'active' : ''}`}>
+
+            <div class="tab-panel panel-interests">
               <div class="groupbox">
                 <span class="groupbox-label">Interests & Passions</span>
                 <div class="interest-list">
-                  {aboutMe.interests.map((interest) => (
-                    <span key={interest} class="interest-tag">{interest}</span>
-                  ))}
+                  {aboutMe.interests.map((interest) => <span key={interest} class="interest-tag">{interest}</span>)}
                 </div>
               </div>
-              
               <div class="groupbox">
                 <span class="groupbox-label">Education</span>
                 <ul class="highlight-list">
                   <li>{aboutMe.education.degree}</li>
                   <li>{aboutMe.education.university}</li>
                   <li>{aboutMe.education.year}</li>
-                  {aboutMe.education.achievements.map((a, i) => (
-                    <li key={i}>{a}</li>
-                  ))}
+                  {aboutMe.education.achievements.map((a, i) => <li key={i}>{a}</li>)}
                 </ul>
               </div>
-              
               <div class="groupbox">
                 <span class="groupbox-label">Certifications</span>
                 <ul class="highlight-list">
-                  {aboutMe.certifications.map((c, i) => (
-                    <li key={i}>{c}</li>
-                  ))}
+                  {aboutMe.certifications.map((c, i) => <li key={i}>{c}</li>)}
                 </ul>
               </div>
             </div>
           </div>
         </div>
-        
-        {/* Status Bar */}
+
         <div class="about-statusbar">
-          <div class="statusbar-cell">Tab: {tabs.find(t => t.id === activeTab.value)?.label}</div>
+          <div class="statusbar-cell">About Me</div>
           <div class="statusbar-cell">{techStack.length} technologies</div>
         </div>
       </div>
