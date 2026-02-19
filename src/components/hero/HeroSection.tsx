@@ -319,7 +319,7 @@ export const HeroSection = component$(() => {
       clearInterval(typeInterval);
       clearInterval(cursorInterval);
     };
-  });
+  }, { strategy: 'document-ready' });
   
   return (
     <section id="home" class="hero-section">
@@ -341,19 +341,20 @@ export const HeroSection = component$(() => {
         <div class="hero-body">
           <div class="hero-profile-row">
             <div class="profile-frame">
-              {!imageError.value ? (
-                <img
-                  src="/pfp.jpeg"
-                  alt="Thomas Powell"
-                  class="profile-image"
-                  width="96"
-                  height="96"
-                  loading="eager"
-                  onError$={() => { imageError.value = true; }}
-                />
-              ) : (
-                <div class="profile-fallback">TP</div>
-              )}
+              <img
+                src="/pfp.jpeg"
+                alt="Thomas Powell"
+                class="profile-image"
+                width="96"
+                height="96"
+                loading="eager"
+                onError$={(e) => {
+                  imageError.value = true;
+                  const target = e.target as HTMLImageElement;
+                  target.style.display = 'none';
+                  target.parentElement!.innerHTML = '<div style="width:100%;height:100%;background:var(--win-bg-light);display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:700;color:var(--win-titlebar);font-family:IBM Plex Mono,monospace">TP</div>';
+                }}
+              />
             </div>
             <div class="profile-info">
               <h1 class="hero-name">Thomas Powell</h1>
