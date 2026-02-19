@@ -312,7 +312,7 @@ export const HeroSection = component$(() => {
           <div class="hero-profile-row">
             <div class="profile-frame">
               <img
-                src="/pfp.jpeg"
+                src="https://raw.githubusercontent.com/Thpow/wip-personal-site/main/public/pfp.jpeg"
                 alt="Thomas Powell"
                 class="profile-image"
                 width="96"

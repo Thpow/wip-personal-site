@@ -207,7 +207,6 @@ export const ContactSection = component$(() => {
           subject: `website: ${formData.value.subject}`,
           message: `From: ${formData.value.name} <${formData.value.email}>\n\n${formData.value.message}`,
           replyto: formData.value.email,
-          recipient: 'thomas.walker.powell+70@gmail.com',
         }),
       });
       const json = await res.json();
