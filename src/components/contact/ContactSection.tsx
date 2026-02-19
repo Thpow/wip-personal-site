@@ -225,14 +225,16 @@ export const ContactSection = component$(() => {
     submitStatus.value = 'idle';
 
     try {
-      const res = await fetch('/api/contact', {
+      const res = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify({
+          access_key: 'e8ea635f-421a-447f-aca4-f2b4e2549001',
           name: formData.value.name,
           email: formData.value.email,
-          subject: formData.value.subject,
-          message: formData.value.message,
+          subject: `website: ${formData.value.subject}`,
+          message: `From: ${formData.value.name} <${formData.value.email}>\n\n${formData.value.message}`,
+          replyto: formData.value.email,
         }),
       });
       const json = await res.json() as { success: boolean };
