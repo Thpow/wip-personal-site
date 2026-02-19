@@ -1,10 +1,6 @@
-import { component$, useSignal, useVisibleTask$, useStylesScoped$ } from '@builder.io/qwik';
+import { component$, useStylesScoped$ } from '@builder.io/qwik';
 
 export const HeroSection = component$(() => {
-  const displayText = useSignal('');
-  const showCursor = useSignal(true);
-  const fullText = "C:\\USERS\\TPOWELL> Intern @ SAS | Student at UNC Charlotte";
-  const imageError = useSignal(false);
   
   useStylesScoped$(`
     .hero-section {
@@ -100,19 +96,6 @@ export const HeroSection = component$(() => {
       display: block;
     }
     
-    .profile-fallback {
-      width: 100%;
-      height: 100%;
-      background: var(--win-bg-light);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 28px;
-      font-weight: 700;
-      color: var(--win-titlebar);
-      font-family: 'IBM Plex Mono', monospace;
-    }
-    
     .profile-info {
       flex: 1;
     }
@@ -175,6 +158,15 @@ export const HeroSection = component$(() => {
     .terminal-text {
       color: #00ff00;
       word-break: break-all;
+      overflow: hidden;
+      white-space: nowrap;
+      width: 0;
+      animation: typing 2s steps(56, end) 0.3s forwards;
+    }
+
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
     }
     
     .terminal-cursor {
@@ -299,28 +291,6 @@ export const HeroSection = component$(() => {
     }
   `);
   
-  // eslint-disable-next-line qwik/no-use-visible-task
-  useVisibleTask$(() => {
-    let index = 0;
-    const typeInterval = setInterval(() => {
-      if (index <= fullText.length) {
-        displayText.value = fullText.slice(0, index);
-        index++;
-      } else {
-        clearInterval(typeInterval);
-      }
-    }, 35);
-    
-    const cursorInterval = setInterval(() => {
-      showCursor.value = !showCursor.value;
-    }, 400);
-    
-    return () => {
-      clearInterval(typeInterval);
-      clearInterval(cursorInterval);
-    };
-  }, { strategy: 'document-ready' });
-  
   return (
     <section id="home" class="hero-section">
       <div class="hero-window">
@@ -348,12 +318,6 @@ export const HeroSection = component$(() => {
                 width="96"
                 height="96"
                 loading="eager"
-                onError$={(e) => {
-                  imageError.value = true;
-                  const target = e.target as HTMLImageElement;
-                  target.style.display = 'none';
-                  target.parentElement!.innerHTML = '<div style="width:100%;height:100%;background:var(--win-bg-light);display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:700;color:var(--win-titlebar);font-family:IBM Plex Mono,monospace">TP</div>';
-                }}
               />
             </div>
             <div class="profile-info">
@@ -370,8 +334,8 @@ export const HeroSection = component$(() => {
           
           {/* Terminal prompt */}
           <div class="terminal-box">
-            <span class="terminal-text">{displayText.value}</span>
-            {showCursor.value && <span class="terminal-cursor"></span>}
+            <span class="terminal-text">C:\USERS\TPOWELL&gt; Intern @ SAS | Student at UNC Charlotte</span>
+            <span class="terminal-cursor"></span>
           </div>
           
           {/* Action buttons */}

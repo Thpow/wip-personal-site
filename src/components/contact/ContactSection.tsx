@@ -201,7 +201,7 @@ export const ContactSection = component$(() => {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify({
-          access_key: 'YOUR_WEB3FORMS_ACCESS_KEY',
+          access_key: 'e8ea635f-421a-447f-aca4-f2b4e2549001',
           name: formData.value.name,
           email: formData.value.email,
           subject: `website: ${formData.value.subject}`,
