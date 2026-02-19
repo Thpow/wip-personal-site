@@ -172,9 +172,6 @@ export const DNABackground = component$(() => {
     const width = 80; // Width of the viewport
     
     // ASCII characters for 3D DNA structure
-    const bases = {
-      A: 'A', T: 'T', G: 'G', C: 'C'
-    };
     const backbone = ['○', '●', '◉', '◎'];
     const connectors = ['═', '─', '╌', '┄', '━'];
     
