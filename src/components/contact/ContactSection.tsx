@@ -195,14 +195,36 @@ export const ContactSection = component$(() => {
     e.preventDefault();
     isSubmitting.value = true;
     submitStatus.value = 'idle';
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    console.log('Form submitted:', formData.value);
-    isSubmitting.value = false;
-    submitStatus.value = 'success';
-    setTimeout(() => {
-      formData.value = { name: '', email: '', subject: '', message: '' };
-      submitStatus.value = 'idle';
-    }, 3000);
+
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          access_key: 'YOUR_WEB3FORMS_ACCESS_KEY',
+          name: formData.value.name,
+          email: formData.value.email,
+          subject: `website: ${formData.value.subject}`,
+          message: `From: ${formData.value.name} <${formData.value.email}>\n\n${formData.value.message}`,
+          replyto: formData.value.email,
+          recipient: 'thomas.walker.powell+70@gmail.com',
+        }),
+      });
+      const json = await res.json();
+      if (json.success) {
+        submitStatus.value = 'success';
+        setTimeout(() => {
+          formData.value = { name: '', email: '', subject: '', message: '' };
+          submitStatus.value = 'idle';
+        }, 3000);
+      } else {
+        submitStatus.value = 'error';
+      }
+    } catch {
+      submitStatus.value = 'error';
+    } finally {
+      isSubmitting.value = false;
+    }
   });
   
   const updateFormData = $((field: string, value: string) => {
