@@ -19,6 +19,7 @@ export const skills: Skill[] = [
   { name: 'Flask', level: 85, category: 'frontend' },
   { name: 'Web Development', level: 85, category: 'frontend' },
   { name: 'Full Stack Development', level: 80, category: 'frontend' },
+  { name: 'App Development', level: 80, category: 'frontend' },
   
   // Backend Skills
   { name: 'Python', level: 95, category: 'backend' },
@@ -28,12 +29,16 @@ export const skills: Skill[] = [
   { name: 'Machine Learning', level: 80, category: 'backend' },
   { name: 'Web Automation', level: 90, category: 'backend' },
   { name: 'Test Driven Development', level: 85, category: 'backend' },
+  { name: 'Gen AI Development', level: 75, category: 'backend' },
+  { name: 'Gen AI Testing', level: 85, category: 'backend' },
   
-  // Business Analytics Skills
-  { name: 'Statistical Analysis', level: 0, category: 'analytics', isWIP: true },
-  { name: 'Data Visualization', level: 0, category: 'analytics', isWIP: true },
-  { name: 'Business Intelligence', level: 0, category: 'analytics', isWIP: true },
-  { name: 'Predictive Modeling', level: 0, category: 'analytics', isWIP: true },
+  // Business Analytics & Data Science Skills
+  { name: 'SAS', level: 80, category: 'analytics' },
+  { name: 'Business Analytics', level: 75, category: 'analytics' },
+  { name: 'Econometrics', level: 70, category: 'analytics' },
+  { name: 'Statistical Analysis', level: 75, category: 'analytics' },
+  { name: 'Data Visualization', level: 80, category: 'analytics' },
+  { name: 'Predictive Modeling', level: 70, category: 'analytics' },
   
   // Database Skills
   { name: 'AWS S3', level: 85, category: 'database' },
@@ -166,17 +171,18 @@ export const getExpertTech = (): TechStack[] => {
 export const aboutMe = {
   name: "Thomas Powell",
   title: "Technical Intern at SAS | CS & Data Science Student",
-  bio: `I'm a Student at UNC Charlotte, deeply invested in computers and software as both a hobby and career. Graduate of the Academy of Information Technology and interning at SAS since June 2022.
-        
-        Currently earning both my BS in Computer Science with concentration in data science, and a MS in data science and business analytics dual track. My work at SAS focuses on quality assurance infrastructure, cloud engineering, and full-stack development.
-        
-        I specialize in creating automation tools, web applications, and cloud infrastructure to enable quality assurance and development teams. My projects range from selenium grid deployments to command line tools for internal APIs.`,
+  bio: `Student at UNC Charlotte, deeply invested in computers and software as both a hobby and career. Graduate of the Academy of Information Technology and interning at SAS since June 2022.
+
+Currently earning both my BS in Computer Science with concentration in data science, and a MS in Data Science and Business Analytics dual track. My work at SAS focuses on quality assurance infrastructure, cloud engineering, GenAI testing, and full-stack development.
+
+I specialize in creating automation tools, web applications, cloud infrastructure, and GenAI test strategies. My projects range from Selenium Grid deployments to paper trading apps deployed to the App Store.`,
   
   highlights: [
     "3+ years as Technical Intern at SAS",
-    "BS Computer Science & MS Data Science student",
+    "BS Computer Science (3.95 GPA) & MS Data Science student",
     "Second Place & Golden Hack Award at UNC Charlotte AxeHack",
-    "3.95 GPA (Undergrad) / 4.0 GPA (Graduate)",
+    "GenAI test strategy development using DeepEval",
+    "Paper trading app deployed to App Store",
     "AOIT Honors Program Graduate",
     "Experience with enterprise-scale projects"
   ],
@@ -184,17 +190,20 @@ export const aboutMe = {
   interests: [
     "Data Science",
     "Artificial Intelligence",
+    "GenAI Development",
     "Longevity Research", 
     "Finance & Fintech",
     "Cloud Infrastructure",
-    "DevOps Automation"
+    "DevOps Automation",
+    "Business Analytics",
+    "Econometrics"
   ],
   
   education: {
     degree: "BS Computer Science (Data Science) & MS Data Science & Business Analytics",
     university: "University of North Carolina at Charlotte",
     year: "Expected May 2027",
-    achievements: ["3.95 GPA (Undergrad)", "4.0 GPA (Graduate)", "AOIT Honors Program"]
+    achievements: ["3.95 GPA (Undergrad)", "Accelerated 4+1 Program", "AOIT Honors Program"]
   },
   
   certifications: [

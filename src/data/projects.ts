@@ -2,7 +2,7 @@ export interface Project {
   id: string;
   title: string;
   description: string;
-  category: 'sas' | 'machine-learning' | 'longevity' | 'other';
+  category: 'sas' | 'machine-learning' | 'longevity' | 'genai' | 'app' | 'other';
   technologies: string[];
   images: string[];
   liveUrl?: string;
@@ -203,6 +203,70 @@ export const projects: Project[] = [
       "Complete test history retention"
     ]
   },
+  // App Projects
+  {
+    id: "paper-trading-app",
+    title: "Paper Trading Competition App",
+    description: "Mobile application for simulated stock trading competitions, deployed to the App Store. Users compete in real-time paper trading with live market data.",
+    category: "app",
+    technologies: ["Swift", "Python", "REST APIs", "Market Data APIs", "App Store", "Mobile Development"],
+    images: [
+      "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=800&h=600&fit=crop"
+    ],
+    features: [
+      "Real-time paper trading with live market data",
+      "Competition leaderboards and rankings",
+      "Portfolio tracking and performance analytics",
+      "User authentication and profile management",
+      "Push notifications for trade alerts",
+      "Historical performance charting"
+    ],
+    challenges: [
+      "Real-time market data integration",
+      "App Store review and deployment process",
+      "Handling concurrent trading operations",
+      "Building responsive mobile UI"
+    ],
+    outcomes: [
+      "Deployed to App Store",
+      "Real-time market data",
+      "Competition platform",
+      "Full mobile experience"
+    ]
+  },
+  // GenAI Projects
+  {
+    id: "genai-deepeval",
+    title: "GenAI Test Strategy (DeepEval)",
+    description: "Comprehensive GenAI testing strategy using the DeepEval framework for evaluating LLM outputs, ensuring quality and reliability of AI-generated content.",
+    category: "genai",
+    technologies: ["Python", "DeepEval", "LLMs", "Prompt Engineering", "GenAI", "Testing Frameworks"],
+    images: [
+      "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?w=800&h=600&fit=crop"
+    ],
+    features: [
+      "LLM output evaluation and scoring",
+      "Automated test case generation",
+      "Hallucination detection metrics",
+      "Answer relevancy and faithfulness testing",
+      "Contextual recall and precision metrics",
+      "Regression testing for model updates"
+    ],
+    challenges: [
+      "Defining reliable evaluation metrics for AI outputs",
+      "Handling non-deterministic LLM responses",
+      "Building comprehensive test coverage",
+      "Integrating with existing QA pipelines"
+    ],
+    outcomes: [
+      "Automated LLM testing",
+      "Standardized AI quality metrics",
+      "Integrated into CI/CD",
+      "Reduced manual review time"
+    ]
+  },
   // Machine Learning Projects (Placeholder)
   {
     id: "ml-project-1",
@@ -234,8 +298,8 @@ export const projects: Project[] = [
   // Longevity Projects (Placeholder)
   {
     id: "longevity-project-1",
-    title: "Longevity Research Platform",
-    description: "Coming Soon - Bioinformatics platform for longevity and health optimization research",
+    title: "Longevity Protocol",
+    description: "A personal passion project exploring longevity science, bioinformatics, and health optimization. Not a formal project — just something I care deeply about.",
     category: "longevity",
     technologies: ["Python", "R", "BioPython", "Data Analysis", "Machine Learning"],
     images: [
@@ -255,8 +319,8 @@ export const projects: Project[] = [
     ],
     outcomes: [
       "In Development",
-      "Collaboration with researchers",
-      "Open-source initiative"
+      "Personal passion",
+      "Ongoing exploration"
     ]
   }
 ];
@@ -279,6 +343,8 @@ export const getAllTechnologies = (): string[] => {
 export const getCategories = (): Array<{ value: Project['category']; label: string }> => {
   return [
     { value: 'sas', label: 'SAS' },
+    { value: 'genai', label: 'GenAI' },
+    { value: 'app', label: 'Apps' },
     { value: 'machine-learning', label: 'Machine Learning' },
     { value: 'longevity', label: 'Longevity' },
     { value: 'other', label: 'Other' }

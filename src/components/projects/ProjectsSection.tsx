@@ -8,199 +8,223 @@ export const ProjectsSection = component$(() => {
   
   useStylesScoped$(`
     .projects-section {
-      padding: 100px 20px;
-      background: linear-gradient(135deg, rgba(224, 229, 236, 0.5), var(--neu-base));
-      min-height: 100vh;
+      padding: 20px;
+      position: relative;
+      z-index: 1;
     }
     
-    .projects-container {
-      max-width: 1200px;
+    .projects-window {
+      max-width: 900px;
       margin: 0 auto;
+      background: var(--win-surface);
+      box-shadow: var(--win-border-window);
+      padding: 3px;
     }
     
-    .section-title {
-      text-align: center;
-      font-size: 2.5rem;
-      color: var(--neu-text-primary);
-      margin-bottom: 20px;
+    .proj-titlebar {
+      background: linear-gradient(90deg, var(--win-titlebar), var(--win-accent-light));
+      color: var(--win-titlebar-text);
+      padding: 2px 4px;
       font-weight: 700;
-    }
-    
-    .section-subtitle {
-      text-align: center;
-      color: var(--neu-text-secondary);
-      margin-bottom: 60px;
-      font-size: 1.1rem;
-    }
-    
-    .filter-tabs {
+      font-size: 12px;
       display: flex;
-      justify-content: center;
-      gap: 20px;
-      margin-bottom: 60px;
-      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      user-select: none;
+      min-height: 20px;
     }
     
-    .filter-tab {
-      padding: 12px 28px;
-      background: var(--neu-base);
+    .titlebar-left {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    
+    .titlebar-buttons {
+      display: flex;
+      gap: 2px;
+    }
+    
+    .titlebar-btn {
+      width: 16px;
+      height: 14px;
+      background: var(--win-surface);
+      box-shadow: var(--win-border-button);
       border: none;
-      border-radius: var(--neu-radius-full);
-      box-shadow: var(--neu-shadow-md);
-      color: var(--neu-text-secondary);
-      font-weight: 500;
-      cursor: pointer;
-      transition: all var(--neu-transition-base);
-      font-size: 0.95rem;
-    }
-    
-    .filter-tab:hover {
-      box-shadow: var(--neu-shadow-lg);
-      transform: translateY(-2px);
-      color: var(--neu-text-primary);
-    }
-    
-    .filter-tab.active {
-      background: linear-gradient(145deg, var(--neu-accent), var(--neu-accent-dark));
-      color: white;
-      box-shadow: var(--neu-shadow-lg);
-    }
-    
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-      gap: 40px;
-      margin-bottom: 60px;
-    }
-    
-    .project-card {
-      background: var(--neu-base);
-      border-radius: var(--neu-radius-lg);
-      box-shadow: var(--neu-shadow-lg);
-      overflow: hidden;
-      transition: all var(--neu-transition-base);
-      cursor: pointer;
-      position: relative;
-      display: flex;
-      flex-direction: column;
-    }
-    
-    .project-card:hover {
-      transform: translateY(-8px);
-      box-shadow: var(--neu-shadow-xl);
-    }
-    
-    .project-image-container {
-      position: relative;
-      height: 220px;
-      overflow: hidden;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    }
-    
-    .project-image {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform var(--neu-transition-slow);
-    }
-    
-    .project-card:hover .project-image {
-      transform: scale(1.1);
-    }
-    
-    .project-category {
-      position: absolute;
-      top: 15px;
-      right: 15px;
-      padding: 6px 16px;
-      background: var(--neu-base);
-      border-radius: var(--neu-radius-full);
-      box-shadow: var(--neu-shadow-sm);
-      font-size: 0.8rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      color: var(--neu-accent);
-    }
-    
-    .project-content {
-      padding: 30px;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-    }
-    
-    .project-title {
-      font-size: 1.4rem;
-      color: var(--neu-text-primary);
-      margin-bottom: 15px;
-      font-weight: 700;
-    }
-    
-    .project-description {
-      color: var(--neu-text-secondary);
-      line-height: 1.6;
-      margin-bottom: 20px;
-      flex: 1;
-    }
-    
-    .project-tech {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 25px;
-    }
-    
-    .tech-badge {
-      padding: 5px 12px;
-      background: var(--neu-base);
-      border-radius: var(--neu-radius-full);
-      box-shadow: var(--neu-shadow-inset-sm);
-      font-size: 0.8rem;
-      color: var(--neu-text-secondary);
-      font-weight: 500;
-    }
-    
-    .project-links {
-      display: flex;
-      gap: 15px;
-    }
-    
-    .project-link {
-      flex: 1;
-      padding: 10px 20px;
-      background: var(--neu-base);
-      border-radius: var(--neu-radius-md);
-      box-shadow: var(--neu-shadow-sm);
-      color: var(--neu-text-primary);
-      text-decoration: none;
-      text-align: center;
-      font-weight: 500;
-      transition: all var(--neu-transition-base);
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
+      font-size: 9px;
+      font-weight: 700;
+      font-family: 'IBM Plex Mono', monospace;
+      color: var(--win-text-primary);
+      padding: 0;
+      line-height: 1;
+      cursor: default;
     }
     
-    .project-link:hover {
-      box-shadow: var(--neu-shadow-md);
-      transform: translateY(-2px);
+    /* Menu bar */
+    .proj-menubar {
+      background: var(--win-surface);
+      padding: 2px 0;
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--win-shadow);
     }
     
-    .project-link.primary {
-      background: linear-gradient(145deg, var(--neu-accent), var(--neu-accent-dark));
-      color: white;
+    .menubar-item {
+      padding: 2px 8px;
+      font-size: 11px;
+      cursor: pointer;
+      user-select: none;
+      color: var(--win-text-primary);
+      background: transparent;
+      border: none;
+      font-family: 'IBM Plex Mono', monospace;
     }
     
-    /* Modal Styles */
+    .menubar-item:hover,
+    .menubar-item.active {
+      background: var(--win-titlebar);
+      color: var(--win-titlebar-text);
+    }
+    
+    .proj-body {
+      padding: 12px;
+      background: var(--win-surface);
+    }
+    
+    /* Address bar */
+    .address-bar {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 10px;
+      font-size: 11px;
+    }
+    
+    .address-label {
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    
+    .address-field {
+      flex: 1;
+      background: var(--win-white);
+      box-shadow: var(--win-border-field);
+      padding: 2px 6px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      color: var(--win-text-primary);
+    }
+    
+    /* File list */
+    .file-list-header {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 0;
+      margin-bottom: 0;
+    }
+    
+    .file-list-header-cell {
+      background: var(--win-surface);
+      box-shadow: var(--win-border-button);
+      padding: 2px 8px;
+      font-size: 11px;
+      font-weight: 700;
+      cursor: default;
+      user-select: none;
+    }
+    
+    .file-list {
+      background: var(--win-white);
+      box-shadow: var(--win-border-field);
+      min-height: 200px;
+      max-height: 400px;
+      overflow-y: auto;
+    }
+    
+    .file-item {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 0;
+      padding: 3px 8px;
+      font-size: 11px;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      width: 100%;
+      text-align: left;
+      font-family: 'IBM Plex Mono', monospace;
+      color: var(--win-text-primary);
+    }
+    
+    .file-item:nth-child(even) {
+      background: #f0f0f0;
+    }
+    
+    .file-item:hover {
+      background: var(--win-titlebar);
+      color: var(--win-titlebar-text);
+    }
+    
+    .file-item.selected {
+      background: var(--win-titlebar);
+      color: var(--win-titlebar-text);
+    }
+    
+    .file-name {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    
+    .file-icon {
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+    
+    .file-cat {
+      text-transform: uppercase;
+      font-size: 10px;
+    }
+    
+    .file-tech {
+      font-size: 10px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    
+    /* Status bar */
+    .proj-statusbar {
+      background: var(--win-surface);
+      padding: 2px 4px;
+      display: flex;
+      gap: 2px;
+      font-size: 11px;
+      color: var(--win-text-secondary);
+    }
+    
+    .statusbar-cell {
+      padding: 1px 6px;
+      box-shadow: var(--win-border-sunken);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    
+    .statusbar-cell:first-child { flex: 2; }
+    .statusbar-cell:last-child { flex: 1; text-align: right; }
+    
+    /* Detail modal — Win95 dialog */
     .modal-overlay {
       position: fixed;
       top: 0;
       left: 0;
       right: 0;
       bottom: 0;
-      background: rgba(0, 0, 0, 0.5);
-      backdrop-filter: blur(5px);
+      background: rgba(0, 0, 0, 0.4);
       z-index: 1000;
       display: flex;
       align-items: center;
@@ -208,7 +232,6 @@ export const ProjectsSection = component$(() => {
       padding: 20px;
       opacity: 0;
       visibility: hidden;
-      transition: all var(--neu-transition-base);
     }
     
     .modal-overlay.open {
@@ -216,460 +239,196 @@ export const ProjectsSection = component$(() => {
       visibility: visible;
     }
     
-    .modal-content {
-      background: var(--neu-base);
-      border-radius: var(--neu-radius-lg);
-      box-shadow: var(--neu-shadow-xl);
-      max-width: 900px;
+    .modal-window {
+      background: var(--win-surface);
+      box-shadow: var(--win-border-window);
+      padding: 3px;
+      max-width: 640px;
       width: 100%;
-      max-height: 90vh;
+      max-height: 80vh;
       overflow-y: auto;
-      position: relative;
-      transform: scale(0.9);
-      transition: transform var(--neu-transition-base);
     }
     
-    .modal-overlay.open .modal-content {
-      transform: scale(1);
+    .modal-titlebar {
+      background: linear-gradient(90deg, var(--win-titlebar), var(--win-accent-light));
+      color: var(--win-titlebar-text);
+      padding: 2px 4px;
+      font-weight: 700;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      user-select: none;
+      min-height: 20px;
     }
     
-    .modal-close {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      width: 40px;
-      height: 40px;
-      background: var(--neu-base);
-      border-radius: 50%;
-      box-shadow: var(--neu-shadow-md);
+    .modal-close-btn {
+      width: 16px;
+      height: 14px;
+      background: var(--win-surface);
+      box-shadow: var(--win-border-button);
       border: none;
       cursor: pointer;
+      font-size: 9px;
+      font-weight: 700;
+      font-family: 'IBM Plex Mono', monospace;
+      color: var(--win-text-primary);
       display: flex;
       align-items: center;
       justify-content: center;
-      z-index: 1;
-      transition: all var(--neu-transition-base);
+      padding: 0;
+      line-height: 1;
     }
     
-    .modal-close:hover {
-      box-shadow: var(--neu-shadow-lg);
-      transform: rotate(90deg);
-    }
-    
-    .modal-header {
-      padding: 40px;
-      border-bottom: 1px solid rgba(163, 177, 198, 0.2);
-    }
-    
-    .modal-title {
-      font-size: 2rem;
-      color: var(--neu-text-primary);
-      margin-bottom: 10px;
-    }
-    
-    .modal-category {
-      color: var(--neu-accent);
-      font-weight: 600;
-      text-transform: uppercase;
-      font-size: 0.9rem;
+    .modal-close-btn:active {
+      box-shadow: var(--win-border-button-pressed);
     }
     
     .modal-body {
-      padding: 40px;
+      padding: 12px;
+      background: var(--win-surface);
     }
     
-    .modal-section {
-      margin-bottom: 40px;
+    .modal-desc {
+      font-size: 12px;
+      color: var(--win-text-secondary);
+      line-height: 1.5;
+      margin-bottom: 12px;
     }
     
-    .modal-section-title {
-      font-size: 1.3rem;
-      color: var(--neu-text-primary);
-      margin-bottom: 20px;
-      font-weight: 600;
+    .groupbox {
+      box-shadow:
+        inset 1px 1px 0 0 var(--win-shadow),
+        inset -1px -1px 0 0 var(--win-white);
+      padding: 12px 8px 8px;
+      margin: 10px 0;
+      position: relative;
     }
     
-    .feature-list {
-      display: grid;
-      gap: 15px;
+    .groupbox-label {
+      position: absolute;
+      top: -8px;
+      left: 8px;
+      background: var(--win-surface);
+      padding: 0 4px;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--win-text-primary);
     }
     
-    .feature-item {
+    .item-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .item-list li {
+      padding: 2px 0;
+      font-size: 11px;
+      color: var(--win-text-primary);
       display: flex;
-      gap: 15px;
-      padding: 15px;
-      background: var(--neu-base);
-      border-radius: var(--neu-radius-md);
-      box-shadow: var(--neu-shadow-inset-sm);
+      align-items: flex-start;
+      gap: 6px;
     }
     
-    .feature-icon {
-      width: 24px;
-      height: 24px;
-      background: var(--neu-accent);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
+    .item-list li::before {
+      content: '>';
+      color: var(--win-accent);
+      font-weight: 700;
       flex-shrink: 0;
     }
     
-    .stats-grid {
+    .outcome-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 6px;
     }
     
-    .stat-card {
-      padding: 20px;
-      background: var(--neu-base);
-      border-radius: var(--neu-radius-md);
-      box-shadow: var(--neu-shadow-md);
+    .outcome-card {
+      background: var(--win-white);
+      box-shadow: var(--win-border-field);
+      padding: 8px;
       text-align: center;
     }
     
-    .stat-value {
-      font-size: 1.8rem;
+    .outcome-value {
+      font-size: 14px;
       font-weight: 700;
-      color: var(--neu-accent);
-      margin-bottom: 5px;
+      color: var(--win-accent);
+      margin-bottom: 2px;
     }
     
-    .stat-label {
-      color: var(--neu-text-secondary);
-      font-size: 0.9rem;
+    .outcome-label {
+      font-size: 10px;
+      color: var(--win-text-secondary);
     }
     
-    /* Responsive */
-    @media (max-width: 968px) {
-      .projects-section {
-        padding: 80px 16px;
-      }
-      
-      .projects-grid {
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-        gap: 32px;
-      }
-      
-      .project-image-container {
-        height: 200px;
-      }
-      
-      .project-content {
-        padding: 24px;
-      }
+    .modal-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 6px;
+      margin-top: 12px;
+    }
+    
+    .win-btn {
+      padding: 4px 20px;
+      background: var(--win-surface);
+      box-shadow: var(--win-border-button);
+      border: none;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 12px;
+      color: var(--win-text-primary);
+      cursor: pointer;
+      min-height: 23px;
+      min-width: 75px;
+    }
+    
+    .win-btn:active {
+      box-shadow: var(--win-border-button-pressed);
+    }
+    
+    .tech-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      margin-top: 4px;
+    }
+    
+    .tech-tag {
+      padding: 2px 8px;
+      background: var(--win-surface);
+      box-shadow: var(--win-border-button);
+      font-size: 10px;
     }
     
     @media (max-width: 768px) {
       .projects-section {
-        padding: 70px 16px;
+        padding: 12px 8px;
       }
       
-      .section-title {
-        font-size: 2.2rem;
-        margin-bottom: 16px;
-      }
-      
-      .section-subtitle {
-        font-size: 1rem;
-        margin-bottom: 50px;
-        padding: 0 10px;
-      }
-      
-      .filter-tabs {
-        gap: 12px;
-        margin-bottom: 50px;
-        padding: 0 10px;
-      }
-      
-      .filter-tab {
-        padding: 12px 20px;
-        font-size: 0.9rem;
-        min-width: auto;
-        flex: 1;
-        max-width: 140px;
-      }
-      
-      .projects-grid {
+      .file-list-header {
         grid-template-columns: 1fr;
-        gap: 28px;
-        margin-bottom: 50px;
       }
       
-      .project-card {
-        max-width: 100%;
+      .file-list-header-cell:not(:first-child) {
+        display: none;
       }
       
-      .project-image-container {
-        height: 180px;
-      }
-      
-      .project-content {
-        padding: 20px;
-      }
-      
-      .project-title {
-        font-size: 1.3rem;
-        margin-bottom: 12px;
-      }
-      
-      .project-description {
-        font-size: 0.95rem;
-        line-height: 1.5;
-        margin-bottom: 16px;
-      }
-      
-      .project-tech {
-        gap: 8px;
-        margin-bottom: 20px;
-      }
-      
-      .tech-badge {
-        padding: 4px 10px;
-        font-size: 0.75rem;
-      }
-      
-      .project-links {
-        gap: 12px;
-      }
-      
-      .project-link {
-        padding: 12px 16px;
-        font-size: 0.9rem;
-      }
-      
-      /* Modal improvements for mobile */
-      .modal-overlay {
-        padding: 10px;
-        align-items: flex-start;
-        padding-top: 20px;
-      }
-      
-      .modal-content {
-        max-height: calc(100vh - 40px);
-        border-radius: var(--neu-radius-lg);
-        margin: 0;
-        width: 100%;
-        max-width: 100%;
-      }
-      
-      .modal-close {
-        top: 15px;
-        right: 15px;
-        width: 36px;
-        height: 36px;
-      }
-      
-      .modal-header {
-        padding: 50px 20px 20px;
-      }
-      
-      .modal-title {
-        font-size: 1.6rem;
-        margin-bottom: 8px;
-        line-height: 1.2;
-      }
-      
-      .modal-category {
-        font-size: 0.85rem;
-      }
-      
-      .modal-body {
-        padding: 20px;
-      }
-      
-      .modal-section {
-        margin-bottom: 32px;
-      }
-      
-      .modal-section-title {
-        font-size: 1.2rem;
-        margin-bottom: 16px;
-      }
-      
-      .feature-item {
-        padding: 12px;
-        gap: 12px;
-        font-size: 0.9rem;
-      }
-      
-      .feature-icon {
-        width: 20px;
-        height: 20px;
-        font-size: 0.8rem;
-      }
-      
-      .stats-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 16px;
-      }
-      
-      .stat-card {
-        padding: 16px;
-      }
-      
-      .stat-value {
-        font-size: 1.5rem;
-      }
-      
-      .stat-label {
-        font-size: 0.85rem;
-      }
-    }
-    
-    @media (max-width: 480px) {
-      .projects-section {
-        padding: 60px 12px;
-      }
-      
-      .section-title {
-        font-size: 1.9rem;
-      }
-      
-      .section-subtitle {
-        font-size: 0.95rem;
-        padding: 0 8px;
-      }
-      
-      .filter-tabs {
-        gap: 8px;
-        padding: 0 8px;
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-      
-      .filter-tab {
-        padding: 10px 16px;
-        font-size: 0.85rem;
-        min-width: 80px;
-        max-width: 120px;
-      }
-      
-      .projects-grid {
-        gap: 24px;
-      }
-      
-      .project-image-container {
-        height: 160px;
-      }
-      
-      .project-content {
-        padding: 18px;
-      }
-      
-      .project-title {
-        font-size: 1.2rem;
-        margin-bottom: 10px;
-      }
-      
-      .project-description {
-        font-size: 0.9rem;
-        margin-bottom: 14px;
-      }
-      
-      .tech-badge {
-        padding: 3px 8px;
-        font-size: 0.7rem;
-      }
-      
-      .project-link {
-        padding: 10px 14px;
-        font-size: 0.85rem;
-      }
-      
-      /* Modal for small screens */
-      .modal-overlay {
-        padding: 5px;
-        padding-top: 10px;
-      }
-      
-      .modal-content {
-        max-height: calc(100vh - 20px);
-        border-radius: var(--neu-radius-md);
-      }
-      
-      .modal-close {
-        top: 12px;
-        right: 12px;
-        width: 32px;
-        height: 32px;
-      }
-      
-      .modal-header {
-        padding: 45px 16px 16px;
-      }
-      
-      .modal-title {
-        font-size: 1.4rem;
-      }
-      
-      .modal-body {
-        padding: 16px;
-      }
-      
-      .modal-section {
-        margin-bottom: 28px;
-      }
-      
-      .modal-section-title {
-        font-size: 1.1rem;
-        margin-bottom: 14px;
-      }
-      
-      .feature-item {
-        padding: 10px;
-        gap: 10px;
-        font-size: 0.85rem;
-      }
-      
-      .stats-grid {
+      .file-item {
         grid-template-columns: 1fr;
-        gap: 12px;
       }
       
-      .stat-card {
-        padding: 14px;
-      }
-      
-      .stat-value {
-        font-size: 1.3rem;
-      }
-      
-      .stat-label {
-        font-size: 0.8rem;
-      }
-    }
-    
-    /* Landscape mobile orientation */
-    @media (max-width: 768px) and (orientation: landscape) {
-      .projects-section {
-        padding: 50px 16px;
-      }
-      
-      .filter-tabs {
-        margin-bottom: 40px;
-      }
-      
-      .projects-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
-      }
-      
-      .project-image-container {
-        height: 140px;
-      }
-      
-      .project-content {
-        padding: 16px;
+      .file-cat,
+      .file-tech {
+        display: none;
       }
       
       .modal-overlay {
-        padding-top: 10px;
+        padding: 8px;
       }
       
-      .modal-content {
-        max-height: calc(100vh - 20px);
+      .outcome-grid {
+        grid-template-columns: 1fr;
       }
     }
   `);
@@ -701,18 +460,26 @@ export const ProjectsSection = component$(() => {
   
   return (
     <section id="projects" class="projects-section">
-      <div class="projects-container">
-        <h2 class="section-title animate-fadeInUp">Featured Projects</h2>
-        <p class="section-subtitle animate-fadeInUp stagger-1">
-          Explore my portfolio of full-stack applications and technical solutions
-        </p>
+      <div class="projects-window">
+        {/* Title Bar */}
+        <div class="proj-titlebar">
+          <div class="titlebar-left">
+            <span>📁</span>
+            <span>Projects - File Explorer</span>
+          </div>
+          <div class="titlebar-buttons">
+            <button class="titlebar-btn" aria-hidden="true">_</button>
+            <button class="titlebar-btn" aria-hidden="true">□</button>
+            <button class="titlebar-btn" aria-hidden="true">×</button>
+          </div>
+        </div>
         
-        {/* Filter Tabs */}
-        <div class="filter-tabs animate-fadeInUp stagger-2">
+        {/* Menu Bar (filter) */}
+        <div class="proj-menubar">
           {categories.map((cat) => (
             <button
               key={cat.value}
-              class={`filter-tab ${selectedCategory.value === cat.value ? 'active' : ''}`}
+              class={`menubar-item ${selectedCategory.value === cat.value ? 'active' : ''}`}
               onClick$={() => handleCategoryChange(cat.value)}
             >
               {cat.label}
@@ -720,114 +487,113 @@ export const ProjectsSection = component$(() => {
           ))}
         </div>
         
-        {/* Projects Grid */}
-        <div class="projects-grid">
-          {filteredProjects.map((project, index) => (
-            <div 
-              key={project.id} 
-              class={`project-card animate-fadeInUp stagger-${Math.min(index + 3, 8)}`}
-              onClick$={() => openProjectModal(project)}
-            >
-              <div class="project-image-container">
-                <img 
-                  src={project.images[0]}
-                  alt={project.title}
-                  class="project-image"
-                  loading="lazy"
-                  width="800"
-                  height="600"
-                />
-                <span class="project-category">{project.category}</span>
-              </div>
-              
-              <div class="project-content">
-                <h3 class="project-title">{project.title}</h3>
-                <p class="project-description">{project.description}</p>
-                
-                <div class="project-tech">
-                  {project.technologies.slice(0, 4).map((tech) => (
-                    <span key={tech} class="tech-badge">{tech}</span>
-                  ))}
-                  {project.technologies.length > 4 && (
-                    <span class="tech-badge">+{project.technologies.length - 4}</span>
-                  )}
-                </div>
-                
-                <div class="project-links">
-                  <button
-                    class="project-link primary"
-                    onClick$={(e: Event) => e.stopPropagation()}
-                  >
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                      <path d="M9 12h6M12 9v6M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/>
-                    </svg>
-                    View Details
-                  </button>
-                </div>
-              </div>
+        <div class="proj-body">
+          {/* Address Bar */}
+          <div class="address-bar">
+            <span class="address-label">Address:</span>
+            <div class="address-field">
+              C:\Portfolio\Projects\{selectedCategory.value === 'all' ? '*' : selectedCategory.value}
             </div>
-          ))}
+          </div>
+          
+          {/* File list header */}
+          <div class="file-list-header">
+            <div class="file-list-header-cell">Name</div>
+            <div class="file-list-header-cell">Category</div>
+            <div class="file-list-header-cell">Technologies</div>
+          </div>
+          
+          {/* File list */}
+          <div class="file-list">
+            {filteredProjects.map((project) => (
+              <button
+                key={project.id}
+                class={`file-item ${selectedProject.value?.id === project.id ? 'selected' : ''}`}
+                onClick$={() => openProjectModal(project)}
+              >
+                <span class="file-name">
+                  <span class="file-icon">📄</span>
+                  {project.title}
+                </span>
+                <span class="file-cat">{project.category}</span>
+                <span class="file-tech">{project.technologies.slice(0, 3).join(', ')}</span>
+              </button>
+            ))}
+          </div>
         </div>
         
-        {/* Project Modal */}
-        <div class={`modal-overlay ${isModalOpen.value ? 'open' : ''}`} onClick$={closeModal}>
-          {selectedProject.value && (
-            <div class="modal-content" onClick$={(e: Event) => e.stopPropagation()}>
-              <button class="modal-close" onClick$={closeModal}>
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <line x1="18" y1="6" x2="6" y2="18"></line>
-                  <line x1="6" y1="6" x2="18" y2="18"></line>
-                </svg>
-              </button>
+        {/* Status Bar */}
+        <div class="proj-statusbar">
+          <div class="statusbar-cell">{filteredProjects.length} object(s)</div>
+          <div class="statusbar-cell">
+            {selectedCategory.value === 'all' ? 'All categories' : selectedCategory.value}
+          </div>
+        </div>
+      </div>
+      
+      {/* Project Detail Modal */}
+      <div class={`modal-overlay ${isModalOpen.value ? 'open' : ''}`} onClick$={closeModal}>
+        {selectedProject.value && (
+          <div class="modal-window" onClick$={(e: Event) => e.stopPropagation()}>
+            <div class="modal-titlebar">
+              <div class="titlebar-left">
+                <span>📄</span>
+                <span>{selectedProject.value.title} - Details</span>
+              </div>
+              <button class="modal-close-btn" onClick$={closeModal}>×</button>
+            </div>
+            
+            <div class="modal-body">
+              <p class="modal-desc">{selectedProject.value.description}</p>
               
-              <div class="modal-header">
-                <h3 class="modal-title">{selectedProject.value.title}</h3>
-                <span class="modal-category">{selectedProject.value.category}</span>
+              <div class="groupbox">
+                <span class="groupbox-label">Technologies</span>
+                <div class="tech-badges">
+                  {selectedProject.value.technologies.map((t) => (
+                    <span key={t} class="tech-tag">{t}</span>
+                  ))}
+                </div>
               </div>
               
-              <div class="modal-body">
-                <div class="modal-section">
-                  <h4 class="modal-section-title">Key Features</h4>
-                  <div class="feature-list">
-                    {selectedProject.value.features.map((feature) => (
-                      <div key={feature} class="feature-item">
-                        <div class="feature-icon">✓</div>
-                        <span>{feature}</span>
+              <div class="groupbox">
+                <span class="groupbox-label">Key Features</span>
+                <ul class="item-list">
+                  {selectedProject.value.features.map((f) => (
+                    <li key={f}>{f}</li>
+                  ))}
+                </ul>
+              </div>
+              
+              <div class="groupbox">
+                <span class="groupbox-label">Outcomes</span>
+                <div class="outcome-grid">
+                  {selectedProject.value.outcomes.map((outcome) => {
+                    const [value, ...rest] = outcome.split(' ');
+                    return (
+                      <div key={outcome} class="outcome-card">
+                        <div class="outcome-value">{value}</div>
+                        <div class="outcome-label">{rest.join(' ')}</div>
                       </div>
-                    ))}
-                  </div>
+                    );
+                  })}
                 </div>
-                
-                <div class="modal-section">
-                  <h4 class="modal-section-title">Project Outcomes</h4>
-                  <div class="stats-grid">
-                    {selectedProject.value.outcomes.map((outcome) => {
-                      const [value, ...rest] = outcome.split(' ');
-                      return (
-                        <div key={outcome} class="stat-card">
-                          <div class="stat-value">{value}</div>
-                          <div class="stat-label">{rest.join(' ')}</div>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
-                
-                <div class="modal-section">
-                  <h4 class="modal-section-title">Technical Challenges</h4>
-                  <div class="feature-list">
-                    {selectedProject.value.challenges.map((challenge) => (
-                      <div key={challenge} class="feature-item">
-                        <div class="feature-icon">💡</div>
-                        <span>{challenge}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
+              </div>
+              
+              <div class="groupbox">
+                <span class="groupbox-label">Challenges</span>
+                <ul class="item-list">
+                  {selectedProject.value.challenges.map((c) => (
+                    <li key={c}>{c}</li>
+                  ))}
+                </ul>
+              </div>
+              
+              <div class="modal-actions">
+                <button class="win-btn" onClick$={closeModal}>OK</button>
               </div>
             </div>
-          )}
-        </div>
+          </div>
+        )}
       </div>
     </section>
   );

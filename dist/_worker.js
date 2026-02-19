@@ -1,1 +1,1 @@
-import { fetch } from "./entry.cloudflare-pages"; export default { fetch };
+import { fetch } from "entry.cloudflare-pages"; export default { fetch };

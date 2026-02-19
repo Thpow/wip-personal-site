@@ -3,7 +3,7 @@ import { component$, useSignal, useVisibleTask$, useStylesScoped$ } from '@build
 export const HeroSection = component$(() => {
   const displayText = useSignal('');
   const showCursor = useSignal(true);
-  const fullText = "Intern @ SAS | Student at UNC Charlotte";
+  const fullText = "C:\\USERS\\TPOWELL> Intern @ SAS | Student at UNC Charlotte";
   const imageError = useSignal(false);
   
   useStylesScoped$(`
@@ -12,391 +12,289 @@ export const HeroSection = component$(() => {
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 80px 20px;
+      padding: 40px 20px 60px;
       position: relative;
-      overflow: hidden;
-    }
-    
-    .hero-content {
-      text-align: center;
-      max-width: 900px;
       z-index: 1;
-      position: relative;
     }
     
-    .profile-container {
-      margin-bottom: 40px;
-      display: inline-block;
-      position: relative;
+    .hero-window {
+      max-width: 620px;
+      width: 100%;
+      background: var(--win-surface);
+      box-shadow: var(--win-border-window);
+      padding: 3px;
     }
     
-    .profile-image-wrapper {
-      width: 200px;
-      height: 200px;
-      border-radius: 50%;
-      background: var(--neu-base);
-      box-shadow: var(--neu-shadow-xl);
-      padding: 10px;
-      position: relative;
-      overflow: hidden;
-      animation: float 3s ease-in-out infinite;
+    .hero-titlebar {
+      background: linear-gradient(90deg, var(--win-titlebar), var(--win-accent-light));
+      color: var(--win-titlebar-text);
+      padding: 2px 4px;
+      font-weight: 700;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      user-select: none;
+      min-height: 20px;
     }
     
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-20px); }
+    .titlebar-left {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    
+    .titlebar-icon {
+      font-size: 14px;
+    }
+    
+    .titlebar-buttons {
+      display: flex;
+      gap: 2px;
+    }
+    
+    .titlebar-btn {
+      width: 16px;
+      height: 14px;
+      background: var(--win-surface);
+      box-shadow: var(--win-border-button);
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 9px;
+      font-weight: 700;
+      font-family: 'IBM Plex Mono', monospace;
+      color: var(--win-text-primary);
+      padding: 0;
+      line-height: 1;
+      cursor: default;
+    }
+    
+    .hero-body {
+      padding: 20px;
+      background: var(--win-surface);
+    }
+    
+    .hero-profile-row {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      margin-bottom: 16px;
+    }
+    
+    .profile-frame {
+      width: 100px;
+      height: 100px;
+      flex-shrink: 0;
+      box-shadow: var(--win-border-sunken);
+      padding: 2px;
+      background: var(--win-white);
     }
     
     .profile-image {
       width: 100%;
       height: 100%;
-      border-radius: 50%;
       object-fit: cover;
-      box-shadow: var(--neu-shadow-inset-md);
+      image-rendering: auto;
+      display: block;
     }
     
-    .profile-status {
-      position: absolute;
-      bottom: 10px;
-      right: 10px;
-      width: 40px;
-      height: 40px;
-      background: var(--neu-base);
-      border-radius: 50%;
-      box-shadow: var(--neu-shadow-md);
+    .profile-fallback {
+      width: 100%;
+      height: 100%;
+      background: var(--win-bg-light);
       display: flex;
       align-items: center;
       justify-content: center;
-    }
-    
-    .status-dot {
-      width: 20px;
-      height: 20px;
-      background: #48bb78;
-      border-radius: 50%;
-      animation: pulse 2s infinite;
-    }
-    
-    @keyframes pulse {
-      0%, 100% {
-        transform: scale(1);
-        opacity: 1;
-      }
-      50% {
-        transform: scale(1.2);
-        opacity: 0.8;
-      }
-    }
-    
-    .hero-title {
-      font-size: 3.5rem;
+      font-size: 28px;
       font-weight: 700;
-      color: var(--neu-text-primary);
-      margin-bottom: 20px;
-      animation: fadeInUp 0.8s ease-out;
+      color: var(--win-titlebar);
+      font-family: 'IBM Plex Mono', monospace;
     }
     
-    .hero-subtitle {
-      font-size: 1.25rem;
-      color: var(--neu-text-secondary);
-      margin-bottom: 40px;
-      min-height: 30px;
-      font-family: 'Courier New', monospace;
+    .profile-info {
+      flex: 1;
     }
     
-    .typewriter-text {
-      display: inline-block;
-      color: var(--neu-accent);
+    .hero-name {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--win-text-primary);
+      margin-bottom: 4px;
     }
     
-    .cursor {
-      display: inline-block;
-      width: 3px;
-      height: 1.25rem;
-      background: var(--neu-accent);
-      margin-left: 2px;
-      animation: blink 1s infinite;
+    .hero-role {
+      font-size: 12px;
+      color: var(--win-text-secondary);
+      margin-bottom: 8px;
     }
     
-    @keyframes blink {
-      0%, 50% { opacity: 1; }
-      51%, 100% { opacity: 0; }
-    }
-    
-    .cta-buttons {
+    .status-row {
       display: flex;
-      gap: 20px;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-bottom: 40px;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      color: var(--win-success);
     }
     
-    .cta-button {
-      padding: 15px 35px;
+    .status-led {
+      width: 8px;
+      height: 8px;
+      background: var(--win-success);
+      border: 1px solid #006600;
+      animation: status-blink 2s step-end infinite;
+    }
+    
+    @keyframes status-blink {
+      0%, 70% { background: var(--win-success); }
+      75%, 95% { background: #004400; }
+      100% { background: var(--win-success); }
+    }
+    
+    .hero-separator {
+      height: 2px;
+      margin: 12px 0;
+      box-shadow:
+        inset 0 1px 0 0 var(--win-shadow),
+        inset 0 -1px 0 0 var(--win-white);
+    }
+    
+    .terminal-box {
+      background: var(--win-black);
+      color: #00ff00;
+      padding: 12px;
+      font-family: 'IBM Plex Mono', 'Courier New', monospace;
+      font-size: 12px;
+      line-height: 1.6;
+      box-shadow: var(--win-border-sunken);
+      min-height: 60px;
+      margin-bottom: 16px;
+    }
+    
+    .terminal-text {
+      color: #00ff00;
+      word-break: break-all;
+    }
+    
+    .terminal-cursor {
+      display: inline-block;
+      width: 7px;
+      height: 13px;
+      background: #00ff00;
+      animation: cursor-blink 0.8s step-end infinite;
+      vertical-align: text-bottom;
+    }
+    
+    @keyframes cursor-blink {
+      0%, 49% { opacity: 1; }
+      50%, 100% { opacity: 0; }
+    }
+    
+    .hero-actions {
+      display: flex;
+      gap: 8px;
+      justify-content: flex-end;
+    }
+    
+    .win-btn {
+      padding: 4px 20px;
+      background: var(--win-surface);
+      box-shadow: var(--win-border-button);
       border: none;
-      border-radius: var(--neu-radius-md);
-      font-weight: 600;
-      font-size: 1rem;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 12px;
+      color: var(--win-text-primary);
       cursor: pointer;
-      transition: all var(--neu-transition-base);
+      min-height: 23px;
       text-decoration: none;
       display: inline-flex;
       align-items: center;
-      gap: 10px;
+      gap: 6px;
     }
     
-    .cta-button.primary {
-      background: linear-gradient(145deg, var(--neu-accent), var(--neu-accent-dark));
-      color: white;
-      box-shadow: var(--neu-shadow-lg);
+    .win-btn:active {
+      box-shadow: var(--win-border-button-pressed);
+      padding: 5px 19px 3px 21px;
     }
     
-    .cta-button.primary:hover {
-      box-shadow: var(--neu-shadow-xl);
-      transform: translateY(-2px);
+    .win-btn.primary {
+      font-weight: 700;
+      box-shadow:
+        var(--win-border-button),
+        0 0 0 1px var(--win-black);
     }
     
-    .cta-button.secondary {
-      background: var(--neu-base);
-      color: var(--neu-text-primary);
-      box-shadow: var(--neu-shadow-lg);
+    .win-btn.primary:active {
+      box-shadow:
+        var(--win-border-button-pressed),
+        0 0 0 1px var(--win-black);
     }
     
-    .cta-button.secondary:hover {
-      box-shadow: var(--neu-shadow-xl);
-      transform: translateY(-2px);
-    }
-    
-    .cta-button:active {
-      transform: translateY(0);
-      box-shadow: var(--neu-shadow-inset-sm);
-    }
-    
-    .scroll-indicator {
-      position: absolute;
-      bottom: 10px;
-      left: 50%;
-      transform: translateX(-50%);
+    .hero-statusbar {
+      background: var(--win-surface);
+      padding: 2px 4px;
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
-      color: var(--neu-text-secondary);
-      animation: bounce 2s infinite;
+      gap: 2px;
+      font-size: 11px;
+      color: var(--win-text-secondary);
     }
     
-    @keyframes bounce {
-      0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
-      40% { transform: translateX(-50%) translateY(-10px); }
-      60% { transform: translateX(-50%) translateY(-5px); }
+    .statusbar-item {
+      padding: 1px 6px;
+      box-shadow: var(--win-border-sunken);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
     
-    .scroll-mouse {
-      width: 30px;
-      height: 50px;
-      border: 2px solid var(--neu-text-secondary);
-      border-radius: 25px;
-      position: relative;
+    .statusbar-item:first-child {
+      flex: 2;
     }
     
-    .scroll-wheel {
-      width: 4px;
-      height: 10px;
-      background: var(--neu-text-secondary);
-      border-radius: 2px;
-      position: absolute;
-      top: 10px;
-      left: 50%;
-      transform: translateX(-50%);
-      animation: scroll 2s infinite;
-    }
-    
-    @keyframes scroll {
-      0% { top: 10px; opacity: 1; }
-      100% { top: 30px; opacity: 0; }
+    .statusbar-item:last-child {
+      flex: 1;
+      text-align: right;
     }
     
     /* Responsive */
     @media (max-width: 768px) {
       .hero-section {
-        padding: 60px 16px;
-        min-height: 100vh;
+        padding: 20px 8px 50px;
+        align-items: flex-start;
+        padding-top: 40px;
       }
       
-      .hero-content {
+      .hero-window {
         max-width: 100%;
       }
       
-      .profile-container {
-        margin-bottom: 30px;
-      }
-      
-      .profile-image-wrapper {
-        width: 140px;
-        height: 140px;
-        padding: 8px;
-      }
-      
-      .profile-status {
-        width: 32px;
-        height: 32px;
-        bottom: 8px;
-        right: 8px;
-      }
-      
-      .status-dot {
-        width: 16px;
-        height: 16px;
-      }
-      
-      .hero-title {
-        font-size: 2.2rem;
-        margin-bottom: 16px;
-        line-height: 1.1;
-      }
-      
-      .hero-subtitle {
-        font-size: 0.95rem;
-        margin-bottom: 32px;
-        padding: 0 10px;
-        line-height: 1.5;
-      }
-      
-      .cursor {
-        height: 0.95rem;
-      }
-      
-      .cta-buttons {
+      .hero-profile-row {
         flex-direction: column;
         align-items: center;
-        gap: 16px;
-        margin-bottom: 32px;
+        text-align: center;
       }
       
-      .cta-button {
+      .profile-frame {
+        width: 80px;
+        height: 80px;
+      }
+      
+      .hero-name {
+        font-size: 16px;
+      }
+      
+      .hero-actions {
+        flex-direction: column;
+      }
+      
+      .win-btn {
         width: 100%;
-        max-width: 280px;
-        padding: 16px 32px;
-        font-size: 0.95rem;
         justify-content: center;
       }
       
-      .cta-button:hover {
-        transform: translateY(-1px);
-      }
-      
-      .scroll-indicator {
-        bottom: 15px;
-        gap: 8px;
-      }
-      
-      .scroll-mouse {
-        width: 24px;
-        height: 40px;
-      }
-      
-      .scroll-wheel {
-        width: 3px;
-        height: 8px;
-        top: 8px;
-      }
-      
-      .scroll-indicator span {
-        font-size: 0.8rem;
-      }
-    }
-    
-    /* Extra small mobile devices */
-    @media (max-width: 480px) {
-      .hero-section {
-        padding: 50px 12px;
-      }
-      
-      .profile-image-wrapper {
-        width: 120px;
-        height: 120px;
-        padding: 6px;
-      }
-      
-      .profile-status {
-        width: 28px;
-        height: 28px;
-        bottom: 6px;
-        right: 6px;
-      }
-      
-      .status-dot {
-        width: 14px;
-        height: 14px;
-      }
-      
-      .hero-title {
-        font-size: 1.9rem;
-        margin-bottom: 14px;
-      }
-      
-      .hero-subtitle {
-        font-size: 0.9rem;
-        margin-bottom: 28px;
-        padding: 0 8px;
-      }
-      
-      .cursor {
-        height: 0.9rem;
-      }
-      
-      .cta-button {
-        max-width: 260px;
-        padding: 14px 28px;
-        font-size: 0.9rem;
-      }
-      
-      .scroll-indicator {
-        bottom: 10px;
-      }
-      
-      .scroll-indicator span {
-        font-size: 0.75rem;
-      }
-    }
-    
-    /* Landscape mobile orientation */
-    @media (max-width: 768px) and (orientation: landscape) {
-      .hero-section {
-        padding: 40px 16px;
-        min-height: 100vh;
-      }
-      
-      .profile-image-wrapper {
-        width: 100px;
-        height: 100px;
-      }
-      
-      .hero-title {
-        font-size: 1.8rem;
-        margin-bottom: 12px;
-      }
-      
-      .hero-subtitle {
-        font-size: 0.85rem;
-        margin-bottom: 24px;
-      }
-      
-      .cta-buttons {
-        flex-direction: row;
-        gap: 12px;
-        margin-bottom: 20px;
-      }
-      
-      .cta-button {
-        width: auto;
-        max-width: 200px;
-        padding: 12px 24px;
-        font-size: 0.85rem;
-      }
-      
-      .scroll-indicator {
-        bottom: 10px;
+      .terminal-box {
+        font-size: 11px;
       }
     }
   `);
@@ -411,11 +309,11 @@ export const HeroSection = component$(() => {
       } else {
         clearInterval(typeInterval);
       }
-    }, 50);
+    }, 35);
     
     const cursorInterval = setInterval(() => {
       showCursor.value = !showCursor.value;
-    }, 500);
+    }, 400);
     
     return () => {
       clearInterval(typeInterval);
@@ -425,57 +323,71 @@ export const HeroSection = component$(() => {
   
   return (
     <section id="home" class="hero-section">
-      <div class="hero-content">
-        <div class="profile-container">
-          <div class="profile-image-wrapper">
-            {!imageError.value ? (
-              <img
-                src="/pfp.jpeg"
-                alt="Thomas Powell"
-                class="profile-image"
-                width="200"
-                height="200"
-                loading="eager"
-                onError$={() => { imageError.value = true; }}
-              />
-            ) : (
-              <svg viewBox="0 0 200 200" class="profile-image" width="200" height="200">
-                <defs>
-                  <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" style="stop-color:#00CED1;stop-opacity:0.2" />
-                    <stop offset="100%" style="stop-color:#48D1CC;stop-opacity:0.3" />
-                  </linearGradient>
-                </defs>
-                <circle cx="100" cy="100" r="95" fill="url(#bgGradient)" stroke="#00CED1" stroke-width="2"/>
-                <text x="100" y="115" text-anchor="middle" font-size="70" font-weight="bold" fill="#00CED1" font-family="Arial, sans-serif">TP</text>
-              </svg>
-            )}
-            <div class="profile-status">
-              <div class="status-dot"></div>
-            </div>
+      <div class="hero-window">
+        {/* Title Bar */}
+        <div class="hero-titlebar">
+          <div class="titlebar-left">
+            <span class="titlebar-icon">💻</span>
+            <span>Welcome - Thomas Powell</span>
+          </div>
+          <div class="titlebar-buttons">
+            <button class="titlebar-btn" aria-hidden="true">_</button>
+            <button class="titlebar-btn" aria-hidden="true">□</button>
+            <button class="titlebar-btn" aria-hidden="true">×</button>
           </div>
         </div>
         
-        <h1 class="hero-title animate-fadeInUp">Thomas Powell</h1>
+        {/* Window Body */}
+        <div class="hero-body">
+          <div class="hero-profile-row">
+            <div class="profile-frame">
+              {!imageError.value ? (
+                <img
+                  src="/pfp.jpeg"
+                  alt="Thomas Powell"
+                  class="profile-image"
+                  width="96"
+                  height="96"
+                  loading="eager"
+                  onError$={() => { imageError.value = true; }}
+                />
+              ) : (
+                <div class="profile-fallback">TP</div>
+              )}
+            </div>
+            <div class="profile-info">
+              <h1 class="hero-name">Thomas Powell</h1>
+              <p class="hero-role">Technical Intern at SAS | CS & Data Science Student</p>
+              <div class="status-row">
+                <div class="status-led"></div>
+                <span>Online — Available for opportunities</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="hero-separator"></div>
+          
+          {/* Terminal prompt */}
+          <div class="terminal-box">
+            <span class="terminal-text">{displayText.value}</span>
+            {showCursor.value && <span class="terminal-cursor"></span>}
+          </div>
+          
+          {/* Action buttons */}
+          <div class="hero-actions">
+            <a href="#projects" class="win-btn primary">
+              📁 View Projects
+            </a>
+            <a href="/powellthomas-resume.docx" download class="win-btn">
+              💾 Download Resume
+            </a>
+          </div>
+        </div>
         
-        <p class="hero-subtitle">
-          <span class="typewriter-text">{displayText.value}</span>
-          {showCursor.value && <span class="cursor"></span>}
-        </p>
-        
-        <div class="cta-buttons">
-          <a href="#projects" class="cta-button primary">
-            <span>View Projects</span>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M5 12h14M12 5l7 7-7 7"/>
-            </svg>
-          </a>
-          <a href="/powellthomas-resume.docx" download class="cta-button secondary">
-            <span>Download Resume</span>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
-            </svg>
-          </a>
+        {/* Status Bar */}
+        <div class="hero-statusbar">
+          <div class="statusbar-item">Ready</div>
+          <div class="statusbar-item">UNC Charlotte</div>
         </div>
       </div>
     </section>

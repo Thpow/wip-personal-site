@@ -3,6 +3,8 @@ import type { DocumentHead } from "@builder.io/qwik-city";
 import { NavBar } from "~/components/navigation/NavBar";
 import { HeroSection } from "~/components/hero/HeroSection";
 import { AboutSection } from "~/components/about/AboutSection";
+import { ExperienceSection } from "~/components/experience/ExperienceSection";
+import { EducationSection } from "~/components/education/EducationSection";
 import { ProjectsSection } from "~/components/projects/ProjectsSection";
 import { ContactSection } from "~/components/contact/ContactSection";
 
@@ -13,6 +15,8 @@ export default component$(() => {
       <main>
         <HeroSection />
         <AboutSection />
+        <ExperienceSection />
+        <EducationSection />
         <ProjectsSection />
         <ContactSection />
       </main>

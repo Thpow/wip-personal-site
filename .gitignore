@@ -1,4 +1,55 @@
+# Dependencies
+node_modules/
+
+# Package managers
+pnpm-lock.yaml
+yarn.lock
+.pnp.cjs
+.pnp.loader.mjs
+
+# Build output
+dist/
+server/
+tmp/
+.cache/
+
+# Tooling / build caches
+.qwik/
+.vite/
+.vinxi/
+.svelte-kit/
+.turbo/
+coverage/
+
+# Config
 conf.json
 
 # Cloudflare
 functions/**/*.js
+.wrangler/
+
+# Environment
+.env
+.env.*
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.vscode/
+.idea/
+*.code-workspace
+*.swp
+*.swo
+
+# LinkedIn saved page (reference only)
+*(*)*.html
+*(*)*.html_files/
+
+# Misc
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

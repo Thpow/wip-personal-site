@@ -1,496 +1,313 @@
-import { component$, useStylesScoped$ } from '@builder.io/qwik';
+import { component$, useSignal, useStylesScoped$, $ } from '@builder.io/qwik';
 import { aboutMe, techStack, getSkillsByCategory } from '~/data/skills';
 
 export const AboutSection = component$(() => {
+  const activeTab = useSignal('bio');
+  
   useStylesScoped$(`
     .about-section {
-      padding: 100px 20px;
-      background: transparent;
+      padding: 20px;
       position: relative;
+      z-index: 1;
     }
     
-    .about-container {
-      max-width: 1200px;
+    .about-window {
+      max-width: 800px;
       margin: 0 auto;
+      background: var(--win-surface);
+      box-shadow: var(--win-border-window);
+      padding: 3px;
     }
     
-    .section-title {
-      text-align: center;
-      font-size: 2.5rem;
-      color: var(--neu-text-primary);
-      margin-bottom: 20px;
+    .about-titlebar {
+      background: linear-gradient(90deg, var(--win-titlebar), var(--win-accent-light));
+      color: var(--win-titlebar-text);
+      padding: 2px 4px;
       font-weight: 700;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      user-select: none;
+      min-height: 20px;
     }
     
-    .section-subtitle {
-      text-align: center;
-      color: var(--neu-text-secondary);
-      margin-bottom: 60px;
-      font-size: 1.1rem;
+    .titlebar-left {
+      display: flex;
+      align-items: center;
+      gap: 4px;
     }
     
-    .about-content {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      margin-bottom: 80px;
+    .titlebar-buttons {
+      display: flex;
+      gap: 2px;
     }
     
-    .bio-section {
-      padding: 40px;
-      background: var(--neu-base);
-      border-radius: var(--neu-radius-lg);
-      box-shadow: var(--neu-shadow-lg);
+    .titlebar-btn {
+      width: 16px;
+      height: 14px;
+      background: var(--win-surface);
+      box-shadow: var(--win-border-button);
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 9px;
+      font-weight: 700;
+      font-family: 'IBM Plex Mono', monospace;
+      color: var(--win-text-primary);
+      padding: 0;
+      line-height: 1;
+      cursor: default;
     }
     
-    .bio-title {
-      font-size: 1.8rem;
-      color: var(--neu-text-primary);
-      margin-bottom: 10px;
+    .about-body {
+      padding: 12px;
+      background: var(--win-surface);
     }
     
-    .bio-subtitle {
-      color: var(--neu-accent);
-      font-size: 1.1rem;
-      margin-bottom: 30px;
+    /* Tabs */
+    .tab-bar {
+      display: flex;
+      gap: 0;
+      position: relative;
+      bottom: -2px;
+      z-index: 2;
+      padding-left: 4px;
+    }
+    
+    .tab-btn {
+      padding: 5px 16px;
+      background: var(--win-bg-dark);
+      border: none;
+      box-shadow:
+        inset -1px 0 0 0 var(--win-shadow-dark),
+        inset 1px 1px 0 0 var(--win-highlight),
+        inset 0 1px 0 0 var(--win-white);
+      color: var(--win-text-primary);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 12px;
+      cursor: pointer;
+      position: relative;
+      user-select: none;
+    }
+    
+    .tab-btn.active {
+      background: var(--win-surface);
+      padding-bottom: 6px;
+      z-index: 3;
+      box-shadow:
+        inset -1px 0 0 0 var(--win-shadow-dark),
+        inset 1px 1px 0 0 var(--win-highlight),
+        inset 0 1px 0 0 var(--win-white);
+    }
+    
+    .tab-content {
+      background: var(--win-surface);
+      box-shadow: var(--win-border-raised);
+      padding: 16px;
+      position: relative;
+      z-index: 1;
+      min-height: 300px;
+    }
+    
+    .tab-panel {
+      display: none;
+    }
+    
+    .tab-panel.active {
+      display: block;
+    }
+    
+    /* Bio content */
+    .bio-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--win-text-primary);
     }
     
     .bio-text {
-      color: var(--neu-text-secondary);
-      line-height: 1.8;
-      margin-bottom: 30px;
+      font-size: 13px;
+      line-height: 1.7;
+      color: var(--win-text-secondary);
+      margin-bottom: 12px;
       white-space: pre-line;
     }
     
-    .highlights {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 15px;
+    .groupbox {
+      box-shadow:
+        inset 1px 1px 0 0 var(--win-shadow),
+        inset -1px -1px 0 0 var(--win-white);
+      padding: 12px 8px 8px;
+      margin: 12px 0;
+      position: relative;
     }
     
-    .highlight-item {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      padding: 15px;
-      background: var(--neu-base);
-      border-radius: var(--neu-radius-md);
-      box-shadow: var(--neu-shadow-inset-sm);
+    .groupbox-label {
+      position: absolute;
+      top: -8px;
+      left: 8px;
+      background: var(--win-surface);
+      padding: 0 4px;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--win-text-primary);
     }
     
-    .highlight-icon {
-      width: 24px;
-      height: 24px;
-      background: var(--neu-accent);
-      border-radius: 50%;
+    .highlight-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .highlight-list li {
+      padding: 4px 0;
+      font-size: 13px;
+      color: var(--win-text-primary);
       display: flex;
       align-items: center;
-      justify-content: center;
-      color: white;
+      gap: 6px;
+    }
+    
+    .highlight-list li::before {
+      content: '>';
+      color: var(--win-accent);
+      font-weight: 700;
       flex-shrink: 0;
     }
     
-    .skills-section {
-      padding: 40px;
-      background: var(--neu-base);
-      border-radius: var(--neu-radius-lg);
-      box-shadow: var(--neu-shadow-lg);
-    }
-    
-    .skills-title {
-      font-size: 1.5rem;
-      color: var(--neu-text-primary);
-      margin-bottom: 30px;
-    }
-    
-    .skill-category {
-      margin-bottom: 30px;
-    }
-    
-    .category-title {
-      font-size: 0.9rem;
-      color: var(--neu-text-muted);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 15px;
-    }
-    
-    .skill-item {
-      margin-bottom: 20px;
-    }
-    
-    .skill-header {
+    /* Skills — tag cloud style */
+    .skill-tags {
       display: flex;
-      justify-content: space-between;
-      margin-bottom: 8px;
+      flex-wrap: wrap;
+      gap: 6px;
+      padding: 4px 0;
     }
     
-    .skill-name {
-      color: var(--neu-text-primary);
-      font-weight: 500;
+    .skill-tag {
+      padding: 4px 12px;
+      background: var(--win-surface);
+      box-shadow: var(--win-border-button);
+      font-size: 12px;
+      cursor: default;
+      white-space: nowrap;
     }
     
-    .skill-level {
-      color: var(--neu-accent);
-      font-weight: 600;
+    .skill-tag:hover {
+      background: var(--win-titlebar);
+      color: var(--win-titlebar-text);
     }
     
-    .skill-bar {
-      height: 10px;
-      background: var(--neu-base);
-      border-radius: var(--neu-radius-full);
-      box-shadow: var(--neu-shadow-inset-sm);
-      overflow: hidden;
-    }
-    
-    .skill-progress {
-      height: 100%;
-      background: linear-gradient(90deg, var(--neu-accent), var(--neu-accent-dark));
-      border-radius: var(--neu-radius-full);
-      transition: width 1s ease-out;
-      box-shadow: 2px 2px 4px rgba(108, 99, 255, 0.3);
-    }
-    
-    .skill-level.wip {
-      color: #9ca3af;
-      font-weight: 500;
-    }
-    
-    .skill-progress.wip-progress {
-      background: linear-gradient(90deg, #9ca3af, #6b7280);
-      box-shadow: 2px 2px 4px rgba(156, 163, 175, 0.2);
-      opacity: 0.5;
-    }
-    
-    .tech-stack {
-      margin-top: 80px;
-    }
-    
+    /* Tech Stack grid */
     .tech-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-      gap: 30px;
-      margin-top: 40px;
+      grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+      gap: 8px;
     }
     
-    .tech-card {
-      padding: 25px;
-      background: var(--neu-base);
-      border-radius: var(--neu-radius-lg);
-      box-shadow: var(--neu-shadow-md);
+    .tech-item {
+      background: var(--win-white);
+      box-shadow: var(--win-border-field);
+      padding: 8px;
       text-align: center;
-      transition: all var(--neu-transition-base);
-      cursor: pointer;
+      cursor: default;
+      font-size: 11px;
     }
     
-    .tech-card:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--neu-shadow-lg);
+    .tech-item:hover {
+      background: var(--win-titlebar);
+      color: var(--win-titlebar-text);
     }
     
     .tech-logo {
-      width: 60px;
-      height: 60px;
-      margin: 0 auto 15px;
-      filter: grayscale(20%);
-      transition: filter var(--neu-transition-base);
-    }
-    
-    .tech-card:hover .tech-logo {
-      filter: grayscale(0%);
+      width: 32px;
+      height: 32px;
+      margin: 0 auto 4px;
+      image-rendering: auto;
     }
     
     .tech-name {
-      font-size: 0.9rem;
-      color: var(--neu-text-primary);
-      font-weight: 600;
-      margin-bottom: 5px;
+      font-weight: 700;
+      font-size: 12px;
+      margin-bottom: 2px;
     }
     
-    .tech-experience {
-      font-size: 0.8rem;
-      color: var(--neu-text-secondary);
+    .tech-exp {
+      font-size: 11px;
+      color: var(--win-text-muted);
     }
     
-    .interests-section {
-      margin-top: 60px;
-      padding: 40px;
-      background: var(--neu-base);
-      border-radius: var(--neu-radius-lg);
-      box-shadow: var(--neu-shadow-inset-sm);
+    .tech-item:hover .tech-exp {
+      color: var(--win-bg-light);
     }
     
-    .interests-title {
-      font-size: 1.3rem;
-      color: var(--neu-text-primary);
-      margin-bottom: 20px;
-      text-align: center;
-    }
-    
-    .interests-list {
+    /* Interests */
+    .interest-list {
       display: flex;
       flex-wrap: wrap;
-      gap: 15px;
-      justify-content: center;
+      gap: 6px;
     }
     
     .interest-tag {
-      padding: 10px 20px;
-      background: var(--neu-base);
-      border-radius: var(--neu-radius-full);
-      box-shadow: var(--neu-shadow-sm);
-      color: var(--neu-text-secondary);
-      font-size: 0.9rem;
-      transition: all var(--neu-transition-base);
+      padding: 5px 12px;
+      background: var(--win-surface);
+      box-shadow: var(--win-border-button);
+      font-size: 13px;
+      cursor: default;
     }
     
     .interest-tag:hover {
-      color: var(--neu-accent);
-      box-shadow: var(--neu-shadow-md);
-      transform: scale(1.05);
+      background: var(--win-titlebar);
+      color: var(--win-titlebar-text);
     }
     
-    /* Responsive */
-    @media (max-width: 968px) {
-      .about-section {
-        padding: 80px 16px;
-      }
-      
-      .about-content {
-        grid-template-columns: 1fr;
-        gap: 40px;
-        margin-bottom: 60px;
-      }
-      
-      .bio-section,
-      .skills-section {
-        padding: 32px;
-      }
-      
-      .tech-stack {
-        margin-top: 60px;
-      }
-      
-      .tech-grid {
-        grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
-        gap: 20px;
-        margin-top: 32px;
-      }
-      
-      .tech-card {
-        padding: 20px 16px;
-      }
-      
-      .tech-logo {
-        width: 48px;
-        height: 48px;
-        margin-bottom: 12px;
-      }
-      
-      .tech-name {
-        font-size: 0.85rem;
-      }
-      
-      .tech-experience {
-        font-size: 0.75rem;
-      }
+    /* Status bar */
+    .about-statusbar {
+      background: var(--win-surface);
+      padding: 2px 4px;
+      display: flex;
+      gap: 2px;
+      font-size: 11px;
+      color: var(--win-text-secondary);
     }
+    
+    .statusbar-cell {
+      padding: 1px 6px;
+      box-shadow: var(--win-border-sunken);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    
+    .statusbar-cell:first-child { flex: 2; }
+    .statusbar-cell:last-child { flex: 1; text-align: right; }
     
     @media (max-width: 768px) {
       .about-section {
-        padding: 70px 16px;
+        padding: 12px 8px;
       }
       
-      .section-title {
-        font-size: 2.2rem;
-        margin-bottom: 16px;
+      .tab-btn {
+        font-size: 10px;
+        padding: 3px 8px;
       }
       
-      .section-subtitle {
-        font-size: 1rem;
-        margin-bottom: 50px;
-        padding: 0 10px;
-      }
-      
-      .about-content {
-        gap: 32px;
-        margin-bottom: 50px;
-      }
-      
-      .bio-section,
-      .skills-section {
-        padding: 28px 24px;
-      }
-      
-      .bio-title {
-        font-size: 1.6rem;
-        margin-bottom: 8px;
-      }
-      
-      .bio-subtitle {
-        font-size: 1rem;
-        margin-bottom: 24px;
-      }
-      
-      .bio-text {
-        font-size: 0.95rem;
-        line-height: 1.7;
-        margin-bottom: 24px;
-      }
-      
-      .highlight-item {
-        padding: 12px;
-        gap: 12px;
-      }
-      
-      .highlight-icon {
-        width: 20px;
-        height: 20px;
-        font-size: 0.8rem;
-      }
-      
-      .skills-title {
-        font-size: 1.4rem;
-        margin-bottom: 24px;
-      }
-      
-      .skill-category {
-        margin-bottom: 24px;
-      }
-      
-      .category-title {
-        font-size: 0.85rem;
-        margin-bottom: 12px;
-      }
-      
-      .skill-item {
-        margin-bottom: 16px;
-      }
-      
-      .skill-name,
-      .skill-level {
-        font-size: 0.9rem;
-      }
-      
-      .skill-bar {
-        height: 8px;
-      }
-      
-      .tech-stack {
-        margin-top: 50px;
-      }
-      
-      .tech-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 16px;
-        margin-top: 28px;
-      }
-      
-      .tech-card {
-        padding: 16px 12px;
-      }
-      
-      .tech-logo {
-        width: 40px;
-        height: 40px;
-        margin-bottom: 10px;
-      }
-      
-      .interests-section {
-        margin-top: 50px;
-        padding: 32px 24px;
-      }
-      
-      .interests-title {
-        font-size: 1.2rem;
-        margin-bottom: 16px;
-      }
-      
-      .interests-list {
-        gap: 12px;
-      }
-      
-      .interest-tag {
-        padding: 8px 16px;
-        font-size: 0.85rem;
-      }
-    }
-    
-    @media (max-width: 480px) {
-      .about-section {
-        padding: 60px 12px;
-      }
-      
-      .section-title {
-        font-size: 1.9rem;
-      }
-      
-      .section-subtitle {
-        font-size: 0.95rem;
-        padding: 0 8px;
-      }
-      
-      .bio-section,
-      .skills-section {
-        padding: 24px 20px;
-      }
-      
-      .bio-title {
-        font-size: 1.4rem;
-      }
-      
-      .bio-subtitle {
-        font-size: 0.95rem;
-      }
-      
-      .bio-text {
-        font-size: 0.9rem;
-      }
-      
-      .highlight-item {
+      .tab-content {
         padding: 10px;
-        gap: 10px;
-        font-size: 0.9rem;
-      }
-      
-      .skills-title {
-        font-size: 1.3rem;
       }
       
       .tech-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 14px;
-      }
-      
-      .tech-card {
-        padding: 14px 10px;
+        grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+        gap: 6px;
       }
       
       .tech-logo {
-        width: 36px;
-        height: 36px;
-        margin-bottom: 8px;
-      }
-      
-      .tech-name {
-        font-size: 0.8rem;
-      }
-      
-      .tech-experience {
-        font-size: 0.7rem;
-      }
-      
-      .interests-section {
-        padding: 28px 20px;
-      }
-      
-      .interests-list {
-        gap: 10px;
-      }
-      
-      .interest-tag {
-        padding: 6px 14px;
-        font-size: 0.8rem;
+        width: 24px;
+        height: 24px;
       }
     }
   `);
@@ -499,124 +316,156 @@ export const AboutSection = component$(() => {
   const backendSkills = getSkillsByCategory('backend').slice(0, 4);
   const analyticsSkills = getSkillsByCategory('analytics');
   
+  const setTab = $((tab: string) => {
+    activeTab.value = tab;
+  });
+  
+  const tabs = [
+    { id: 'bio', label: 'General' },
+    { id: 'skills', label: 'Skills' },
+    { id: 'tech', label: 'Tech Stack' },
+    { id: 'interests', label: 'Interests' },
+  ];
+  
   return (
     <section id="about" class="about-section">
-      <div class="about-container">
-        <h2 class="section-title animate-fadeInUp">About Me</h2>
-        <p class="section-subtitle animate-fadeInUp stagger-1">
-          
-        </p>
-        
-        <div class="about-content">
-          {/* Bio Section */}
-          <div class="bio-section animate-fadeInLeft">
-            <h3 class="bio-title">{aboutMe.name}</h3>
-            <p class="bio-subtitle">{aboutMe.title}</p>
-            <p class="bio-text">{aboutMe.bio}</p>
-            
-            <div class="highlights">
-              {aboutMe.highlights.slice(0, 4).map((highlight, index) => (
-                <div key={index} class="highlight-item">
-                  <div class="highlight-icon">✓</div>
-                  <span>{highlight}</span>
-                </div>
-              ))}
-            </div>
+      <div class="about-window">
+        {/* Title Bar */}
+        <div class="about-titlebar">
+          <div class="titlebar-left">
+            <span>📋</span>
+            <span>About Me - Properties</span>
           </div>
-          
-          {/* Skills Section */}
-          <div class="skills-section animate-fadeInRight">
-            <h3 class="skills-title">Core Skills</h3>
-            
-            <div class="skill-category">
-              <p class="category-title">Frontend Development</p>
-              {frontendSkills.map((skill) => (
-                <div key={skill.name} class="skill-item">
-                  <div class="skill-header">
-                    <span class="skill-name">{skill.name}</span>
-                    <span class="skill-level">{skill.level}%</span>
-                  </div>
-                  <div class="skill-bar">
-                    <div 
-                      class="skill-progress" 
-                      style={`width: ${skill.level}%`}
-                    ></div>
-                  </div>
-                </div>
-              ))}
-            </div>
-            
-            <div class="skill-category">
-              <p class="category-title">Backend Development</p>
-              {backendSkills.map((skill) => (
-                <div key={skill.name} class="skill-item">
-                  <div class="skill-header">
-                    <span class="skill-name">{skill.name}</span>
-                    <span class="skill-level">{skill.level}%</span>
-                  </div>
-                  <div class="skill-bar">
-                    <div 
-                      class="skill-progress" 
-                      style={`width: ${skill.level}%`}
-                    ></div>
-                  </div>
-                </div>
-              ))}
-            </div>
-            
-            <div class="skill-category">
-              <p class="category-title">Business Analytics</p>
-              {analyticsSkills.map((skill) => (
-                <div key={skill.name} class="skill-item">
-                  <div class="skill-header">
-                    <span class="skill-name">{skill.name}</span>
-                    <span class="skill-level wip">WIP</span>
-                  </div>
-                  <div class="skill-bar">
-                    <div
-                      class="skill-progress wip-progress"
-                      style="width: 0%"
-                    ></div>
-                  </div>
-                </div>
-              ))}
-            </div>
+          <div class="titlebar-buttons">
+            <button class="titlebar-btn" aria-hidden="true">_</button>
+            <button class="titlebar-btn" aria-hidden="true">□</button>
+            <button class="titlebar-btn" aria-hidden="true">×</button>
           </div>
         </div>
         
-        {/* Tech Stack */}
-        <div class="tech-stack">
-          <h3 class="section-title">Tech Stack</h3>
-          <p class="section-subtitle">Technologies I work with daily</p>
+        <div class="about-body">
+          {/* Tab Bar */}
+          <div class="tab-bar">
+            {tabs.map((tab) => (
+              <button
+                key={tab.id}
+                class={`tab-btn ${activeTab.value === tab.id ? 'active' : ''}`}
+                onClick$={() => setTab(tab.id)}
+              >
+                {tab.label}
+              </button>
+            ))}
+          </div>
           
-          <div class="tech-grid">
-            {techStack.map((tech) => (
-              <div key={tech.name} class="tech-card animate-scaleIn">
-                <img 
-                  src={tech.logo}
-                  alt={tech.name}
-                  class="tech-logo"
-                  loading="lazy"
-                  width="60"
-                  height="60"
-                />
-                <p class="tech-name">{tech.name}</p>
-                <p class="tech-experience">{tech.yearsOfExperience} years</p>
+          {/* Tab Content */}
+          <div class="tab-content">
+            {/* General/Bio */}
+            <div class={`tab-panel ${activeTab.value === 'bio' ? 'active' : ''}`}>
+              <div class="bio-header">👤 {aboutMe.name}</div>
+              <p style="font-size: 14px; color: var(--win-accent); margin-bottom: 8px; font-weight: 700;">
+                {aboutMe.title}
+              </p>
+              <p class="bio-text">{aboutMe.bio}</p>
+              
+              <div class="groupbox">
+                <span class="groupbox-label">Highlights</span>
+                <ul class="highlight-list">
+                  {aboutMe.highlights.map((h, i) => (
+                    <li key={i}>{h}</li>
+                  ))}
+                </ul>
               </div>
-            ))}
+            </div>
+            
+            {/* Skills */}
+            <div class={`tab-panel ${activeTab.value === 'skills' ? 'active' : ''}`}>
+              <div class="groupbox">
+                <span class="groupbox-label">Frontend Development</span>
+                <div class="skill-tags">
+                  {frontendSkills.map((s) => (
+                    <span key={s.name} class="skill-tag">{s.name}</span>
+                  ))}
+                </div>
+              </div>
+              
+              <div class="groupbox">
+                <span class="groupbox-label">Backend Development</span>
+                <div class="skill-tags">
+                  {backendSkills.map((s) => (
+                    <span key={s.name} class="skill-tag">{s.name}</span>
+                  ))}
+                </div>
+              </div>
+              
+              <div class="groupbox">
+                <span class="groupbox-label">Business Analytics & Data Science</span>
+                <div class="skill-tags">
+                  {analyticsSkills.map((s) => (
+                    <span key={s.name} class="skill-tag">{s.name}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+            
+            {/* Tech Stack */}
+            <div class={`tab-panel ${activeTab.value === 'tech' ? 'active' : ''}`}>
+              <div class="tech-grid">
+                {techStack.map((tech) => (
+                  <div key={tech.name} class="tech-item">
+                    <img
+                      src={tech.logo}
+                      alt={tech.name}
+                      class="tech-logo"
+                      loading="lazy"
+                      width="32"
+                      height="32"
+                    />
+                    <p class="tech-name">{tech.name}</p>
+                    <p class="tech-exp">{tech.yearsOfExperience}yr</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+            
+            {/* Interests */}
+            <div class={`tab-panel ${activeTab.value === 'interests' ? 'active' : ''}`}>
+              <div class="groupbox">
+                <span class="groupbox-label">Interests & Passions</span>
+                <div class="interest-list">
+                  {aboutMe.interests.map((interest) => (
+                    <span key={interest} class="interest-tag">{interest}</span>
+                  ))}
+                </div>
+              </div>
+              
+              <div class="groupbox">
+                <span class="groupbox-label">Education</span>
+                <ul class="highlight-list">
+                  <li>{aboutMe.education.degree}</li>
+                  <li>{aboutMe.education.university}</li>
+                  <li>{aboutMe.education.year}</li>
+                  {aboutMe.education.achievements.map((a, i) => (
+                    <li key={i}>{a}</li>
+                  ))}
+                </ul>
+              </div>
+              
+              <div class="groupbox">
+                <span class="groupbox-label">Certifications</span>
+                <ul class="highlight-list">
+                  {aboutMe.certifications.map((c, i) => (
+                    <li key={i}>{c}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
         
-        {/* Interests */}
-        <div class="interests-section">
-          <h3 class="interests-title">Interests & Passions</h3>
-          <div class="interests-list">
-            {aboutMe.interests.map((interest) => (
-              <span key={interest} class="interest-tag">
-                {interest}
-              </span>
-            ))}
-          </div>
+        {/* Status Bar */}
+        <div class="about-statusbar">
+          <div class="statusbar-cell">Tab: {tabs.find(t => t.id === activeTab.value)?.label}</div>
+          <div class="statusbar-cell">{techStack.length} technologies</div>
         </div>
       </div>
     </section>
