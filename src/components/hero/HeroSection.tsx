@@ -157,16 +157,25 @@ export const HeroSection = component$(() => {
     
     .terminal-text {
       color: #00ff00;
-      word-break: break-all;
       overflow: hidden;
       white-space: nowrap;
-      width: 0;
+      display: inline-block;
+      max-width: 0;
       animation: typing 2s steps(56, end) 0.3s forwards;
     }
 
     @keyframes typing {
-      from { width: 0; }
-      to { width: 100%; }
+      from { max-width: 0; }
+      to { max-width: 100%; }
+    }
+
+    @media (max-width: 600px) {
+      .terminal-text {
+        white-space: normal;
+        max-width: 100%;
+        animation: none;
+        overflow: visible;
+      }
     }
     
     .terminal-cursor {

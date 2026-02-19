@@ -211,22 +211,38 @@ export const NavBar = component$(() => {
     }
     
     @media (max-width: 768px) {
+      .taskbar {
+        padding: 2px;
+        gap: 2px;
+      }
+
       .taskbar-item {
-        max-width: 80px;
+        max-width: 40px;
+        min-width: 34px;
         font-size: 10px;
-        padding: 2px 4px;
+        padding: 2px;
+        justify-content: center;
       }
       
       .taskbar-item span:not(.taskbar-item-icon) {
         display: none;
       }
+
+      .taskbar-item-icon {
+        font-size: 16px;
+      }
       
       .clock-area {
         font-size: 10px;
-        min-width: 50px;
+        min-width: 44px;
         padding: 2px 4px;
       }
       
+      .start-button {
+        padding: 2px 6px;
+        min-width: auto;
+      }
+
       .start-button span:last-child {
         display: none;
       }
@@ -239,7 +255,6 @@ export const NavBar = component$(() => {
     { id: 'experience', label: 'Experience', icon: '💼' },
     { id: 'education', label: 'Education', icon: '🎓' },
     { id: 'projects', label: 'Projects', icon: '📁' },
-    { id: 'contact', label: 'Contact', icon: '📧' }
   ];
   
   const handleNavClick = $((sectionId: string) => {
@@ -291,14 +306,15 @@ export const NavBar = component$(() => {
         </div>
         <div class="start-menu-items">
           {sections.map((section) => (
-            <button
+            <a
               key={section.id}
+              href={`#${section.id}`}
               class="start-menu-item"
               onClick$={() => handleNavClick(section.id)}
             >
               <span class="start-menu-item-icon">{section.icon}</span>
               <span>{section.label}</span>
-            </button>
+            </a>
           ))}
           <div class="start-menu-separator"></div>
           <a
@@ -330,14 +346,15 @@ export const NavBar = component$(() => {
       {/* Taskbar Items */}
       <div class="taskbar-items">
         {sections.map((section) => (
-          <button
+          <a
             key={section.id}
+            href={`#${section.id}`}
             class={`taskbar-item ${activeSection.value === section.id ? 'active' : ''}`}
             onClick$={() => handleNavClick(section.id)}
           >
             <span class="taskbar-item-icon">{section.icon}</span>
             <span>{section.label}</span>
-          </button>
+          </a>
         ))}
       </div>
       
