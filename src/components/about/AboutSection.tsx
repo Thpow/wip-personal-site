@@ -321,7 +321,7 @@ export const AboutSection = component$(() => {
   return (
     <section id="about" class="about-section">
       {/* Hidden radio inputs must be siblings of .about-body for CSS sibling selectors */}
-      <input class="tab-radios" type="radio" name="about-tab" id="tab-bio" defaultChecked />
+      <input class="tab-radios" type="radio" name="about-tab" id="tab-bio" checked />
       <input class="tab-radios" type="radio" name="about-tab" id="tab-skills" />
       <input class="tab-radios" type="radio" name="about-tab" id="tab-tech" />
       <input class="tab-radios" type="radio" name="about-tab" id="tab-interests" />
