@@ -1,5 +1,5 @@
 import { component$, useStylesScoped$ } from '@builder.io/qwik';
-import { projects, getCategories } from '~/data/projects';
+import { projects } from '~/data/projects';
 
 export const ProjectsSection = component$(() => {
   useStylesScoped$(`
@@ -269,11 +269,6 @@ export const ProjectsSection = component$(() => {
     }
   `);
   
-  const allCategories = [
-    { value: 'all', label: 'All Projects' },
-    ...getCategories()
-  ];
-
   return (
     <section id="projects" class="projects-section">
       <div class="projects-window">
