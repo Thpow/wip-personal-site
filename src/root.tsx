@@ -1,4 +1,4 @@
-import { QwikCityProvider, RouterOutlet, ServiceWorkerRegister } from "@builder.io/qwik-city";
+import { QwikCityProvider, RouterOutlet } from "@builder.io/qwik-city";
 import { RouterHead } from "./components/router-head/router-head";
 import "./styles/tokens.css";
 import "./styles/global.css";
@@ -14,7 +14,6 @@ export default function Root() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <RouterHead />
-        <ServiceWorkerRegister />
       </head>
       <body class="monolith-root">
         <a href="#main" class="skip-link">Skip to content</a>

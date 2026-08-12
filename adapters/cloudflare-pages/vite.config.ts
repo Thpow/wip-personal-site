@@ -12,7 +12,11 @@ export default extendConfig(baseConfig, () => {
         input: ["./src/entry.cloudflare-pages.tsx", "@qwik-city-plan"],
       },
       // Output to project root dist folder. Using a relative path ensures CI doesn't attempt to write to /opt/dist.
-      emptyOutDir: true,
+      // emptyOutDir MUST be false: build.client runs first and emits dist/build/*.js
+      // (the client chunks the HTML references via q:base="/build/"). If the server
+      // build wipes dist/, the client chunks vanish and the deployed site loads
+      // empty HTML with 404'd scripts — no hydration, no 3D, no interactivity.
+      emptyOutDir: false,
     },
     plugins: [
       cloudflarePagesAdapter({
