@@ -1,113 +1,51 @@
-# Qwik City App ⚡️
+# Thomas Powell — Digital Monolith
 
-- [Qwik Docs](https://qwik.dev/)
-- [Discord](https://qwik.dev/chat)
-- [Qwik GitHub](https://github.com/QwikDev/qwik)
-- [@QwikDev](https://twitter.com/QwikDev)
-- [Vite](https://vitejs.dev/)
+A single-page immersive 3D experience presenting the **Devin Autopilot multi-agent system** as a research paper rendered inside an impossible-architecture monolith. This is not a portfolio. The site treats the 6-agent architecture, turn cycle, concurrent pairs, self-restart, crash detection, and dynamic model selection as the subject of a research paper, with the presentation medium being a Three.js impossible-architecture scene.
 
----
+## Art Direction
 
-## Project Structure
+**Digital Monolith / Impossible Architecture** — Escher meets Brutalism meets speculative rendering. Vast geometric forms that defy physics: floating monoliths, recursive staircases, structures that fold into themselves. A restrained, high-contrast palette: deep blacks (`#0a0a0c`), cold whites (`#f4f4f5`), with a single accent (electric cyan `#22d3ee`) used sparingly. Negative space as a primary design element. Typography as architecture — massive, weighted type acting as structural elements. Depth and atmosphere via fog, depth-of-field, and parallax layers. The monolith is impressive because of its stillness, not its motion. Technical complexity is used only where it reinforces identity.
 
-This project is using Qwik with [QwikCity](https://qwik.dev/qwikcity/overview/). QwikCity is just an extra set of tools on top of Qwik to make it easier to build a full site, including directory-based routing, layouts, and more.
+## Tech Stack
 
-Inside your project, you'll see the following directory structure:
+- **Qwik** — resumable SSR framework (entry via Cloudflare Pages adapter)
+- **TypeScript** — all source is `.ts`/`.tsx`, strict mode
+- **Three.js** — 3D impossible-architecture hero scene (lazy-loaded)
+- **GSAP** — choreographed cinematic section transitions
+- **cannon-es** — physics-based interactions (heavy, deliberate, not bouncy)
+- **Cloudflare Pages** — deployment target via `wrangler.toml` + Qwik SSG (`/*` include)
 
-```
-├── public/
-│   └── ...
-└── src/
-    ├── components/
-    │   └── ...
-    └── routes/
-        └── ...
-```
+## Scripts
 
-- `src/routes`: Provides the directory-based routing, which can include a hierarchy of `layout.tsx` layout files, and an `index.tsx` file as the page. Additionally, `index.ts` files are endpoints. Please see the [routing docs](https://qwik.dev/qwikcity/routing/overview/) for more info.
+From `package.json:11-32`:
 
-- `src/components`: Recommended directory for components.
+| Script | Description |
+|---|---|
+| `npm run build` | `qwik build && npm run fix-worker` — production build + worker path fix |
+| `npm run dev` | `vite --mode ssr` — dev server with SSR (port 5173) |
+| `npm run deploy` | `wrangler pages deploy ./dist` — deploy built output to Cloudflare Pages |
+| `npm run serve` | `wrangler pages dev ./dist --compatibility-flags=nodejs_als` — local Cloudflare preview |
+| `npm run preview` | `qwik build preview && vite preview --open` — production build preview in browser |
+| `npm run verify` | `build.types && lint && test && build && test.smoke` — full acceptance gate |
+| `npm run test` | `vitest run` — unit test suite |
+| `npm run fix-worker` | Patches `dist/_worker.js` entry import path post-build |
 
-- `public`: Any static assets, like images, can be placed in the public directory. Please see the [Vite public directory](https://vitejs.dev/guide/assets.html#the-public-directory) for more info.
+## Sections
 
-## Add Integrations and deployment
+The site has two content surfaces:
 
-Use the `npm run qwik add` command to add additional integrations. Some examples of integrations includes: Cloudflare, Netlify or Express Server, and the [Static Site Generator (SSG)](https://qwik.dev/qwikcity/guides/static-site-generation/).
-
-```shell
-npm run qwik add # or `yarn qwik add`
-```
+1. **3D Monolith Scene** — Three.js impossible architecture presenting the 6-agent system as monumental geometric forms. Cinematic camera intro, subtle orbit, GLSL fog/displacement shaders, lazy-loaded with `prefers-reduced-motion` fallback and mobile degradation.
+2. **Research Paper** — The Devin Autopilot multi-agent system presented as a research paper: abstract, methodology, architecture diagrams (SVG topology, turn cycle, concurrent pairs), results (self-restart, crash detection, dynamic model selection), and discussion (theory craft on why the architecture works).
 
 ## Development
 
-Development mode uses [Vite's development server](https://vitejs.dev/). The `dev` command will server-side render (SSR) the output during development.
-
 ```shell
-npm start # or `yarn start`
+npm install          # install dependencies (adds three, gsap, cannon-es)
+npm run dev          # start dev server at http://localhost:5173 (SSR mode)
+npm run build        # production build to dist/ + worker fix
+npm run deploy       # deploy dist/ to Cloudflare Pages
 ```
 
-> Note: during dev mode, Vite may request a significant number of `.js` files. This does not represent a Qwik production build.
+Phase 0 acceptance gate: `npx tsx src/quality/phase0-verify.ts` (10 checks — see `src/quality/phase0-verify.ts`).
 
-## Preview
-
-The preview command will create a production build of the client modules, a production build of `src/entry.preview.tsx`, and run a local server. The preview server is only for convenience to preview a production build locally and should not be used as a production server.
-
-```shell
-npm run preview # or `yarn preview`
-```
-
-## Production
-
-The production build will generate client and server modules by running both client and server build commands. The build command will use Typescript to run a type check on the source code.
-
-```shell
-npm run build # or `yarn build`
-```
-
-## Cloudflare Pages
-
-Cloudflare's [wrangler](https://github.com/cloudflare/wrangler) CLI can be used to preview a production build locally. To start a local server, run:
-
-```
-npm run serve
-```
-
-Then visit [http://localhost:8787/](http://localhost:8787/)
-
-### Deployments
-
-[Cloudflare Pages](https://pages.cloudflare.com/) are deployable through their [Git provider integrations](https://developers.cloudflare.com/pages/platform/git-integration/).
-
-If you don't already have an account, then [create a Cloudflare account here](https://dash.cloudflare.com/sign-up/pages). Next go to your dashboard and follow the [Cloudflare Pages deployment guide](https://developers.cloudflare.com/pages/framework-guides/deploy-anything/).
-
-Within the projects "Settings" for "Build and deployments", the "Build command" should be `npm run build`, and the "Build output directory" should be set to `dist`.
-
-### Function Invocation Routes
-
-Cloudflare Page's [function-invocation-routes config](https://developers.cloudflare.com/pages/platform/functions/routing/#functions-invocation-routes) can be used to include, or exclude, certain paths to be used by the worker functions. Having a `_routes.json` file gives developers more granular control over when your Function is invoked.
-This is useful to determine if a page response should be Server-Side Rendered (SSR) or if the response should use a static-site generated (SSG) `index.html` file.
-
-By default, the Cloudflare pages adaptor _does not_ include a `public/_routes.json` config, but rather it is auto-generated from the build by the Cloudflare adaptor. An example of an auto-generate `dist/_routes.json` would be:
-
-```
-{
-  "include": [
-    "/*"
-  ],
-  "exclude": [
-    "/_headers",
-    "/_redirects",
-    "/build/*",
-    "/favicon.ico",
-    "/manifest.json",
-    "/service-worker.js",
-    "/about"
-  ],
-  "version": 1
-}
-```
-
-In the above example, it's saying _all_ pages should be SSR'd. However, the root static files such as `/favicon.ico` and any static assets in `/build/*` should be excluded from the Functions, and instead treated as a static file.
-
-In most cases the generated `dist/_routes.json` file is ideal. However, if you need more granular control over each path, you can instead provide you're own `public/_routes.json` file. When the project provides its own `public/_routes.json` file, then the Cloudflare adaptor will not auto-generate the routes config and instead use the committed one within the `public` directory.
-# SSC-landing
+See `ARCHITECTURE.md` for module structure and `PLAN.md` for the phased roadmap.

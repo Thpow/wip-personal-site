@@ -1,0 +1,59 @@
+/* ─── Spatial Rhythm for Monumental Chambers ──────────────────────────
+ * Each section is a chamber of the monolith. Hairline seams (geological
+ * strata) separate chambers. Subtle white datum lines mark section headings.
+ * Body text is constrained for readability. Mobile halves the padding.
+ */
+
+section[data-section] {
+  padding: var(--space-xl) var(--space-lg);
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* Hairline seam — geological strata between chambers */
+section[data-section]::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--monolith-white);
+  opacity: var(--seam-opacity);
+}
+
+/* Research section — narrower for paper readability */
+section[data-section="research"] {
+  max-width: 860px;
+}
+
+/* Section heading — subtle datum line below */
+section[data-section] h2::after {
+  content: "";
+  display: block;
+  width: 48px;
+  height: 2px;
+  background: var(--monolith-white);
+  opacity: 0.15;
+  margin-top: var(--space-sm);
+}
+
+/* Body paragraphs — constrained width, relaxed leading */
+section[data-section] p {
+  max-width: 640px;
+  line-height: 1.7;
+  color: rgba(244, 244, 245, 0.85);
+}
+
+/* ─── Mobile — halve all padding, full width ─────────────────────────── */
+@media (max-width: 768px) {
+  section[data-section] {
+    padding: calc(var(--space-xl) * 0.5) calc(var(--space-lg) * 0.5);
+    max-width: 100%;
+  }
+
+  section[data-section="research"] {
+    max-width: 100%;
+  }
+}

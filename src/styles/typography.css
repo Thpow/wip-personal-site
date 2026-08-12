@@ -1,0 +1,88 @@
+/* ─── Architectural Typography System ──────────────────────────────────
+ * Variable font weight as scroll depth. Type loses mass as it recedes
+ * into fog — the typographic equivalent of the fog shader's depth-based
+ * desaturation. Monospace is fixed-weight (specification, not sculpture).
+ */
+
+:root {
+  --font-sans: system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: ui-monospace, "JetBrains Mono", "SF Mono", Menlo, monospace;
+
+  --weight-active: 900;
+  --weight-receding: 300;
+  --weight-ghost: 100;
+
+  --kinetic-stagger: 120ms;
+}
+
+/* ─── Section headings — variable weight recession ──────────────────── */
+.section-heading {
+  font-family: var(--font-mono);
+  font-weight: var(--weight-active);
+  opacity: 1;
+  transition:
+    font-weight 800ms ease-out,
+    opacity 800ms ease-out;
+}
+
+.section-heading.is-receding {
+  font-weight: var(--weight-ghost);
+  opacity: 0.4;
+}
+
+/* ─── Display title — massive, structural, tight ────────────────────── */
+.display-title {
+  font-size: var(--type-display);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 0.9;
+}
+
+/* ─── Monospace blocks — fixed weight (specification, not sculpture) ── */
+.mono {
+  font-family: var(--font-mono);
+  font-weight: 400;
+}
+
+/* ─── Kinetic headline — "carved revelation" (once-only) ────────────── */
+.kinetic-word {
+  display: inline-block;
+  animation: carve-in 800ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: calc(var(--word-index) * var(--kinetic-stagger));
+  opacity: 0; /* pre-animation state; `forwards` holds final state */
+}
+
+@keyframes carve-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+    letter-spacing: 0.2em;
+    font-weight: 100;
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    letter-spacing: -0.04em;
+    font-weight: 900;
+  }
+}
+
+/* ─── Reduced motion — disable all transitions and kinetic animation ── */
+@media (prefers-reduced-motion: reduce) {
+  .section-heading {
+    transition: 0.01ms;
+  }
+
+  .section-heading.is-receding {
+    font-weight: 400;
+    opacity: 1;
+  }
+
+  .kinetic-word {
+    animation: none;
+    opacity: 1;
+    transform: none;
+    letter-spacing: -0.04em;
+    font-weight: 900;
+  }
+}

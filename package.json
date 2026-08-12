@@ -8,6 +8,11 @@
   "engines-annotation": "Mostly required by sharp which needs a Node-API v9 compatible runtime",
   "private": true,
   "type": "module",
+  "dependencies": {
+    "cannon-es": "^0.20.0",
+    "gsap": "^3.12.5",
+    "three": "^0.169.0"
+  },
   "scripts": {
     "build": "qwik build && npm run fix-worker",
     "build.client": "vite build",
@@ -25,6 +30,8 @@
     "preview": "qwik build preview && vite preview --open",
     "serve": "wrangler pages dev ./dist --compatibility-flags=nodejs_als",
     "start": "vite --open --mode ssr",
+    "test.smoke": "node scripts/smoke-build.mjs",
+    "verify": "npm run build.types && npm run lint && npm run build && npm run test.smoke",
     "qwik": "qwik"
   },
   "devDependencies": {
@@ -32,6 +39,7 @@
     "@builder.io/qwik-city": "^1.15.0",
     "@eslint/js": "latest",
     "@types/node": "20.14.11",
+    "@types/three": "^0.169.0",
     "eslint": "9.25.1",
     "eslint-plugin-qwik": "^1.15.0",
     "gh-pages": "^6.3.0",

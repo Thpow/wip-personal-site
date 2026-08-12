@@ -1,0 +1,96 @@
+/* ─── Print Stylesheet — "The Blueprint Prints" ────────────────────────
+ * The research paper as a physical artifact. When printed, the 3D scene,
+ * sound toggle, and interactive elements disappear. What remains is a
+ * clean black-and-white architectural blueprint: the diagrams, the text,
+ * the appendices — the specification, not the sculpture.
+ */
+
+@media print {
+  /* Hide interactive/non-printable elements */
+  canvas,
+  .sound-toggle,
+  .skip-link {
+    display: none !important;
+  }
+
+  /* White background, black text */
+  body {
+    background: white !important;
+    color: black !important;
+  }
+
+  /* All cyan accents → dark gray for print */
+  * {
+    border-color: #333 !important;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: black !important;
+  }
+
+  /* Force all <details> open — appendices print in full */
+  details {
+    display: block !important;
+  }
+  details > summary {
+    display: block !important;
+    list-style: none !important;
+  }
+  details > div,
+  details > pre,
+  details > p {
+    display: block !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+
+  /* Page breaks between major sections */
+  section[data-section] {
+    page-break-before: always;
+  }
+  section[data-section="abstract"] {
+    page-break-before: auto;
+  }
+
+  /* Keep SVGs and diagrams from splitting across pages */
+  svg,
+  section[data-section="log-inscription"] > details {
+    page-break-inside: avoid;
+  }
+
+  /* Remove shadows and opacity effects */
+  * {
+    box-shadow: none !important;
+    opacity: 1 !important;
+    text-shadow: none !important;
+  }
+
+  /* Print-friendly font sizes */
+  body {
+    font-size: 12pt;
+    line-height: 1.5;
+  }
+
+  h1 { font-size: 24pt; }
+  h2 { font-size: 18pt; }
+  h3 { font-size: 14pt; }
+
+  /* SVGs at full width */
+  svg {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  /* Links show URL after text */
+  a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 10pt;
+    color: #666;
+  }
+
+  /* Footer inscription — keep the thesis */
+  footer {
+    page-break-before: always;
+    color: black !important;
+  }
+}

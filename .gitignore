@@ -53,3 +53,12 @@ desktop.ini
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Devin Autopilot session data (transcripts, brains, session IDs — never commit)
+.autopilot/
+.autopilot.bak.*/
+.autopilot-*/
+
+# Debug / scratch output
+tsc-errors.txt
+*.tsbuildinfo

@@ -36,8 +36,6 @@ const ignores = [
   "**/dist",
   "**/tsconfig.tsbuildinfo",
   "**/vite.config.ts",
-  "**/*.spec.tsx",
-  "**/*.spec.ts",
   "**/.netlify",
   "**/pnpm-lock.yaml",
   "**/package-lock.json",
